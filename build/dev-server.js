@@ -6,6 +6,7 @@ if (!process.env.NODE_ENV) {
 }
 
 var opn = require('opn')
+var chalk = require('chalk')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
@@ -34,7 +35,7 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({ action: 'reload' })
+    hotMiddleware.publish({action: 'reload'})
     cb()
   })
 })
@@ -43,7 +44,7 @@ compiler.plugin('compilation', function (compilation) {
 Object.keys(proxyTable).forEach(function (context) {
   var options = proxyTable[context]
   if (typeof options === 'string') {
-    options = { target: options }
+    options = {target: options}
   }
   app.use(proxyMiddleware(options.filter || context, options))
 })
@@ -69,7 +70,7 @@ var readyPromise = new Promise(resolve => {
   _resolve = resolve
 })
 
-console.log('> Starting dev server...')
+console.log(chalk.green.bold('> Starting dev server...'))
 devMiddleware.waitUntilValid(() => {
   console.log('> Listening at ' + uri + '\n')
   // when env is testing, don't need open it
@@ -78,6 +79,19 @@ devMiddleware.waitUntilValid(() => {
   }
   _resolve()
 })
+
+//mooc data end server
+var dataApi = express.Router()
+var data = {test: 0, test1: 1}
+
+dataApi.get('/techs', (req, res, next) => {
+  res.json({
+    errno: 0,
+    data: data.test
+  })
+})
+
+app.use('api', dataApi)
 
 var server = app.listen(port)
 
