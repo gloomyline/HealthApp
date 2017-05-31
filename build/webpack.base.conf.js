@@ -1,5 +1,9 @@
 var path = require('path')
 var utils = require('./utils')
+
+var projectRoot = path.resolve(__dirname, '../')
+const vuxLoader = require('vux-loader')
+
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 
@@ -7,7 +11,7 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+let webpackConfig = {
   entry: {
     app: './src/main.js'
   },
@@ -21,8 +25,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      '@': resolve('src'),
-      'components': resolve('src/components')
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src')
     }
   },
   module: {
@@ -65,3 +69,8 @@ module.exports = {
     ]
   }
 }
+
+
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ['vux-ui', 'progress-bar', 'duplicate-style']
+})

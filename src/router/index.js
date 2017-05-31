@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from 'components/home'
-import order from 'components/order'
-import me from 'components/me'
-import service from 'components/service'
+import home from '@/components/home'
+import order from '@/components/order'
+import me from '@/components/me'
+import service from '@/components/service'
 
 Vue.use(Router)
 
