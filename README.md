@@ -1,6 +1,6 @@
-# hao-duo-health
+# health-app
 
-> A mobile terminal web app powered on Vux2.0
+> A mobile terminal app powered by Vue and wechat
 
 ## Build Setup
 
