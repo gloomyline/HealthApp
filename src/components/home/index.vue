@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <div class="home-page">
-      <h1>这里是技师列表</h1>
-      <div class="tech-list"></div>
-    </div>
-  </div>
+	<div class="home-page">
+	  <h1>这里是技师列表</h1>
+	  <div class="tech-list"></div>
+	</div>
 </template>
 
 <script type="text/ecmascript-6">

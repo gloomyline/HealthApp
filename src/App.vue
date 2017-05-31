@@ -27,7 +27,6 @@
   #app
     .header
       width 100%
-      height 152px
     .footer
       position fixed
       width 100%
