@@ -27,17 +27,17 @@
   const bannerList = [
     {
       url: 'javascript:',
-      img: 'https://static.vux.li/demo/1.jpg',
+      img: 'http://localhost:9999/static/imgs/banner-01.jpg',
       title: '这里是轮播图'
     },
     {
       url: 'javascript:',
-      img: 'https://static.vux.li/demo/2.jpg',
+      img: 'http://localhost:9999/static/imgs/banner-01.jpg',
       title: '这里是轮播图'
     },
     {
       url: 'javascript:',
-      img: 'https://static.vux.li/demo/3.jpg',
+      img: 'http://localhost:9999/static/imgs/banner-01.jpg',
       title: '这里是轮播图'
     }
   ]
