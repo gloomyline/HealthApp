@@ -3,6 +3,14 @@ bg-img($url)
   @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
     background-image url($url + "@3x.png")
 
+inline-icon($width, $height)
+  display inline-block
+  vertical-align top
+  width $width
+  height $height
+  background-size $width $height
+  background-repeat no-repeat
+
 border-1px($color)
   position: relative
   &:before
@@ -17,3 +25,4 @@ border-1px($color)
 border-none()
   &:after
     display: none
+
