@@ -49,6 +49,7 @@
     display flex
     width 100%
     height 100%
+    background #fff
     border-1px(#c6c5cc)
     .tab-item
       flex 1

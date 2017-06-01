@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="header">
+    <div class="header-wrapper">
       <v-header></v-header>
     </div>
     <router-view></router-view>
@@ -25,7 +25,8 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   #app
-    .header
+    z-index 100
+    .header-wrapper
       width 100%
     .footer
       position fixed
