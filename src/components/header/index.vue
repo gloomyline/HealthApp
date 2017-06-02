@@ -14,8 +14,7 @@
     <div class="swiper-wrapper">
       <div class="swiper">
         <swiper loop auto dots-position="center" dots-class="dots" :list="bannerList" :index="bannerIndex"
-                @on-index-change="onIndexChange" :min-moving-distance="20" :interval="5000"
-                :aspect-ratio="1/2"></swiper>
+                @on-index-change="onIndexChange" :min-moving-distance="20" :interval="5000" height="110px"></swiper>
       </div>
     </div>
     <div class="more-wrapper">
@@ -32,17 +31,17 @@
     {
       url: 'javascript:',
       img: 'http://localhost:9999/static/imgs/banner-01.jpg',
-      title: '这里是轮播图'
+      title: '这里是轮播图1'
     },
     {
       url: 'javascript:',
       img: 'http://localhost:9999/static/imgs/banner-01.jpg',
-      title: '这里是轮播图'
+      title: '这里是轮播图2'
     },
     {
       url: 'javascript:',
       img: 'http://localhost:9999/static/imgs/banner-01.jpg',
-      title: '这里是轮播图'
+      title: '这里是轮播图3'
     }
   ]
 
@@ -61,7 +60,10 @@
     computed: {
       site () {
         let str = value2name(this.value, ChinaAddressV3Data)
-        return str.split(' ')[1]
+        let _str = str.split(' ')[1]
+        if (_str) {
+          return _str.substr(0, 2)
+        }
       }
     },
     methods: {
@@ -113,7 +115,7 @@
             &:before
               display none
             .vux-popup-picker-select
-              width 60px
+              width 36px
               height 30px
 
       .site
@@ -138,10 +140,11 @@
           display inline-block
           vertical-align top
           font-size 12px
+
   .swiper-wrapper
     position relative
     width 100%
-    padding-top 50%
+    height 110px
     .swiper
       position absolute
       left 0
