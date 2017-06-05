@@ -1,0 +1,8 @@
+/**
+ * Created by Alan on 2017/6/5.
+ */
+
+export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
+export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS'
+export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
+export const RECEIVE_TECHLIST = 'RECEIVE_TECHLIST'

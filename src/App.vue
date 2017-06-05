@@ -3,7 +3,7 @@
     <div class="header-wrapper">
       <v-header></v-header>
     </div>
-    <router-view :tech-list="techList"></router-view>
+    <router-view :tech-list="technicians"></router-view>
     <div class="footer">
       <tab></tab>
     </div>
@@ -11,32 +11,25 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import vHeader from '@/components/header'
   import tab from '@/components/tab'
 
   export default {
     name: 'app',
-    data () {
-      return {
-        techList: []
-      }
+    computed: {
+      ...mapGetters({
+        technicians: 'allTechnicians'
+      })
     },
     created () {
       let postData = {
         page_now: 1,
         page_size: 10
       }
-      let url = 'http://192.168.0.237:8080/massage/appTechnicianData/getTechniciansList.do'
-      this.$http.post(url, postData, {emulateJSON: true})
-        .then((res) => {
-          res = res.body
-          if (res.Status === 0) {
-            this.techList = res.Data.technicianLists
-          } else {
-            console.log(res.ErrMsg)
-          }
-        })
+      this.$store.dispatch('getAllTechnicians', postData)
     },
+    methods: {},
     components: {
       vHeader,
       tab
