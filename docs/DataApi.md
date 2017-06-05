@@ -350,7 +350,101 @@ http://localhost:8080/massage/appTechnicianData/getHotelListByLonAndLat.do?longi
   "ErrMsg": "OK"
 }
  ```
+6. 添加技师/项目收藏 POST
+- url: **http://hostname:port/massage/appCommentsData/addCollect.do**
+- postData
 
+| KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+| :---: | :---: | :---: | :---: | :---: |:---: |
+| CUSTOMER_ID | string |  |  | true | 技师id
+| TYPE | string |  |  | true | (0-技师，1-项目)
+| TECHNICIAN_ID | string |  |  | true | 技师/项目id
+- response
+
+| KEY | TYPE | DEFAULT | VALUE | DESC |
+| :---: | :---: | :---: | :---: | :---: |
+| Status | int |  | 0/-1/1 | 返回状态码 |
+| ErrMsg | str |  | ok/desc/desc | 请求错误描述 |
+| Data | json(array) |  |  | 返回的数据 |
+
+> 请求url示例
+
+http://localhost:8080/massage/appCommentsData/addCollect.do?TYPE=0&CUSTOMER_ID=1111&TECHNICIAN_ID=6bab8de3e2aa40b3910611f9472e67fb
+ > 返回数据示例
+  
+ ```json
+{
+  "Status": 0,
+  "ErrMsg": "OK"
+}
+ ```
+ 7. 取消技师/项目收藏 POST
+ - url: **http://hostname:port/massage/appCommentsData/cancelCollect.do**
+ - postData
+ 
+ | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+ | :---: | :---: | :---: | :---: | :---: |:---: |
+| CUSTOMER_ID | string |  |  | true | 技师id
+| TYPE | string |  |  | true | (0-技师，1-项目)
+| TECHNICIAN_ID | string |  |  | true | 技师/项目id
+ - response
+ 
+ | KEY | TYPE | DEFAULT | VALUE | DESC |
+ | :---: | :---: | :---: | :---: | :---: |
+ | Status | int |  | 0/-1 | 返回状态码 |
+ | ErrMsg | str |  | ok/desc | 请求错误描述 |
+ | Data | json(array) |  |  | 返回的数据 |
+ 
+ > 请求url示例
+ 
+ http://localhost:8080/massage/appCommentsData/cancelCollect.do?TYPE=0&CUSTOMER_ID=1111&TECHNICIAN_ID=6bab8de3e2aa40b3910611f9472e67fb
+  > 返回数据示例
+   
+  ```json
+{
+  "Status": 0,
+  "ErrMsg": "OK"
+}
+  ```
+ 8. 收藏列表 POST
+  - url: **http://hostname:port/massage/appCommentsData/getCollectListByCustomerid.do**
+  - postData
+  
+  | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+  | :---: | :---: | :---: | :---: | :---: |:---: |
+| CUSTOMER_ID | string |  |  | true | 技师id
+| TYPE | string |  |  | true | (0-技师，1-项目)
+  - response
+  
+  | KEY | TYPE | DEFAULT | VALUE | DESC |
+  | :---: | :---: | :---: | :---: | :---: |
+  | Status | int |  | 0/-1 | 返回状态码 |
+  | ErrMsg | str |  | ok/desc | 请求错误描述 |
+  | Data | json(array) |  |  | 返回的数据 |
+  
+  > 请求url示例
+  
+  http://localhost:8080/massage/appCommentsData/getCollectListByCustomerid.do?TYPE=0&CUSTOMER_ID=1111
+   > 返回数据示例
+    
+   ```json
+{
+  "Status": 0,
+  "Data": {
+    "CollectList": [
+      {
+        "CUSTOMER_ID": "1111",
+        "CREATETIME": "2017-06-05 10:17:12",
+        "TECHNICIAN_ID": "74eacd86512247d38ae70133dd6d94bc",//项目id/技师id
+        "TYPE": 0,
+        "COLLECT_ID": "3d77f44214324cee992da4837630341c"
+      }
+    ]
+  },
+  "ErrMsg": "OK"
+}
+   ```
+   
 
  
  
