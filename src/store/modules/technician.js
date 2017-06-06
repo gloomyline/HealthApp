@@ -20,7 +20,6 @@ const getters = {
 // actions
 const actions = {
   getAllTechnicians ({commit, rootState}, postData) {
-    console.log(rootState)
     commit(types.SEND_REQUEST)
     tech.getTechList(postData, technicians => {
       commit(types.REQUEST_SUCCESS)

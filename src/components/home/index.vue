@@ -4,7 +4,9 @@
       <ul>
         <li v-for="(tech, index) in techList" class="tech-item">
           <div class="avatar">
-            <img width="73" height="73" :src="tech.AVATAR" class="avatar-img">
+            <!-- 默认加载本地一张图片 -->
+            <img width="73" height="73" :src="tech.AVATAR" class="avatar-img"
+                 onerror="this.src='http://192.168.1.128:9999/static/imgs/jishi-default.png'">
             <span v-show="tech.LEVEL === 1" class="level"></span>
           </div>
           <div class="content">
@@ -22,6 +24,9 @@
             <div class="desc-wrapper">
               <p class="text">{{tech.SERVE_CONTENT}}</p>
             </div>
+            <div class="star-wrapper">
+              <star :size="36"></star>
+            </div>
           </div>
         </li>
       </ul>
@@ -32,6 +37,7 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
   import dot from '@/components/uiComponents/dot'
+  import star from '@/components/uiComponents/star'
 
   export default {
     props: {
@@ -40,11 +46,6 @@
         default () {
           return []
         }
-      }
-    },
-    data () {
-      return {
-        techs: []
       }
     },
     created () {
@@ -74,7 +75,8 @@
       }
     },
     components: {
-      dot
+      dot,
+      star
     }
   }
 </script>
@@ -99,17 +101,19 @@
           .avatar-img
             width 73px
             height 73px
+            border-radius 50%
           .level
             display inline-block
             position absolute
-            left 12px
-            bottom 15px
+            left 10px
+            bottom 2px
             width 51px
             height 14px
             bg-img('level')
             background-size contain
         .content
           flex 1
+          position relative
           .title-wrapper
             margin-bottom 16px
             .name
@@ -138,4 +142,8 @@
             text-overflow ellipsis
             font-size 11px
             color #919191
+          .star-wrapper
+            position absolute
+            right 0
+            top 32px
 </style>

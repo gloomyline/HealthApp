@@ -30,17 +30,17 @@
   const bannerList = [
     {
       url: 'javascript:',
-      img: 'http://localhost:9999/static/imgs/banner-01.jpg',
+      img: 'http://192.168.1.128:9999/static/imgs/banner-01.jpg',
       title: '这里是轮播图1'
     },
     {
       url: 'javascript:',
-      img: 'http://localhost:9999/static/imgs/banner-01.jpg',
+      img: 'http://192.168.1.128:9999/static/imgs/banner-01.jpg',
       title: '这里是轮播图2'
     },
     {
       url: 'javascript:',
-      img: 'http://localhost:9999/static/imgs/banner-01.jpg',
+      img: 'http://192.168.1.128:9999/static/imgs/banner-01.jpg',
       title: '这里是轮播图3'
     }
   ]

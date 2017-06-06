@@ -8,4 +8,5 @@ yarn-error.log*
 /src/components/tab/*.png
 /src/components/header/*.png
 /src/components/home/*.png
+/src/components/uiComponents/star/*.png
 
