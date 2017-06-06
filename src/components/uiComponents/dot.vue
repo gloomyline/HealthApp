@@ -12,7 +12,8 @@
     &:after
       display block
       position absolute
-      left 0
-      top 0
+      left -4px
+      top 2px
+      font-weight 500
       content: '·'
 </style>
