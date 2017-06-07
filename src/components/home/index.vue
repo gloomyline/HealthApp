@@ -31,9 +31,11 @@
         </li>
       </ul>
     </div>
-    <div class="tech-wrapper" v-show="detailShow">
-      <technician></technician>
-    </div>
+    <transition name="fade">
+      <div class="tech-wrapper" v-show="detailShow">
+        <technician class="tech-detail-page"></technician>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -175,4 +177,10 @@
       width 100%
       height 100%
       z-index 20
+      transform translate3d(0, 0, 0)
+      &.fade-enter-active, &.fade-leave-active
+        transition all .4s ease
+      &.fade-enter, &.fade-leave-active
+        opacity 0
+        transform translate3d(100%, 0, 0)
 </style>

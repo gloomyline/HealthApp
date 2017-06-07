@@ -89,7 +89,7 @@
         return num === 0 ? '男' : '女'
       },
       contFormat (str) {
-        if (str.length > 100) {
+        if (str && str.length > 100) {
           return str.substr(0, 100) + '...'
         }
         return str
