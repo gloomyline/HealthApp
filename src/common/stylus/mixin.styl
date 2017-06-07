@@ -22,6 +22,17 @@ border-1px($color)
     border-top: 1px solid $color
     content: ' '
 
+borderB-1px($color)
+  position: relative
+  &:after
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-bottom: 1px solid $color
+    content: ' '
+
 border-none()
   &:after
     display: none

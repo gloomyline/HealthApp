@@ -107,7 +107,7 @@
           top 0
           padding 16 15px
           font-size 0
-          z-index 20
+          z-index 10
           color #fff
           .vux-cell-box
             .vux-tap-active

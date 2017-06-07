@@ -9,4 +9,5 @@ yarn-error.log*
 /src/components/header/*.png
 /src/components/home/*.png
 /src/components/uiComponents/star/*.png
+/src/components/technician/*.png
 
