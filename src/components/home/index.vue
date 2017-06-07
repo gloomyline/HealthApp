@@ -2,7 +2,7 @@
   <div class="home-page">
     <div class="tech-list-wrapper tech-list-hook">
       <ul>
-        <li v-for="(tech, index) in techList" class="tech-item">
+        <li v-for="(tech, index) in techList" class="tech-item" @click="showDetail(index, $event)">
           <div class="avatar">
             <!-- 默认加载本地一张图片 -->
             <img width="73" height="73" :src="tech.AVATAR" class="avatar-img"
@@ -31,13 +31,19 @@
         </li>
       </ul>
     </div>
+    <div class="tech-wrapper" v-show="detailShow">
+      <technician></technician>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import { mapGetters } from 'vuex'
+
   import dot from '@/components/uiComponents/dot'
   import star from '@/components/uiComponents/star'
+  import technician from '@/components/technician'
 
   export default {
     props: {
@@ -60,6 +66,11 @@
         })
       }
     },
+    computed: {
+      ...mapGetters({
+        detailShow: 'detailShow'
+      })
+    },
     methods: {
       _initScroll () {
         if (!this.scroll) {
@@ -67,6 +78,12 @@
         } else {
           this.scroll.refresh()
         }
+      },
+      showDetail (index, event) {
+        if (!event._constructed) return
+        let selectedTech = this.techList[index]
+        this.$store.commit('SELECT_TECHNICIAN', {selectedTech})
+        this.$store.commit('TOGGLE_TECH_DETAIL')
       }
     },
     filters: {
@@ -76,7 +93,8 @@
     },
     components: {
       dot,
-      star
+      star,
+      technician
     }
   }
 </script>
@@ -95,6 +113,9 @@
       .tech-item
         display flex
         padding 11px 15px
+        border-bottom 1px solid #f1f1f1
+        &:last-child
+          border-bottom none
         .avatar
           flex 0 0 103px
           position relative
@@ -146,4 +167,12 @@
             position absolute
             right 0
             top 32px
+    .tech-wrapper
+      position fixed
+      left 0
+      top 0
+      bottom 0
+      width 100%
+      height 100%
+      z-index 20
 </style>
