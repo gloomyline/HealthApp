@@ -8,12 +8,9 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .dot
-    position relative
-    &:after
-      display block
-      position absolute
-      left -4px
-      top 2px
-      font-weight 500
-      content: '·'
+    display inline-block
+    vertical-align top
+    width 2px
+    height 2px
+    border-radius 50%
 </style>

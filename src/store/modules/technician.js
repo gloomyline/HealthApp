@@ -8,18 +8,22 @@ import * as types from '../mutation-types'
 // initial state
 const state = {
   isLoading: false,
-  all: []
+  all: [],
+  detailShow: false,
+  selected: {}
 }
 
 // getters
 const getters = {
   isLoading: state => state.isLoading,
-  allTechnicians: state => state.all
+  allTechnicians: state => state.all,
+  detailShow: state => state.detailShow,
+  selectedTechnician: state => state.selected
 }
 
 // actions
 const actions = {
-  getAllTechnicians ({commit, rootState}, postData) {
+  getAllTechnicians ({commit}, postData) {
     commit(types.SEND_REQUEST)
     tech.getTechList(postData, technicians => {
       commit(types.REQUEST_SUCCESS)
@@ -38,6 +42,12 @@ const mutations = {
   },
   [types.RECEIVE_TECHLIST] (state, {technicians}) {
     state.all = technicians
+  },
+  [types.TOGGLE_TECH_DETAIL] (state) {
+    state.detailShow = !state.detailShow
+  },
+  [types.SELECT_TECHNICIAN] (state, {selectedTech}) {
+    state.selected = selectedTech
   }
 }
 
