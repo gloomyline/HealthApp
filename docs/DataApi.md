@@ -561,5 +561,43 @@ http://localhost:8080/massage/appCommentsData/addCollect.do?TYPE=0&CUSTOMER_ID=1
   "Status": 0,
   "ErrMsg": "OK"
 }
-     ```
+```
+     
+     
+
+15. 提交评论 POST
+
+- url: **http://hostname:port/massage/appCommentsData/sendComment.do**
+- postData
+
+| KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+| :---: | :---: | :---: | :---: | :---: |:---: |
+| ORDER_ID | string |  |  | true | 订单ID
+| TECHNICIAN_ID | string |  |  | true | 技师ID
+| TYPE | int |  |  | true | 类型(0-技师，1-项目)
+| COMMENTS_CONTENT | string |  |  | true | 评论内容
+| COMMENTS_STAR | int |  |  | true | 评论星级
+| CUSTOMER_TEL | string |  |  | true | 客户的电话
+
+
+- response
+  
+| KEY | TYPE | DEFAULT | VALUE | DESC |
+| :---: | :---: | :---: | :---: | :---: |
+| Status | int |  | 0/-1/1/2 | 返回状态码 |
+| ErrMsg | str |  | ok/desc | 请求错误描述 |
+| Data | json(array) |  |  | 返回的数据 |
+
+> 请求url示例
+
+http://localhost:8080/massage/appCommentsData/sendComment.do?ORDER_ID=18828c7c79e14ae0952a502363a1d813&TECHNICIAN_ID=a082147cf09f471f96c6380d1c77a43b&TYPE=0&COMMENTS_CONTENT=wonderful&COMMENTS_STAR=5&CUSTOMER_TEL=1885990000
+> 返回数据示例
+  
+```json
+{
+  "Status": 0,
+  "ErrMsg": "OK"
+}
+ ```
+
  
