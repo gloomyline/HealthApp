@@ -33,7 +33,7 @@
     </div>
     <transition name="fade">
       <div class="tech-wrapper" v-show="detailShow">
-        <technician class="tech-detail-page"></technician>
+        <technician ref="technician"></technician>
       </div>
     </transition>
   </div>
@@ -56,7 +56,7 @@
         }
       }
     },
-    created () {
+    mounted () {
       this.$nextTick(() => {
         this._initScroll()
       })
@@ -85,7 +85,7 @@
         if (!event._constructed) return
         let selectedTech = this.techList[index]
         this.$store.commit('SELECT_TECHNICIAN', {selectedTech})
-        this.$store.commit('TOGGLE_TECH_DETAIL')
+        this.$refs.technician.showDetail()
       }
     },
     filters: {
@@ -175,7 +175,6 @@
       top 0
       bottom 0
       width 100%
-      height 100%
       z-index 20
       transform translate3d(0, 0, 0)
       &.fade-enter-active, &.fade-leave-active

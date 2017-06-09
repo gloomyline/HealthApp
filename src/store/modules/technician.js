@@ -3,6 +3,7 @@
  */
 
 import tech from '../../api/technician'
+// import { deepCopy } from '@/common/js/util'
 import * as types from '../mutation-types'
 
 // initial state
@@ -29,6 +30,13 @@ const actions = {
       commit(types.REQUEST_SUCCESS)
       commit(types.RECEIVE_TECHLIST, {technicians})
     })
+  },
+  getTechnicians ({commit}, payload) {
+    commit(types.SEND_REQUEST)
+    tech.getTech(payload, technician => {
+      commit(types.REQUEST_SUCCESS)
+      commit(types.RECEIVE_TECH, {technician})
+    })
   }
 }
 
@@ -42,6 +50,10 @@ const mutations = {
   },
   [types.RECEIVE_TECHLIST] (state, {technicians}) {
     state.all = technicians
+  },
+  [types.RECEIVE_TECH] (state, {technician}) {
+    let selected = state.selected
+    state.selected = Object.assign({}, selected, technician)
   },
   [types.TOGGLE_TECH_DETAIL] (state) {
     state.detailShow = !state.detailShow
