@@ -1,5 +1,8 @@
 <template>
   <div class="home-page">
+    <div class="header-wrapper">
+      <v-header></v-header>
+    </div>
     <div class="tech-list-wrapper tech-list-hook">
       <ul>
         <li v-for="(tech, index) in techList" class="tech-item" @click="showDetail(index, $event)">
@@ -43,6 +46,7 @@
   import BScroll from 'better-scroll'
   import { mapGetters } from 'vuex'
 
+  import vHeader from '@/components/header'
   import dot from '@/components/uiComponents/dot'
   import star from '@/components/uiComponents/star'
   import technician from '@/components/technician'
@@ -94,6 +98,7 @@
       }
     },
     components: {
+      'v-header': vHeader,
       dot,
       star,
       technician

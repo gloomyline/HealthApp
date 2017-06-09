@@ -4,9 +4,6 @@
     <div class="loading-wrapper">
       <loading v-model="isLoading"></loading>
     </div>
-    <div class="header-wrapper">
-      <v-header></v-header>
-    </div>
     <keep-alive>
       <router-view :tech-list="technicians"></router-view>
     </keep-alive>
