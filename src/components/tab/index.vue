@@ -19,7 +19,7 @@
     {
       icon: 'order',
       title: '订单',
-      route: '/order'
+      route: '/order/type/massage'
     },
     {
       icon: 'me',
