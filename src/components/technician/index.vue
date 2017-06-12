@@ -74,6 +74,9 @@
         </div>
       </div>
     </div>
+    <div class="subscribe-wrapper" v-show="subscribeShow">
+
+    </div>
     <div class="technician-mask"></div>
   </div>
 </template>
@@ -81,6 +84,7 @@
 <script type="text/ecmascript-6">
   import { mapGetters } from 'vuex'
   import BScroll from 'better-scroll'
+  import subscribe from '@/components/subscribe'
   import dot from '@/components/uiComponents/dot'
   import star from '@/components/uiComponents/star'
 
@@ -112,7 +116,8 @@
     mounted () {},
     computed: {
       ...mapGetters({
-        technicianInfo: 'selectedTechnician'
+        technicianInfo: 'selectedTechnician',
+        subscribeShow: 'subscribeShow'
       }),
       isFavorite () {
         return this.loadFromLocal(this.technicianInfo.TECHNICIAN_ID, 'favorite', this.favorite)
@@ -180,6 +185,7 @@
       }
     },
     components: {
+      subscribe,
       dot,
       star
     }

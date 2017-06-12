@@ -7,6 +7,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import technicians from './modules/technicians'
+import subscribe from './modules/subscribe'
 import createLogger from '@/common/js/logger.js'
 
 Vue.use(Vuex)
@@ -17,7 +18,8 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-    technicians
+    technicians,
+    subscribe
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []
