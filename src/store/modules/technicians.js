@@ -8,7 +8,7 @@ import * as types from '../mutation-types'
 
 // initial state
 const state = {
-  isLoading: false,
+  _isLoading: false,
   all: [],
   detailShow: false,
   selected: {}
@@ -16,7 +16,7 @@ const state = {
 
 // getters
 const getters = {
-  isLoading: state => state.isLoading,
+  _isLoading: state => state._isLoading,
   allTechnicians: state => state.all,
   detailShow: state => state.detailShow,
   selectedTechnician: state => state.selected
@@ -43,10 +43,10 @@ const actions = {
 // mutations
 const mutations = {
   [types.SEND_REQUEST] (state) {
-    state.isLoading = true
+    state._isLoading = true
   },
   [types.REQUEST_SUCCESS] (state) {
-    state.isLoading = false
+    state._isLoading = false
   },
   [types.RECEIVE_TECHLIST] (state, {technicians}) {
     state.all = technicians
