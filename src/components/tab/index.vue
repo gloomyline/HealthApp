@@ -10,6 +10,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+
   const buttons = [
     {
       icon: 'home',
@@ -19,7 +20,7 @@
     {
       icon: 'order',
       title: '订单',
-      route: '/order/type/massage'
+      route: '/order'
     },
     {
       icon: 'me',

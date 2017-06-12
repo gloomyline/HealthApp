@@ -5,7 +5,9 @@
       <loading v-model="isLoading"></loading>
     </div>
     <keep-alive>
-      <router-view :tech-list="technicians"></router-view>
+      <transition>
+        <router-view class="router-view" :tech-list="technicians"></router-view>
+      </transition>
     </keep-alive>
     <div class="footer">
       <tab></tab>
@@ -53,8 +55,6 @@
         margin 15px 0 15px 0
         font-size 16px
         color #7e8c8d
-    .header-wrapper
-      width 100%
     .footer
       position fixed
       width 100%
