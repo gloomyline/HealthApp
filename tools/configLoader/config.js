@@ -12,5 +12,5 @@ let configServerUrl = 'http://' + config[env].hostname + ':' + config[env]._port
 module.exports = {
   url: configServerUrl,
   method: 'GET',
-  outputPath: path.resolve(__dirname, '../output')
+  outputPath: path.resolve(__dirname, 'output')
 }
