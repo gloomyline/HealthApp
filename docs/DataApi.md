@@ -181,7 +181,7 @@
 
 > 请求url示例
 
-http://localhost:8080/massage/appTechnicianData/getTechnicianInfo.do?TECHNICIAN_ID=a082147cf09f471f96c6380d1c77a43b&CUSTOMER_ID=1111
+http://localhost:8080/massage/appTechnicianData/getTechnicianInfo.do?TECHNICIAN_ID=a082147cf09f471f96c6380d1c77a43b&CUSTOMER_ID=1111&page_now=1&page_size=10
  > 返回数据示例
   
  ```json
@@ -267,7 +267,7 @@ http://localhost:8080/massage/appTechnicianData/getCertificateListById.do?CERTIF
 
 > 请求url示例
 
-http://localhost:8080/massage/appTechnicianData/getHotelListByLonAndLat.do?longitude=118.684639&latitude=24.877331
+http://localhost:8080/massage/appTechnicianData/getHotelListByLonAndLat.do?longitude=118.684639&latitude=24.877331&type=1
  > 返回数据示例
   
  ```json
@@ -427,7 +427,7 @@ http://localhost:8080/massage/appCommentsData/addCollect.do?TYPE=0&CUSTOMER_ID=1
   
   > 请求url示例
   
-  http://localhost:8080/massage/appOrderData/submitOrder.do?CUSTOMER_ID=1111&TECHNICIAN_ID=6bab8de3e2aa40b3910611f9472e67fb&ITEM_ID=1&ORDER_NUM=2&ORDER_TEL=17777777777&ORDER_ADD=haixingxiaoqu&ORDER_CALL_TIME=2017-6-18 20:30&ORDER_REMARK=hello&COUPON_ID=1
+  http://localhost:8080/massage/appOrderData/submitOrder.do?CUSTOMER_ID=1111&TECHNICIAN_ID=6bab8de3e2aa40b3910611f9472e67fb&ITEM_ID=1AA&ORDER_NUM=2&ORDER_TEL=17777777777&ORDER_ADD=haixingxiaoqu&ORDER_CALL_TIME=2017-6-18 20:30&ORDER_REMARK=hello&COUPON_ID=1
    > 返回数据示例
     
    ```json
@@ -599,5 +599,368 @@ http://localhost:8080/massage/appCommentsData/sendComment.do?ORDER_ID=18828c7c79
   "ErrMsg": "OK"
 }
  ```
+16. 注册技师 POST
+
+- url: **http://hostname:port/massage/appTechnicianData/registerTechnician.do**
+- postData
+
+| KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+| :---: | :---: | :---: | :---: | :---: |:---: |
+| Avatar | string |  |  | true | 头像（base64字符串）
+| TechleaderId | string |  |  | true | 领班ID
+| Name | string |  |  | true | 
+| Age | string |  |  | true | 
+| Sex | string |  |  | true | 0女，1男
+| ServerCity | string |  |  | true | 服务城市
+| Tel | string |  |  | true | 技师电话
+| Addr | string |  |  | true | 地址
+| Position | string |  |  | true | 应聘职位（0中医推拿，1SPA推拿，2小儿推拿师）
+| ExperienceYear | string |  |  | true | 工作年限（0是5年以下，1是5-8年，2是8-15年，3是15年以上）
+| Experience | string |  |  | true | 工作经历
+
+
+- response
+  
+| KEY | TYPE | DEFAULT | VALUE | DESC |
+| :---: | :---: | :---: | :---: | :---: |
+| Status | int |  | 0/-1/1/2 | 返回状态码 |
+| ErrMsg | str |  | ok/desc | 请求错误描述 |
+| Data | json(array) |  |  | 返回的数据 |
+
+> 请求url示例
+
+http://localhost:8080/massage/appTechnicianData/registerTechnician.do?TechleaderId=&Avatar=3212315&Name=alan&Age=28&Sex=0&ServerCity=xiamen&Tel=16666666666&Addr=donghaidajie&Position=1&ExperienceYear=1&Experience=She is very beautiful
+> 返回数据示例
+  
+```json
+{
+  "Status": 0,
+  "ErrMsg": "OK"
+}
+ ```
+17. 获取所有常量值 POST
+- url: **http://hostname:port/massage/appTechnicianData/getAllConstant.do**
+- postData
+
+| KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+| :---: | :---: | :---: | :---: | :---: |:---: |
+- response
+
+| KEY | TYPE | DEFAULT | VALUE | DESC |
+| :---: | :---: | :---: | :---: | :---: |
+| Status | int |  | 0/-1 | 返回状态码 |
+| ErrMsg | str |  | ok/desc | 请求错误描述 |
+| Data | json(array) |  |  | 返回的数据 |
+
+http://localhost:8080/massage/appTechnicianData/getAllConstant.do
+ > 返回数据示例
+  
+ ```json
+ {
+   "Data": {
+     "Certificatelist": [
+       {
+         "CertificateId": "1",
+         "CertificateImg": "http://139.196.106.144:8080/testImg/zhengshu.jpg",
+         "CertificateName": "高级按摩师"
+       },
+       {
+         "CertificateId": "2",
+         "CertificateImg": "http://139.196.106.144:8080/testImg/zhengshu.jpg",
+         "CertificateName": "高级推拿师"
+       },
+       {
+         "CertificateId": "3",
+         "CertificateImg": "http://139.196.106.144:8080/testImg/zhengshu.jpg",
+         "CertificateName": "高级催乳师"
+       }
+     ],
+     "Itemlist": [
+       {
+         "ItemAim": "针对部位",
+         "ItemFunct": "",//功能描述
+         "Content": "",//服务内容
+         "ItemCondition": "条件限制",
+         "BookInfo": "预约",
+         "ItemName": "深度全身理疗",
+         "ItemId": "1",
+         "ItemAbout": "项目简介",
+         "MassagetypeId": "2",//附属于哪种推拿大类
+         "Type": 1,//类型（1正常，2指的是套餐不是一次搞定）
+         "Taboo": "禁忌",
+         "ItemSymptom": "症状"
+       },
+       {
+         "ItemAim": "",
+         "ItemFunct": "",
+         "Content": "",
+         "ItemCondition": "",
+         "BookInfo": "",
+         "ItemName": "拔罐",
+         "ItemId": "2",
+         "ItemAbout": "544444444",
+         "MassagetypeId": "2",
+         "Type": 2,
+         "Taboo": "",
+         "ItemSymptom": ""
+       },
+       {
+         "ItemFunct": "",
+         "ItemImg": "http://localhost:8080/massage/uploadFiles/uploadImgs/20170524/968734215d9648cfa6f0019b709c7b3d.jpg",
+         "BookInfo": "",
+         "ItemId": "4",
+         "ItemAim": "",
+         "ItemCondition": "",
+         "Content": "",
+         "ItemName": "全身spa",
+         "ItemAbout": "66666666",
+         "MassagetypeId": "2",
+         "ItemSymptom": "",
+         "Taboo": "",
+         "Type": 1
+       },
+       {
+         "ItemFunct": "",
+         "ItemImg": "",
+         "BookInfo": "",
+         "ItemId": "39",
+         "ItemAim": "",
+         "ItemCondition": "",
+         "Content": "",
+         "ItemName": "顶顶顶顶7",
+         "ItemAbout": "弟弟弟弟的多付所",
+         "MassagetypeId": "2",
+         "ItemSymptom": "",
+         "Taboo": "",
+         "Type": 1
+       },
+       {
+         "ItemFunct": "",
+         "ItemImg": "",
+         "BookInfo": "",
+         "ItemId": "3",
+         "ItemAim": "",
+         "ItemCondition": "",
+         "Content": "",
+         "ItemName": "顶顶顶顶",
+         "ItemAbout": "弟弟弟弟的多付所",
+         "MassagetypeId": "2",
+         "ItemSymptom": "",
+         "Taboo": "",
+         "Type": 1
+       }
+     ],
+     "Massagetypelist": [
+       {
+         "MassagetypeName": "中医推拿",
+         "MassagetypeId": "1"
+       },
+       {
+         "MassagetypeName": "SPA",
+         "MassagetypeId": "2"
+       },
+       {
+         "MassagetypeName": "小儿/通乳",
+         "MassagetypeId": "3"
+       },
+       {
+         "MassagetypeName": "艾灸",
+         "MassagetypeId": "4"
+       },
+       {
+         "MassagetypeName": "康复理疗",
+         "MassagetypeId": "5"
+       },
+       {
+         "MassagetypeName": "刮痧",
+         "MassagetypeId": "6"
+       },
+       {
+         "MassagetypeName": "足疗",
+         "MassagetypeId": "7"
+       }
+     ]
+   },
+   "Status": 0,
+   "Errmsg": "OK"
+ }
+ ```
+
+ 18. 修改提现资料 POST
+ 
+ - url: **http://hostname:port/massage/appGiftsData/changeGiftInfo.do**
+ - postData
+ 
+ | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+ | :---: | :---: | :---: | :---: | :---: |:---: |
+ | TechnicianId | string |  |  | true | 
+ | Password | string |  |  | false | 密码
+ | Account | string |  |  | false | 账号
 
  
+ - response
+   
+ | KEY | TYPE | DEFAULT | VALUE | DESC |
+ | :---: | :---: | :---: | :---: | :---: |
+ | Status | int |  | 0/-1/1/2 | 返回状态码 |
+ | ErrMsg | str |  | ok/desc | 请求错误描述 |
+ | Data | json(array) |  |  | 返回的数据 |
+ 
+ > 请求url示例
+ 
+ http://localhost:8080/massage/appGiftsData/changeGiftInfo.do?TechnicianId=15babeda564b4bf987395f60f3c1768f&Password=100866
+ > 返回数据示例
+   
+ ```json
+ {
+   "Status": 0,
+   "ErrMsg": "OK"
+ }
+  ```
+  19. 提现操作接口 POST
+  
+  - url: **http://hostname:port/massage/appGiftsData/withdrawDeposit.do**
+  - postData
+  
+  | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+  | :---: | :---: | :---: | :---: | :---: |:---: |
+  | TechnicianId | string |  |  | true | 
+  | Deposit | string |  |  | true | 现金
+  | Password | string |  |  | true | 密码
+ 
+  
+  - response
+    
+  | KEY | TYPE | DEFAULT | VALUE | DESC |
+  | :---: | :---: | :---: | :---: | :---: |
+  | Status | int |  | 0/-1/1/2 | 返回状态码 |
+  | ErrMsg | str |  | ok/desc | 请求错误描述 |
+  | Data | json(array) |  |  | 返回的数据 |
+  
+  > 请求url示例
+  
+  http://localhost:8080/massage/appGiftsData/withdrawDeposit.do?TechnicianId=15babeda564b4bf987395f60f3c1768f&Password=100866&Deposit=10
+  > 返回数据示例
+    
+  ```json
+  {
+    "Status": 0,
+    "ErrMsg": "OK"
+  }
+   ```
+  20. 明细列表接口 POST
+   
+   - url: **http://hostname:port/massage/appGiftsData/getGiftsdetailList.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | TechnicianId | string |  |  | true | 
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+   http://localhost:8080/massage/appGiftsData/getGiftsdetailList.do?TechnicianId=15babeda564b4bf987395f60f3c1768f
+   > 返回数据示例
+     
+   ```json
+ {
+   "Data": {
+     "Giftsdetaillist": [
+       {
+         "Price": 10,
+         "CompleteTime": "",//提现完成时间
+         "CreateTime": "2017-06-08 10:23:33",//提现创建时间
+         "GiftsdetailId": "022aea60318b4d3f8f4e174ad747ca10",
+         "CheckTime": "",//提现审核时间
+         "Status": 0,//0提现中，1提现审核通过，3提现完成
+         "TechnicianId": "15babeda564b4bf987395f60f3c1768f",
+         "Type": 0 //0提现，1收入
+       },
+       {
+         "Price": 10,
+         "CompleteTime": "",
+         "CreateTime": "2017-06-08 10:24:28",
+         "GiftsdetailId": "a223012e2aad4d64b183c4c33522529b",
+         "CheckTime": "",
+         "Status": 0,
+         "TechnicianId": "15babeda564b4bf987395f60f3c1768f",
+         "Type": 0
+       },
+       {
+         "Price": 10,
+         "CompleteTime": "",
+         "CreateTime": "2017-06-08 10:26:12",
+         "GiftsdetailId": "28ffbc81ca5d4ebb89439e48b1d9361a",
+         "CheckTime": "",
+         "Status": 0,
+         "TechnicianId": "15babeda564b4bf987395f60f3c1768f",
+         "Type": 0
+       },
+       {
+         "Price": 30,
+         "CompleteTime": "",
+         "CreateTime": "2017-06-08 10:26:20",
+         "GiftsdetailId": "f0d385196a6c49e4a9be97bbbb80d211",
+         "CheckTime": "",
+         "Status": 0,
+         "TechnicianId": "15babeda564b4bf987395f60f3c1768f",
+         "Type": 0
+       }
+     ]
+   },
+   "Status": 0,
+   "Errmsg": "OK"
+ }
+   ```
+ 21. 项目列表接口 POST
+   
+   - url: **http://hostname:port/massage/appItemData/getItemFootcityList.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | Customerid | string |  |  | true | 
+   | IndexPage | string |  |  | true | 分页起始
+   | EndPage | string |  |  | true | 分页结束
+   |Massagetypeid| string |  |  | true | 项目类别，传入推拿大类id
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+   http://localhost:8080/massage/appItemData/getItemFootcityList.do?Customerid=1111&IndexPage=1&EndPage=3&Massagetypeid=2
+   > 返回数据示例
+     
+   ```json
+ {
+   "Data": {
+     "Itemfootcitylist": [
+       {
+         "FootcityId": "1",//足浴城id
+         "Price": 153,//价格
+         "Star": 5,
+         "ItemName": "拔罐",
+         "Times": 120, // 时间/次数
+         "ItemId": "1AA", //项目id
+         "Num": 299,
+         "ItemFootcityId": "1"
+       }
+     ]
+   },
+   "Status": 0,
+   "Errmsg": "OK"
+ }
