@@ -1,5 +1,8 @@
 <template>
   <div class="home-page">
+    <div class="header-wrapper">
+      <v-header></v-header>
+    </div>
     <div class="tech-list-wrapper tech-list-hook">
       <ul>
         <li v-for="(tech, index) in techList" class="tech-item" @click="showDetail(index, $event)">
@@ -33,7 +36,7 @@
     </div>
     <transition name="fade">
       <div class="tech-wrapper" v-show="detailShow">
-        <technician class="tech-detail-page"></technician>
+        <technician ref="technician"></technician>
       </div>
     </transition>
   </div>
@@ -43,6 +46,7 @@
   import BScroll from 'better-scroll'
   import { mapGetters } from 'vuex'
 
+  import vHeader from '@/components/header'
   import dot from '@/components/uiComponents/dot'
   import star from '@/components/uiComponents/star'
   import technician from '@/components/technician'
@@ -56,7 +60,7 @@
         }
       }
     },
-    created () {
+    mounted () {
       this.$nextTick(() => {
         this._initScroll()
       })
@@ -85,7 +89,7 @@
         if (!event._constructed) return
         let selectedTech = this.techList[index]
         this.$store.commit('SELECT_TECHNICIAN', {selectedTech})
-        this.$store.commit('TOGGLE_TECH_DETAIL')
+        this.$refs.technician.showDetail()
       }
     },
     filters: {
@@ -94,6 +98,7 @@
       }
     },
     components: {
+      'v-header': vHeader,
       dot,
       star,
       technician
@@ -175,7 +180,6 @@
       top 0
       bottom 0
       width 100%
-      height 100%
       z-index 20
       transform translate3d(0, 0, 0)
       &.fade-enter-active, &.fade-leave-active

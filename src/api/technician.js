@@ -22,5 +22,15 @@ export default {
     } else {
       console.log(_data.ErrMsg)
     }
+  },
+  async getTech (postData, cb) {
+    let url = prefix + '/appTechnicianData/getTechnicianInfo.do'
+    let res = await Vue.http.post(url, postData, options)
+    let _data = res.body
+    if (_data && _data.Status === 0) {
+      cb(_data.Data)
+    } else {
+      console.log(_data.ErrMsg)
+    }
   }
 }

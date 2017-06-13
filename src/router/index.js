@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
 import order from '@/components/order'
+import orderType from '@/components/order/orderType'
 import me from '@/components/me'
 import service from '@/components/service'
 
@@ -17,7 +18,14 @@ export default new Router({
     {
       path: '/order',
       name: 'order',
-      component: order
+      component: order,
+      children: [
+        {
+          path: ':type',
+          name: 'orderType',
+          component: orderType
+        }
+      ]
     },
     {
       path: '/me',
