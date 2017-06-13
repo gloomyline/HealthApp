@@ -10,21 +10,22 @@
     </div>
     <group class="collapse">
       <cell :title="text.title" :border-intent="false" class="que"></cell>
-      <cell-box
-        class="title"
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent001 ? 'up' : 'down'"
-        @click.native="toggleCont01">
-        <span class="num">{{num[0]}}</span>
-        <span class="text">{{text.text1}}</span>
-      </cell-box>
+      <!--<cell-box-->
+      <!--class="title"-->
+      <!--is-link-->
+      <!--:border-intent="false"-->
+      <!--:arrow-direction="showContent001 ? 'up' : 'down'"-->
+      <!--@click.native="toggleCont01">-->
+      <!--<span class="num">{{num[0]}}</span>-->
+      <!--<span class="text">{{text.text1}}</span>-->
+      <!--</cell-box>-->
 
-      <div class="sub-item-wrapper sub-item-hook" v-show="showContent001">
-        <div class="sub-item-content">
-          <li v-for="item in contArr" class="sub-item">{{item}}</li>
-        </div>
-      </div>
+      <!--<div class="sub-item-wrapper sub-item-hook" v-show="showContent001">-->
+      <!--<div class="sub-item-content">-->
+      <!--<li v-for="item in contArr" class="sub-item">{{item}}</li>-->
+      <!--</div>-->
+      <!--</div>-->
+      <up-down-cell :title="{num: 1, text: '文字'}" :content="contArr"></up-down-cell>
 
       <cell-box
         is-link
@@ -85,6 +86,7 @@
 
 <script type="text/ecmascript-6">
   import { Cell, CellBox, Group } from 'vux'
+  import upDownCell from '@/components/uiComponents/upDownCell'
   import BScroll from 'better-scroll'
 
   let contArr = ['content001', 'content001', 'content001', 'content001', 'content001', 'content001', 'content001']
@@ -190,7 +192,8 @@
     components: {
       Cell,
       CellBox,
-      Group
+      Group,
+      upDownCell
     }
   }
 </script>
