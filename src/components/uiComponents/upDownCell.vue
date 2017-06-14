@@ -13,11 +13,12 @@
     <cell
       v-else
       class="title"
-      :title="text.text5"
       is-link
       :border-intent="false"
       :arrow-direction="showContent ? 'up' : 'down'"
-      @click.native="showContent"></cell>
+      @click.native="showContent">
+      <span class="text">{{title.text}}</span>
+    </cell>
 
     <div class="sub-item-wrapper sub-item-hook" v-show="showContent">
       <div class="sub-item-content">
@@ -28,6 +29,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import BScroll from 'better-scroll'
   import { CellBox } from 'vux'
   export default{
     props: {
@@ -47,7 +49,7 @@
       content: {
         type: Array,
         default () {
-          return ['content001', 'content002', 'content001', 'content001']
+          return ['content001', 'content001', 'content001', 'content001', 'content001', ' content001', 'content001']
         }
       }
     },
@@ -59,6 +61,18 @@
     methods: {
       toggleCont () {
         this.showContent = !this.showContent
+        if (this.showContent) {
+          this.$nextTick(() => {
+            this._initScroll()
+          })
+        }
+      },
+      _initScroll () {
+        if (!this.scroll) {
+          this.scroll = new BScroll(this.$el.querySelector('.sub-item-hook'), {click: true})
+        } else {
+          this.scroll.refresh()
+        }
       }
     },
     components: {
@@ -68,5 +82,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+  @import '../../common/stylus/mixin.styl'
+  .up-down-cell
+    border-top 1px solid #f1f1f1
 </style>

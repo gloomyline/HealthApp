@@ -10,76 +10,13 @@
     </div>
     <group class="collapse">
       <cell :title="text.title" :border-intent="false" class="que"></cell>
-      <!--<cell-box-->
-      <!--class="title"-->
-      <!--is-link-->
-      <!--:border-intent="false"-->
-      <!--:arrow-direction="showContent001 ? 'up' : 'down'"-->
-      <!--@click.native="toggleCont01">-->
-      <!--<span class="num">{{num[0]}}</span>-->
-      <!--<span class="text">{{text.text1}}</span>-->
-      <!--</cell-box>-->
-
-      <!--<div class="sub-item-wrapper sub-item-hook" v-show="showContent001">-->
-      <!--<div class="sub-item-content">-->
-      <!--<li v-for="item in contArr" class="sub-item">{{item}}</li>-->
-      <!--</div>-->
-      <!--</div>-->
-      <up-down-cell :title="{num: 1, text: '文字'}" :content="contArr"></up-down-cell>
-
-      <cell-box
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent002 ? 'up' : 'down'"
-        @click.native="toggleCont02" class="title">
-        <span class="num">{{num[1]}}</span>
-        <span class="text">{{text.text2}}</span>
-      </cell-box>
-      <div class="sub-item-wrapper a-item-hook" v-show="showContent002">
-        <div class="sub-item-content">
-          <li v-for="item in contArr" class="sub-item">{{item}}</li>
-        </div>
-      </div>
-      <cell-box
-        class="title"
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent003 ? 'up' : 'down'"
-        @click.native="toggleCont03">
-        <span class="num">{{num[2]}}</span>
-        <span class="text">{{text.text3}}</span>
-      </cell-box>
-      <div class="sub-item-wrapper b-item-hook" v-show="showContent003">
-        <div class="sub-item-content">
-          <li v-for="item in contArr" class="sub-item">{{item}}</li>
-        </div>
-      </div>
+      <up-down-cell :title="{num: 1, text: '怎么支付订单'}"></up-down-cell>
+      <up-down-cell :title="{num: 2, text: '怎么取消订单'}"></up-down-cell>
+      <up-down-cell :title="{num: 3, text: '怎么充值'}"></up-down-cell>
     </group>
     <group class="join">
-      <cell
-        class="title"
-        :title="text.text4"
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent004 ? 'up' : 'down'"
-        @click.native="toggleCont04"></cell>
-      <div class="sub-item-wrapper s-item-hook" v-show="showContent004">
-        <div class="sub-item-content">
-          <li v-for="item in contArr" class="sub-item">{{item}}</li>
-        </div>
-      </div>
-      <cell
-        class="title"
-        :title="text.text5"
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent005 ? 'up' : 'down'"
-        @click.native="toggleCont05"></cell>
-      <div class="sub-item-wrapper u-item-hook" v-show="showContent005">
-        <div class="sub-item-content">
-          <li v-for="item in contArr" class="sub-item">{{item}}</li>
-        </div>
-      </div>
+      <up-down-cell :title="{text: '领班如何加入好多养生'}"></up-down-cell>
+      <up-down-cell :title="{text: '足浴城如何加入好多养生'}"></up-down-cell>
     </group>
   </div>
 </template>
@@ -87,108 +24,18 @@
 <script type="text/ecmascript-6">
   import { Cell, CellBox, Group } from 'vux'
   import upDownCell from '@/components/uiComponents/upDownCell'
-  import BScroll from 'better-scroll'
 
-  let contArr = ['content001', 'content001', 'content001', 'content001', 'content001', 'content001', 'content001']
   export default {
     data () {
       return {
-        contArr,
-        num: [1, 2, 3],
         text: {
-          title: '常见问题',
-          text1: '怎么支付订单 ',
-          text2: '怎么取消订单',
-          text3: '怎么充值',
-          text4: '领班如何加入好多养生',
-          text5: '足浴城如何加入好多养生'
-        },
-        showContent001: false,
-        showContent002: false,
-        showContent003: false,
-        showContent004: false,
-        showContent005: false
+          title: '常见问题'
+        }
       }
     },
     mounted () {
     },
-    methods: {
-      _initScroll01 () {
-        if (!this.scroll01) {
-          this.scroll01 = new BScroll(this.$el.querySelector('.sub-item-hook'), {click: true})
-        } else {
-          this.scroll01.refresh()
-        }
-      },
-      _initScroll02 () {
-        if (!this.scroll02) {
-          this.scroll02 = new BScroll(this.$el.querySelector('.a-item-hook'), {click: true})
-        } else {
-          this.scroll02.refresh()
-        }
-      },
-      _initScroll03 () {
-        if (!this.scroll03) {
-          this.scroll03 = new BScroll(this.$el.querySelector('.b-item-hook'), {click: true})
-        } else {
-          this.scroll03.refresh()
-        }
-      },
-      _initScroll04 () {
-        if (!this.scroll04) {
-          this.scroll04 = new BScroll(this.$el.querySelector('.s-item-hook'), {click: true})
-        } else {
-          this.scroll04.refresh()
-        }
-      },
-      _initScroll05 () {
-        if (!this.scroll05) {
-          this.scroll05 = new BScroll(this.$el.querySelector('.u-item-hook'), {click: true})
-        } else {
-          this.scroll05.refresh()
-        }
-      },
-      toggleCont01 () {
-        this.showContent001 = !this.showContent001
-        if (this.showContent001) {
-          this.$nextTick(() => {
-            this._initScroll01()
-          })
-        }
-      },
-      toggleCont02 () {
-        this.showContent002 = !this.showContent002
-        if (this.showContent002) {
-          this.$nextTick(() => {
-            this._initScroll02()
-          })
-        }
-      },
-      toggleCont03 () {
-        this.showContent003 = !this.showContent003
-        if (this.showContent003) {
-          this.$nextTick(() => {
-            this._initScroll03()
-          })
-        }
-      },
-      toggleCont04 () {
-        this.showContent004 = !this.showContent004
-        if (this.showContent004) {
-          this.$nextTick(() => {
-            this._initScroll04()
-          })
-        }
-      },
-      toggleCont05 () {
-        this.showContent005 = !this.showContent005
-        if (this.showContent005) {
-          this.$nextTick(() => {
-            this._initScroll05()
-          })
-        }
-      }
-    },
+    methods: {},
     components: {
       Cell,
       CellBox,
