@@ -309,14 +309,14 @@ http://localhost:8080/massage/appTechnicianData/getHotelListByLonAndLat.do?longi
 }
  ```
 6. 添加技师/项目收藏 POST
-- url: **http://hostname:port/massage/appCommentsData/addCollect.do**
+- url: **http://hostname:port/massage/appCollectData/addCollect.do**
 - postData
 
 | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
 | :---: | :---: | :---: | :---: | :---: |:---: |
-| CUSTOMER_ID | string |  |  | true | 技师id
-| TYPE | string |  |  | true | (0-技师，1-项目)
-| TECHNICIAN_ID | string |  |  | true | 技师/项目id
+| CustomerId | string |  |  | true | 客户id
+| Type | string |  |  | true | (0-技师，1-项目)
+| TechnicianId | string |  |  | true | 技师/项目id
 - response
 
 | KEY | TYPE | DEFAULT | VALUE | DESC |
@@ -327,7 +327,7 @@ http://localhost:8080/massage/appTechnicianData/getHotelListByLonAndLat.do?longi
 
 > 请求url示例
 
-http://localhost:8080/massage/appCommentsData/addCollect.do?TYPE=0&CUSTOMER_ID=1111&TECHNICIAN_ID=6bab8de3e2aa40b3910611f9472e67fb
+http://localhost:8080/massage/appCollectData/addCollect.do?Type=0&CustomerId=1111&TechnicianId=6bab8de3e2aa40b3910611f9472e67fb
  > 返回数据示例
   
  ```json
@@ -337,14 +337,14 @@ http://localhost:8080/massage/appCommentsData/addCollect.do?TYPE=0&CUSTOMER_ID=1
 }
  ```
  7. 取消技师/项目收藏 POST
- - url: **http://hostname:port/massage/appCommentsData/cancelCollect.do**
+ - url: **http://hostname:port/massage/appCollectData/cancelCollect.do**
  - postData
  
  | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
  | :---: | :---: | :---: | :---: | :---: |:---: |
-| CUSTOMER_ID | string |  |  | true | 技师id
-| TYPE | string |  |  | true | (0-技师，1-项目)
-| TECHNICIAN_ID | string |  |  | true | 技师/项目id
+| CustomerId | string |  |  | true | 客户id
+| Type | string |  |  | true | (0-技师，1-项目)
+| TechnicianId | string |  |  | true | 技师/项目id
  - response
  
  | KEY | TYPE | DEFAULT | VALUE | DESC |
@@ -355,7 +355,7 @@ http://localhost:8080/massage/appCommentsData/addCollect.do?TYPE=0&CUSTOMER_ID=1
  
  > 请求url示例
  
- http://localhost:8080/massage/appCommentsData/cancelCollect.do?TYPE=0&CUSTOMER_ID=1111&TECHNICIAN_ID=6bab8de3e2aa40b3910611f9472e67fb
+ http://localhost:8080/massage/appCollectData/cancelCollect.do?Type=0&CustomerId=1111&TechnicianId=6bab8de3e2aa40b3910611f9472e67fb
   > 返回数据示例
    
   ```json
@@ -365,13 +365,13 @@ http://localhost:8080/massage/appCommentsData/addCollect.do?TYPE=0&CUSTOMER_ID=1
 }
   ```
  8. 收藏列表 POST
-  - url: **http://hostname:port/massage/appCommentsData/getCollectListByCustomerid.do**
+  - url: **http://hostname:port/massage/appCollectData/getCollectListByCustomerid.do**
   - postData
   
   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
   | :---: | :---: | :---: | :---: | :---: |:---: |
-| CUSTOMER_ID | string |  |  | true | 客户id
-| TYPE | string |  |  | true | (0-技师，1-项目)
+| CustomerId | string |  |  | true | 客户id
+| Type | string |  |  | true | (0-技师，1-项目)
   - response
   
   | KEY | TYPE | DEFAULT | VALUE | DESC |
@@ -382,24 +382,21 @@ http://localhost:8080/massage/appCommentsData/addCollect.do?TYPE=0&CUSTOMER_ID=1
   
   > 请求url示例
   
-  http://localhost:8080/massage/appCommentsData/getCollectListByCustomerid.do?TYPE=0&CUSTOMER_ID=1111
-   > 返回数据示例
+http://localhost:8080/massage/appCollectData/getCollectListByCustomerid.do?Type=0&CustomerId=1111   > 返回数据示例
     
    ```json
 {
-  "Status": 0,
-  "Data": {
-    "CollectList": [
-      {
-        "CUSTOMER_ID": "1111",
-        "CREATETIME": "2017-06-05 10:17:12",
-        "TECHNICIAN_ID": "74eacd86512247d38ae70133dd6d94bc",//项目id/技师id
-        "TYPE": 0,
-        "COLLECT_ID": "3d77f44214324cee992da4837630341c"
-      }
-    ]
-  },
-  "ErrMsg": "OK"
+    "Data": {
+        "Type": "0",
+        "Customerid": "1111",
+        "Collectlist": [
+            {
+                "TechnicianId": "74eacd86512247d38ae70133dd6d94bc"
+            }
+        ]
+    },
+    "Status": 0,
+    "Errmsg": "OK"
 }
    ```
 9. 客户下单 POST
@@ -638,7 +635,7 @@ http://localhost:8080/massage/appTechnicianData/registerTechnician.do?Techleader
   "ErrMsg": "OK"
 }
  ```
-17. 获取所有常量值 POST
+17. 获取所有常量值 get
 - url: **http://hostname:port/massage/appTechnicianData/getAllConstant.do**
 - postData
 
@@ -928,8 +925,8 @@ http://localhost:8080/massage/appTechnicianData/getAllConstant.do
    | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
    | :---: | :---: | :---: | :---: | :---: |:---: |
    | Customerid | string |  |  | true | 
-   | IndexPage | string |  |  | true | 分页起始
-   | EndPage | string |  |  | true | 分页结束
+   | PageNow | string |  |  | true | 分页起始
+   | PageSize | string |  |  | true | 每页条数
    |Massagetypeid| string |  |  | true | 项目类别，传入推拿大类id
    
    - response
@@ -942,8 +939,8 @@ http://localhost:8080/massage/appTechnicianData/getAllConstant.do
    
    > 请求url示例
    
-   http://localhost:8080/massage/appItemData/getItemFootcityList.do?Customerid=1111&IndexPage=1&EndPage=3&Massagetypeid=2
-   > 返回数据示例
+http://localhost:8080/massage/appItemData/getItemFootcityList.do?Customerid=1111&PageNow=1&PageSize=3&Massagetypeid=2
+ > 返回数据示例
      
    ```json
  {
