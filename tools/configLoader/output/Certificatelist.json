@@ -1,0 +1,17 @@
+[
+  {
+    "CertificateId": "1",
+    "CertificateImg": "http://139.196.106.144:8080/testImg/zhengshu.jpg",
+    "CertificateName": "高级按摩师"
+  },
+  {
+    "CertificateId": "2",
+    "CertificateImg": "http://139.196.106.144:8080/testImg/zhengshu.jpg",
+    "CertificateName": "高级推拿师"
+  },
+  {
+    "CertificateId": "3",
+    "CertificateImg": "http://139.196.106.144:8080/testImg/zhengshu.jpg",
+    "CertificateName": "高级催乳师"
+  }
+]

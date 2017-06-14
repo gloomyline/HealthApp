@@ -10,97 +10,37 @@
     </div>
     <group class="collapse">
       <cell :title="text.title" :border-intent="false" class="que"></cell>
-      <cell-box
-        class="title"
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent001 ? 'up' : 'down'"
-        @click.native="showContent001 = !showContent001">
-        <span class="num">{{num[0]}}</span>
-        <span class="text">{{text.text1}}</span>
-      </cell-box>
-      <template v-if="showContent001">
-        <cell-box :border-intent="false" class="sub-item">content 001</cell-box>
-      </template>
-      <cell-box
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent002 ? 'up' : 'down'"
-        @click.native="showContent002 = !showContent002" class="title">
-        <span class="num">{{num[1]}}</span>
-        <span class="text">{{text.text2}}</span>
-      </cell-box>
-      <template v-if="showContent002">
-        <cell-box :border-intent="false" class="sub-item">content 001</cell-box>
-      </template>
-      <cell-box
-        class="title"
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent003 ? 'up' : 'down'"
-        @click.native="showContent003 = !showContent003">
-        <span class="num">{{num[2]}}</span>
-        <span class="text">{{text.text3}}</span>
-      </cell-box>
-      <template v-if="showContent003">
-        <cell-box :border-intent="false" class="sub-item">content 001</cell-box>
-      </template>
+      <up-down-cell :title="{num: 1, text: '怎么支付订单'}"></up-down-cell>
+      <up-down-cell :title="{num: 2, text: '怎么取消订单'}"></up-down-cell>
+      <up-down-cell :title="{num: 3, text: '怎么充值'}"></up-down-cell>
     </group>
     <group class="join">
-      <cell
-        class="title"
-        :title="text.text4"
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent004 ? 'up' : 'down'"
-        @click.native="showContent004 = !showContent004"></cell>
-      <template v-if="showContent004">
-        <cell-box :border-intent="false" class="sub-item">content 001</cell-box>
-      </template>
-      <cell
-        class="title"
-        :title="text.text5"
-        is-link
-        :border-intent="false"
-        :arrow-direction="showContent005 ? 'up' : 'down'"
-        @click.native="showContent005 = !showContent005"></cell>
-      <template v-if="showContent005">
-        <cell-box :border-intent="false" class="sub-item">content 001</cell-box>
-      </template>
+      <up-down-cell :title="{text: '领班如何加入好多养生'}"></up-down-cell>
+      <up-down-cell :title="{text: '足浴城如何加入好多养生'}"></up-down-cell>
     </group>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { Cell, CellBox, Group } from 'vux'
+  import upDownCell from '@/components/uiComponents/upDownCell'
+
   export default {
     data () {
       return {
-        num: [1, 2, 3],
         text: {
-          title: '常见问题',
-          text1: '怎么支付订单 ',
-          text2: '怎么取消订单',
-          text3: '怎么充值',
-          text4: '领班如何加入好多养生',
-          text5: '足浴城如何加入好多养生'
-        },
-        showContent001: false,
-        showContent002: false,
-        showContent003: false,
-        showContent004: false,
-        showContent005: false
+          title: '常见问题'
+        }
       }
     },
-    methods: {
-      onClick () {
-        console.log('on click')
-      }
+    mounted () {
     },
+    methods: {},
     components: {
       Cell,
       CellBox,
-      Group
+      Group,
+      upDownCell
     }
   }
 </script>
@@ -165,6 +105,13 @@
             background rgb(88, 79, 96)
           .text
             padding-left 13px
+        .sub-item-wrapper
+          height 150px
+          overflow hidden
+          padding 15px
+          line-height 1px
+          .sub-item
+            height 38px
         &::after
           display none
       .sub-item
@@ -182,6 +129,12 @@
       .title
         font-size 13px
         height 30px
-      .sub-item
-        font-size 13px
+      .sub-item-wrapper
+        height 150px
+        overflow hidden
+        padding 15px
+        line-height 1px
+        .sub-item
+          height 38px
+          font-size 13px
 </style>

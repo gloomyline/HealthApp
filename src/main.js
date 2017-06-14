@@ -7,9 +7,13 @@ import store from './store'
 // global config or methods
 import { saveToLocal, loadFromLocal } from '@/common/js/localStore'
 import '@/common/stylus/index.styl'
+import config from '@/assets/config'
 
 Vue.prototype.saveToLocal = saveToLocal
 Vue.prototype.loadFromLocal = loadFromLocal
+Vue.prototype.getStaticConfig = function () {
+  return config
+}
 
 Vue.use(vueResource)
 

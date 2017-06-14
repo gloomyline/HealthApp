@@ -4,6 +4,7 @@ import home from '@/components/home'
 import order from '@/components/order'
 import orderType from '@/components/order/orderType'
 import me from '@/components/me'
+import ticket from '@/components/ticket'
 import service from '@/components/service'
 
 Vue.use(Router)
@@ -30,7 +31,14 @@ export default new Router({
     {
       path: '/me',
       name: 'me',
-      component: me
+      component: me,
+      children: [
+        {
+          path: 'ticket',
+          name: 'ticket',
+          component: ticket
+        }
+      ]
     },
     {
       path: '/service',
