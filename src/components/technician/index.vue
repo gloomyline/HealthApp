@@ -75,7 +75,7 @@
       </div>
     </div>
     <div class="subscribe-wrapper" v-show="subscribeShow">
-
+      <subscribe></subscribe>
     </div>
     <div class="technician-mask"></div>
   </div>
@@ -170,7 +170,7 @@
       },
       subscribe (event) {
         if (!event._constructed) return
-        console.log('click' + event.target + 'to subscribe')
+        this.$store.commit('TOGGLE_SUBSCRIBE')
       }
     },
     filters: {
@@ -361,6 +361,13 @@
               .time
                 flex 1
                 text-align right
+    .subscribe-wrapper
+      position fixed
+      left 0
+      top 0
+      width 100%
+      height 100%
+      background #fff
     .technician-mask
       position fixed
       top 0

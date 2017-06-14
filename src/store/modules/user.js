@@ -6,9 +6,11 @@
 
 // init state
 const state = {
-  userId: '',
+  userId: 1111,
   favoriteTechs: [],
-  favoriteProjects: []
+  favoriteProjects: [],
+  ticketsShow: false,
+  tickets: []
 }
 
 // getters

@@ -10,7 +10,7 @@
       </div>
     </div>
     <group class="about-me">
-      <li class="about-me-item" v-for="item in lists.aboutMe">
+      <li class="about-me-item" v-for="(item, index) in lists.aboutMe">
         <cell :title="item.title" is-link :link="item.link"></cell>
       </li>
     </group>
@@ -19,6 +19,9 @@
         <cell :title="item.title" is-link :link="item.link"></cell>
       </li>
     </group>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <div class="bind-cell-phone" @click="toggleBind">
       <span class="text" :class="{unbind: bindFlag}">{{isBindCellPhone}}</span>
     </div>
@@ -28,32 +31,39 @@
 
 <script type="text/ecmascript-6">
   import { Group, Cell, CellBox } from 'vux'
+  import { mapGetters } from 'vuex'
 
   let lists = {
     aboutMe: [
       {
+        name: 'order',
         title: '我的订单',
         link: ''
       },
       {
+        name: 'favorite',
         title: '我的收藏',
         link: ''
       },
       {
+        name: 'ticket',
         title: '我的优惠券',
-        link: ''
+        link: '/me/ticket'
       }
     ],
     extra: [
       {
+        name: 'score',
         title: '积分商城',
         link: ''
       },
       {
+        name: 'us',
         title: '关于我们',
         link: ''
       },
       {
+        name: 'questing',
         title: '常见问题&联系客服',
         link: ''
       }
@@ -68,6 +78,9 @@
       }
     },
     computed: {
+      ...mapGetters({
+        ticketsShow: 'ticketsShow'
+      }),
       isBindCellPhone () {
         return this.bindFlag ? '解绑手机' : '绑定手机'
       }

@@ -3,7 +3,6 @@
  */
 
 import tech from '../../api/technician'
-// import { deepCopy } from '@/common/js/util'
 import * as types from '../mutation-types'
 
 // initial state
