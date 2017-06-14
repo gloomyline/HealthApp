@@ -74,9 +74,11 @@
         </div>
       </div>
     </div>
-    <div class="subscribe-wrapper" v-show="subscribeShow">
-      <subscribe></subscribe>
-    </div>
+    <transition name="fade">
+      <div class="subscribe-wrapper" v-show="subscribeShow">
+        <subscribe></subscribe>
+      </div>
+    </transition>
     <div class="technician-mask"></div>
   </div>
 </template>
@@ -367,7 +369,13 @@
       top 0
       width 100%
       height 100%
-      background #fff
+      background #f1f1f1
+      transform translate3d(0, 0, 0)
+      &.fade-enter-active, &.fade-leave-active
+        transition all .4s ease
+      &.fade-enter, &.fade-leave-active
+        opacity 0
+        transform translate3d(100%, 0, 0)
     .technician-mask
       position fixed
       top 0
