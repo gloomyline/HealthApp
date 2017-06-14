@@ -4,7 +4,7 @@
 
 export function formatDate (date, fmt) {
   // 匹配格式化规则中的年份
-  if (/(y+)/.test(fmt)) {
+  if (/(y+)/i.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, String(date.getFullYear()).substr(4 - RegExp.$1.length))
   }
   let o = {
