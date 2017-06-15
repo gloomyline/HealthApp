@@ -43,7 +43,7 @@
       {
         name: 'favorite',
         title: '我的收藏',
-        link: ''
+        link: '/me/collect'
       },
       {
         name: 'ticket',
