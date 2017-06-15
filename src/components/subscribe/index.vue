@@ -1,12 +1,6 @@
 <template>
   <div class="subscribe-page">
-    <div class="title-wrapper">
-      <div class="return-btn" @click="closeSubscribe">
-        <x-icon type="ios-arrow-back" size="30"></x-icon>
-        <span class="label">返回</span>
-      </div>
-      <h1 class="title">预约下单</h1>
-    </div>
+    <title-wrapper title="预约下单" @close-page="closeSubscribe"></title-wrapper>
     <div class="content">
       <group class="sim-info">
         <cell-box class="technician">
@@ -32,10 +26,10 @@
           v-model="serviceTime"
           @on-change="changeTime"></datetime-range>
         <!--<datetime-->
-          <!--title="上门时间"-->
-          <!--v-model="formatValue"-->
-          <!--:display-format="formatValueFunction"-->
-          <!--@on-change="change"></datetime>-->
+        <!--title="上门时间"-->
+        <!--v-model="formatValue"-->
+        <!--:display-format="formatValueFunction"-->
+        <!--@on-change="change"></datetime>-->
         <x-input class="message" v-model="message" placeholder="如有特殊情况请留言"></x-input>
       </group>
       <group class="pay">
@@ -54,7 +48,7 @@
       </x-button>
     </div>
     <div class="order-detail-wrapper" v-show="orderDetailShow">
-
+      <order-detail ref="orderDetail"></order-detail>
     </div>
   </div>
 </template>
@@ -62,7 +56,9 @@
 <script type="text/ecmascript-6">
   import { formatDate } from '@/common/js/date'
   import { mapGetters } from 'vuex'
+  import titleWrapper from '@/components/uiComponents/titleWrapper'
   import { Group, CellBox, XNumber, XInput, XButton, DatetimeRange } from 'vux'
+  import orderDetail from '@/components/order/detail'
 
   export default{
     data () {
@@ -111,44 +107,26 @@
         this.isLoading = true
         setTimeout(() => {
           this.isLoading = false
+          this.$store.commit('TOGGLE_ORDER')
+          this.$refs.orderDetail.showDetail()
         }, 2000)
       }
     },
     components: {
+      titleWrapper,
       Group,
       CellBox,
       XNumber,
       XInput,
       XButton,
-      DatetimeRange
+      DatetimeRange,
+      orderDetail
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
   .subscribe-page
-    .title-wrapper
-      position relative
-      height 47px
-      background rgb(88, 79, 96)
-      .return-btn
-        position absolute
-        left 0
-        top 0
-        font-size 0
-        .vux-x-icon
-          padding 8px 0 8px 4px
-        .label
-          display inline-block
-          vertical-align top
-          line-height 47px
-          font-size 16px
-          color #fff
-      .title
-        text-align center
-        line-height 47px
-        font-size 18px
-        color #fff
     .content
       .weui-cells
         margin-top 0
