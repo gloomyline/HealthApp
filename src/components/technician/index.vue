@@ -75,7 +75,7 @@
       </div>
     </div>
     <transition name="fade">
-      <div class="subscribe-wrapper" v-show="subscribeShow">
+      <div class="subscribe-wrapper" v-if="subscribeShow">
         <subscribe ref="subscribe"></subscribe>
       </div>
     </transition>
@@ -173,7 +173,9 @@
       subscribe (event) {
         if (!event._constructed) return
         this.$store.commit('TOGGLE_SUBSCRIBE')
-        this.$refs.subscribe.showSubscribe()
+//        if (this.$refs.subscribe) {
+//          this.$refs.subscribe.showSubscribe()
+//        }
       }
     },
     filters: {

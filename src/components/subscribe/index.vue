@@ -71,6 +71,9 @@
         isLoading: false
       }
     },
+    mounted () {
+      this.now = new Date()
+    },
     computed: {
       ...mapGetters({
         orderDetailShow: 'orderDetailShow'
