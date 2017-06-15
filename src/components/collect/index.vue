@@ -7,51 +7,60 @@
       </div>
     </div>
 
-    <!--<tab :line-width=2 class="nav" active-color="#5B4F60" custom-bar-width="76px">-->
-    <!--<tab-item class="vux-center" v-for="(item, index) in list" :key="index">{{item.name}}</tab-item>-->
-    <!--&lt;!&ndash;<tabbar-item v-for="(item, index) in list" vue-link="item.link">{{item.link}}</tabbar-item>&ndash;&gt;-->
-    <!--</tab>-->
-    <div class="tab">
-      <router-link to="/me/collect/teches">技师</router-link>
-      <router-link to="/me/collect/combo">套餐</router-link>
+    <div>
+      <tab class="nav" v-model="index" :line-width=2 active-color="#5B4F60" custom-bar-width="76px">
+        <tab-item class="vux-center" v-for="(item, index) in list" :selected="selected === item" :key="index"
+                  @click.native="select(index)">{{item.title}}
+        </tab-item>
+      </tab>
+      <swiper v-model="index" height="100px" :show-dots="false">
+        <swiper-item>
+          <teches></teches>
+        </swiper-item>
+        <swiper-item>
+          <combo></combo>
+        </swiper-item>
+      </swiper>
     </div>
-
-    <router-view></router-view>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import { Tab, TabItem, TabbarItem } from 'vux'
-  //  const list = () => [{
-  //    name: '技师',
-  //    link: '/me/collect/teches'
-  //  }, {
-  //    name: '套餐',
-  //    link: '/me/collect/combo'
-  //  }]
+  import { Tab, TabItem, Swiper, SwiperItem } from 'vux'
+  import teches from './teches.vue'
+  import combo from './combo.vue'
+
   export default{
     data () {
       return {
-        list: [{
-          name: '技师',
-          link: '/me/collect/teches'
-        }, {
-          name: '套餐',
-          link: '/me/collect/combo'
-        }]
+        list: [
+          {
+            title: '技师',
+            template: '<teches></teches>'
+          },
+          {
+            title: '套餐',
+            template: '<combo></combo>'
+          }
+        ],
+        selected: '技师',
+        index: 1
       }
     },
     components: {
       Tab,
       TabItem,
-      TabbarItem
+      Swiper,
+      SwiperItem,
+      teches,
+      combo
     },
     methods: {
       closeDetail (event) {
         if (!event._constructed) return
         this.$store.commit('')
       },
-      onItemClick (index) {
+      select (index) {
         console.log('on item click:', index)
       }
     }
@@ -84,8 +93,9 @@
         padding 4px
         .icon-back
           display inline-block
-    .tab
-      display flex
-      background #fff
-      height 44px
+
+  /*.nav*/
+  /*display flex*/
+  /*background #fff*/
+  /*height 44px*/
 </style>

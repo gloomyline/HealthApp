@@ -7,8 +7,7 @@ import me from '@/components/me'
 import ticket from '@/components/ticket'
 import service from '@/components/service'
 import collect from '@/components/collect'
-import teches from '@/components/collect/teches'
-import combo from '@/components/collect/combo'
+
 Vue.use(Router)
 
 export default new Router({
@@ -43,19 +42,7 @@ export default new Router({
         {
           path: 'collect',
           name: 'collect',
-          component: collect,
-          children: [
-            {
-              path: 'teches',
-              name: 'teches',
-              component: teches
-            },
-            {
-              path: 'combo',
-              name: 'combo',
-              component: combo
-            }
-          ]
+          component: collect
         }
       ]
     },
