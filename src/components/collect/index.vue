@@ -6,14 +6,13 @@
         <span class="icon-back">返回</span>
       </div>
     </div>
-
     <div>
       <tab class="nav" v-model="index" :line-width=2 active-color="#5B4F60" custom-bar-width="76px">
         <tab-item class="vux-center" v-for="(item, index) in list" :selected="selected === item" :key="index"
                   @click.native="select(index)">{{item.title}}
         </tab-item>
       </tab>
-      <swiper v-model="index" height="100px" :show-dots="false">
+      <swiper v-model="index" height="530px" :show-dots="false">
         <swiper-item>
           <teches></teches>
         </swiper-item>
@@ -93,9 +92,4 @@
         padding 4px
         .icon-back
           display inline-block
-
-  /*.nav*/
-  /*display flex*/
-  /*background #fff*/
-  /*height 44px*/
 </style>
