@@ -7,6 +7,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import user from './modules/user'
+import order from './modules/order'
 import technicians from './modules/technicians'
 import subscribe from './modules/subscribe'
 import createLogger from '@/common/js/logger.js'
@@ -20,6 +21,7 @@ export default new Vuex.Store({
   getters,
   modules: {
     user,
+    order,
     technicians,
     subscribe
   },

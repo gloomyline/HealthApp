@@ -14,6 +14,9 @@ export const SELECT_TECHNICIAN = 'SELECT_TECHNICIAN'          // 选择技师
 export const TOGGLE_SUBSCRIBE = 'TOGGLE_SUBSCRIBE'            // 切换预约
 export const SELECT_SUBSCRIBE = 'SELECT_SUBSCRIBE'            // 选择预约技师
 
+// orders
+export const TOGGLE_ORDER = 'TOGGLE_ORDER'                    // 切换订单详情
+
 // users
 export const RECEIVE_FAVORITE_LIST = 'RECEIVE_FAVORITE_LIST'  // 接收用户收藏列表
 

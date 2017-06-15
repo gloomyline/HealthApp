@@ -48,11 +48,15 @@
       <x-button class="confirm-btn" type="primary" :show-loading="isLoading" mini @click.native="confirmOrder">确认订单
       </x-button>
     </div>
+    <div class="order-detail-wrapper" v-show="orderDetailShow">
+
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { formatDate } from '@/common/js/date'
+  import { mapGetters } from 'vuex'
   import { Group, CellBox, XNumber, XInput, XButton, DatetimeRange } from 'vux'
 
   export default{
@@ -68,6 +72,9 @@
       }
     },
     computed: {
+      ...mapGetters({
+        orderDetailShow: 'orderDetailShow'
+      }),
       getNow () {
         let timeStr = formatDate(this.now, 'yyyy-MM-dd,hh,mm')
         return timeStr.split(',')

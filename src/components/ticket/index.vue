@@ -39,6 +39,8 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  /*@import '../../common/stylus/mixin.styl'*/
+
   .ticket-page
     position fixed
     left 0
