@@ -47,9 +47,11 @@
       <x-button class="confirm-btn" type="primary" :show-loading="isLoading" mini @click.native="confirmOrder">确认订单
       </x-button>
     </div>
-    <div class="order-detail-wrapper" v-show="orderDetailShow">
-      <order-detail ref="orderDetail"></order-detail>
-    </div>
+    <transition name="fade">
+      <div class="order-detail-wrapper" v-show="orderDetailShow">
+        <order-detail ref="orderDetail"></order-detail>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -254,4 +256,17 @@
         &:active
           background rgb(88, 79, 50)
           box-shadow #c5bdcb
+    .order-detail-wrapper
+      position fixed
+      left 0
+      top 0
+      width 100%
+      height 100%
+      background #f1f1f1
+      transform translate3d(0, 0, 0)
+      &.fade-enter-active, &.fade-leave-active
+        transition all .4s ease
+      &.fade-enter, &.fade-leave-active
+        opacity 0
+        transform translate3d(100%, 0, 0)
 </style>
