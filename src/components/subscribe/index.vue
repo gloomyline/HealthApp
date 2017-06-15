@@ -98,7 +98,6 @@
       },
       confirmOrder () {
         if (this.isLoading) return
-        console.log('confirm the order')
         this.isLoading = true
         setTimeout(() => {
           this.isLoading = false

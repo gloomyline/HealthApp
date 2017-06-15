@@ -86,12 +86,13 @@
   @import '../../common/stylus/mixin.styl'
   .up-down-cell
     border-top 1px solid #f1f1f1
-    .sub-item-wrapper
-      transform translate3d(0, 0, 0)
-      &.move-enter-active, &.move-leave-active
-        transition all .5s linear
-      &.move-enter, &.move-leave-active
-        opacity 0
-        transform translate3d(0, -100%, 0)
+
+  /*.sub-item-wrapper
+    transform translate3d(0, 0, 0)
+    &.move-enter-active, &.move-leave-active
+      transition all .5s linear
+    &.move-enter, &.move-leave-active
+      opacity 0
+      transform translate3d(0, -100%, 0)*/
 
 </style>
