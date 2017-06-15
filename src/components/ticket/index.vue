@@ -97,35 +97,41 @@
         margin 8px
         border-radius 5px
         .item
+          display block
+          background-image url("img@2x.png")
+          height 80px
+          width 330px
+          margin-left 15px
+          margin-top 10px
           .indate, .price
             display inline-block
-            height 80px
-            background rgb(88, 79, 96)
             color #fff
-            font-size 13px
             box-sizing border-box
           .indate
-            width 275px
             margin-left 8px
             margin-top 8px
             margin-bottom 8px
             border-right 1px
+            width 260px
             .text
+              position relative
+              top -5px
               display flex
               font-size 14px
               padding 15px
-              vertical-align left
             .time
               margin 10px
               padding-left 5px
+              font-size 13px
           .price
-            width 60px
             margin-left -4px
             .num
-              display flex
-              font-size 14px
-              text-align center
-              padding 15px
-            .state
+              position relative
+              display block
+              font-size 20px
               padding-left 5px
+              top -15px
+            .state
+              padding 6px
+              font-size 6px
 </style>
