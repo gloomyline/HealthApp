@@ -39,7 +39,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  /*@import '../../common/stylus/mixin.styl'*/
+  @import '../../common/stylus/mixin.styl'
 
   .ticket-page
     position fixed
@@ -100,7 +100,7 @@
         border-radius 5px
         .item
           display block
-          background-image url("img@2x.png")
+          bg-img('card-bg')
           height 80px
           width 330px
           margin-left 15px
