@@ -27,10 +27,15 @@
           class="service-time"
           title="上门时间"
           start-date="2017-01-01"
-          end-date="2037-02-02"
+          end-date="2027-02-02"
           format="YYYY年MM月DD日"
-          v-model="getNow"
+          v-model="serviceTime"
           @on-change="changeTime"></datetime-range>
+        <!--<datetime-->
+          <!--title="上门时间"-->
+          <!--v-model="formatValue"-->
+          <!--:display-format="formatValueFunction"-->
+          <!--@on-change="change"></datetime>-->
         <x-input class="message" v-model="message" placeholder="如有特殊情况请留言"></x-input>
       </group>
       <group class="pay">
@@ -71,6 +76,8 @@
         isLoading: false
       }
     },
+    created () {
+    },
     mounted () {
       this.now = new Date()
     },
@@ -84,9 +91,9 @@
       }
     },
     methods: {
-      showSubscribe () {
-        this.now = new Date()
-      },
+//      showSubscribe () {
+//        this.now = new Date()
+//      },
       closeSubscribe () {
         this.$store.commit('TOGGLE_SUBSCRIBE')
       },

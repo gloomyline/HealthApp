@@ -76,7 +76,7 @@
     </div>
     <transition name="fade">
       <div class="subscribe-wrapper" v-if="subscribeShow">
-        <subscribe ref="subscribe"></subscribe>
+        <subscribe></subscribe>
       </div>
     </transition>
     <div class="technician-mask"></div>
