@@ -5,7 +5,7 @@
     </div>
     <div class="tech-list-wrapper tech-list-hook">
       <ul>
-        <li v-for="(tech, index) in techList" class="tech-item" @click="showDetail(index, $event)">
+        <li v-for="(tech, index) in technicians" class="tech-item" @click="showDetail(index, $event)">
           <div class="avatar">
             <!-- 默认加载本地一张图片 -->
             <img width="73" height="73" :src="tech.AVATAR" class="avatar-img"
@@ -52,21 +52,21 @@
   import technician from '@/components/technician'
 
   export default {
-    props: {
-      techList: {
-        type: Array,
-        default () {
-          return []
-        }
-      }
+    data () {
+      return {}
     },
     mounted () {
+      let payload = {
+        page_now: 1,
+        page_size: 10
+      }
+      this.$store.dispatch('getAllTechnicians', payload)
       this.$nextTick(() => {
         this._initScroll()
       })
     },
     watch: {
-      'techList' () {
+      'technicians' () {
         this.$nextTick(() => {
           this._initScroll()
         })
@@ -74,7 +74,8 @@
     },
     computed: {
       ...mapGetters({
-        detailShow: 'detailShow'
+        detailShow: 'detailShow',
+        technicians: 'allTechnicians'
       })
     },
     methods: {
@@ -87,7 +88,7 @@
       },
       showDetail (index, event) {
         if (!event._constructed) return
-        let selectedTech = this.techList[index]
+        let selectedTech = this.technicians[index]
         this.$store.commit('SELECT_TECHNICIAN', {selectedTech})
         this.$refs.technician.showDetail()
       }

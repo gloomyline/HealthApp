@@ -6,7 +6,7 @@
     </div>
     <keep-alive>
       <transition>
-        <router-view class="router-view" :tech-list="technicians"></router-view>
+        <router-view></router-view>
       </transition>
     </keep-alive>
     <div class="footer">
@@ -25,16 +25,10 @@
     name: 'app',
     computed: {
       ...mapGetters({
-        isLoading: 'isLoading',
-        technicians: 'allTechnicians'
+        isLoading: 'isLoading'
       })
     },
     created () {
-      let postData = {
-        page_now: 1,
-        page_size: 10
-      }
-      this.$store.dispatch('getAllTechnicians', postData)
     },
     methods: {},
     components: {
