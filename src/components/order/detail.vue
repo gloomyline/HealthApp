@@ -67,6 +67,24 @@
                 @click.native="applyRefund">前往申请退款
       </x-button>
     </div>
+    <div class="refund-wrapper" v-show="refundShow">
+      <div class="refund-pannel">
+        <div class="reason">
+          <span class="name">退款原因</span>
+          <!--<span class="text">预约行程有变更</span>-->
+          <input class="text" type="text" v-model="refundReason" placeholder="请选择退款原因">
+        </div>
+        <div class="refund-count">
+          <span class="name">需退金额:</span>
+          <span class="text">148</span>
+        </div>
+        <div class="pannel-btn-container">
+          <x-button class="btn-cancel btn" type="warn" mini @click.native="refundShow = !refundShow">取消</x-button>
+          <x-button class="btn-confirm btn" type="primary" mini>申请退款</x-button>
+        </div>
+      </div>
+      <div class="mask" @click="refundShow = !refundShow"></div>
+    </div>
   </div>
 </template>
 
@@ -77,8 +95,10 @@
   export default{
     data () {
       return {
-        orderState: 0,
-        isLoading: false
+        orderState: 1,
+        isLoading: false,
+        refundShow: false,
+        refundReason: '预约行程有变更'
       }
     },
     methods: {
@@ -102,6 +122,7 @@
         this.isLoading = true
         setTimeout(() => {
           this.isLoading = false
+          this.refundShow = true
         }, 2000)
       }
     },
@@ -176,4 +197,55 @@
         background #8e8e8e
       .apply-refund-btn
         background rgb(88, 79, 96)
+    .refund-wrapper
+      position fixed
+      left 0
+      top 0
+      width 100%
+      height 100%
+      .refund-pannel
+        width 307px
+        height 197px
+        box-sizing border-box
+        margin 156px auto 0 auto
+        padding 50px 0 0 27px
+        border-radius 5px
+        background #fff
+        .reason
+          line-height 30px
+          font-size 0
+          color #656464
+          .name
+            font-size 15px
+            margin-right 11px
+          .text
+            font-size 15px
+        .refund-count
+          line-height 30px
+          font-size 0
+          .name
+            margin-right 16px
+            font-size 15px
+            color #656464
+          .text
+            font-size 15px
+            color #ff8b4b
+        .pannel-btn-container
+          font-size 0
+          .btn
+            width 108px
+            height 37px
+            letter-spacing .2em
+          .btn-cancel
+            margin-right 35px
+          .btn-confirm
+            background #584f60
+      .mask
+        position fixed
+        left 0
+        top 0
+        width 100%
+        height 100%
+        z-index -1
+        background rgba(0, 0, 0, .5)
 </style>
