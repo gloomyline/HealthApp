@@ -2,8 +2,10 @@
   <div class="collect-page">
     <div class="header-wrapper">
       <h1 class="title">我的收藏</h1>
-      <div class="back" @click="closeDetail">
-        <span class="icon-back">返回</span>
+      <div class="back">
+        <router-link to="/me">
+          <span class="icon-back">返回</span>
+        </router-link>
       </div>
     </div>
     <div>
@@ -55,10 +57,6 @@
       combo
     },
     methods: {
-      closeDetail (event) {
-        if (!event._constructed) return
-        this.$store.commit('')
-      },
       select (index) {
         console.log('on item click:', index)
       }

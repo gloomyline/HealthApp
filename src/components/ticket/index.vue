@@ -2,8 +2,8 @@
   <div class="ticket-page">
     <div class="header-wrapper">
       <h1 class="title">我的优惠券</h1>
-      <div class="back" @click="closeDetail">
-        <span class="icon-back">返回</span>
+      <div class="back">
+        <router-link to="/me"><span class="icon-back">返回</span></router-link>
       </div>
     </div>
     <div class="favourable">
@@ -28,14 +28,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
-    methods: {
-      closeDetail (event) {
-        if (!event._constructed) return
-        this.$store.commit('')
-      }
-    }
-  }
+  export default{}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
