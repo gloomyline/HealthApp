@@ -1,10 +1,10 @@
 <template>
   <div class="page-title-wrapper">
+    <h1 class="title"></h1>
     <div class="return-btn" @click="closePage">
       <x-icon type="ios-arrow-back" size="30"></x-icon>
       <span class="label">返回</span>
     </div>
-    <h1 class="title">{{title}}</h1>
   </div>
 </template>
 
@@ -13,7 +13,7 @@
     props: {
       title: {
         type: String,
-        default: '标题'
+        defult: ''
       }
     },
     methods: {

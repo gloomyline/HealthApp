@@ -4,7 +4,7 @@
       <h1 class="title">我的收藏</h1>
       <div class="back">
         <router-link to="/me">
-          <span class="icon-back">返回</span>
+          <x-icon type="ios-arrow-back" size="30"></x-icon>
         </router-link>
       </div>
     </div>
@@ -79,14 +79,14 @@
       color #fff
       background rgb(88, 79, 96)
       .title
-        padding-top 12px
+        padding-top 15px
         text-align center
         font-size 18px
         vertical-align top
       .back
         position absolute
         left 12px
-        top 10px
+        top 6px
         padding 4px
         .icon-back
           display inline-block

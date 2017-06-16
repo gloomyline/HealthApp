@@ -38,7 +38,7 @@
       {
         name: 'order',
         title: '我的订单',
-        link: ''
+        link: '/me/myOrders'
       },
       {
         name: 'favorite',
@@ -65,7 +65,7 @@
       {
         name: 'questing',
         title: '常见问题&联系客服',
-        link: ''
+        link: '@/components/service'
       }
     ]
   }

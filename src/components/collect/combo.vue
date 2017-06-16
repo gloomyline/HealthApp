@@ -1,34 +1,36 @@
 <template>
   <div class="combo">
     <group class="content-wrapper">
-      <cell is-link>
+      <cell-box is-link>
         <div class="avtar">
           <img src="" alt="" width="73" height="73">
         </div>
-        <div class="title-wrapper">
-          <span class="avtar"></span>
-          <span class="name">精品水疗养生SPA套餐</span>
+        <div class="content">
+          <div class="title-wrapper">
+            <span class="avtar"></span>
+            <span class="name">精品水疗养生SPA套餐</span>
+          </div>
+          <div class="info-wrapper">
+            <star :size="36" style="margin-right: 10px"></star>
+            <span class="unit-price">￥153/人</span>
+          </div>
+          <div class="detail-wrapper">
+            <span class="detail">实力派按摩套餐</span>
+          </div>
         </div>
-        <div class="info-wrapper">
-          <star :size="36" style="margin-right: 10px"></star>
-          <span class="unit-price">￥153/人</span>
-        </div>
-        <div class="detail-wrapper">
-          <span class="detail">实力派按摩套餐</span>
-        </div>
-      </cell>
+      </cell-box>
     </group>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import star from '@/components/uiComponents/star'
-  import { Group, Cell } from 'vux'
+  import { Group, CellBox } from 'vux'
   export default{
     components: {
       star,
       Group,
-      Cell
+      CellBox
     }
   }
 </script>
@@ -42,20 +44,16 @@
     height 100%
     background #fff
     .content-wrapper
-      flex 1
-      position relative
       border-top 5px solid #f1f1f1
-      border-bottom 7px solid #f1f1f1
-      .weui-cells
-        margin-top 0
-        .vux-cell-primary
-          display none
-        .weui-cell__ft
-          text-align left
-          &::after
-            right -155px
-            height 10px
-            width 10px
+      border-bottom 5px solid #f1f1f1
+      .weui-cells:before
+        border-top 0px
+        .weui-cell:before
+          border-top none
+      .avtar
+        position fixed
+      .content
+        padding-left 100px
         .title-wrapper
           margin-bottom 16px
           .name
