@@ -22,7 +22,6 @@
       </cell-box>
     </group>
   </div>
-
 </template>
 
 <script type="text/ecmascript-6">

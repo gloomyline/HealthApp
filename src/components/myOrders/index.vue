@@ -9,25 +9,66 @@
       </div>
     </div>
     <div class="nav">
-      <tab active-color="#5B4F60">
-        <tab-item selected @on-item-click="onItemClick">进行中</tab-item>
-        <tab-item @on-item-click="onItemClick">已完成</tab-item>
-        <tab-item @on-item-click="onItemClick">已取消</tab-item>
+      <tab active-color="#5B4F60" v-model="index">
+        <tab-item class="vux-center" v-for="(item, index) in list" :selected="selected === item" :key="index"
+                  @click.native="select(index)">{{item.title}}
+        </tab-item>
       </tab>
+      <swiper v-model="index" height="530px" :show-dots="false">
+        <swiper-item>
+          <go-on selected></go-on>
+        </swiper-item>
+        <swiper-item>
+          <complete></complete>
+        </swiper-item>
+        <swiper-item>
+          <cancel></cancel>
+        </swiper-item>
+      </swiper>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import { Tab, TabItem } from 'vux'
+  import { Tab, TabItem, Swiper, SwiperItem } from 'vux'
+  import goon from './goon.vue'
+  import complete from './complete.vue'
+  import cancel from './cancel.vue'
 
   export default{
+    data () {
+      return {
+        list: [
+          {
+            title: '进行中',
+            template: '<go-on></go-on>'
+          },
+          {
+            title: '已完成',
+            template: '<complete></complete>'
+          },
+          {
+            title: '已取消',
+            template: '<cancel></cancel>'
+          }
+        ],
+        selected: '进行中',
+        index: 0
+      }
+    },
     methods: {
-      onItemClick () {}
+      select (index) {
+        console.log('on item click:', index)
+      }
     },
     components: {
       Tab,
-      TabItem
+      TabItem,
+      Swiper,
+      SwiperItem,
+      'go-on': goon,
+      complete,
+      cancel
     }
   }
 </script>
