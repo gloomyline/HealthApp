@@ -67,6 +67,11 @@
                 @click.native="applyRefund">前往申请退款
       </x-button>
     </div>
+    <transition name="fade">
+      <div class="pay-wrapper" v-show="payShow">
+        <pay @cancel-pay="cancelPay"></pay>
+      </div>
+    </transition>
     <div class="refund-wrapper" v-show="refundShow">
       <div class="refund-pannel">
         <div class="reason">
@@ -91,12 +96,14 @@
 <script type="text/ecmascript-6">
   import titleWrapper from '@/components/uiComponents/titleWrapper'
   import { Group, Cell, CellBox, XButton } from 'vux'
+  import pay from '@/components/pay'
 
   export default{
     data () {
       return {
-        orderState: 1,
+        orderState: 0,
         isLoading: false,
+        payShow: false,
         refundShow: false,
         refundReason: '预约行程有变更'
       }
@@ -114,7 +121,11 @@
         this.isLoading = true
         setTimeout(() => {
           this.isLoading = false
+          this.payShow = true
         }, 2000)
+      },
+      cancelPay () {
+        this.payShow = false
       },
       applyRefund () {
         if (this.isLoading) return
@@ -131,7 +142,8 @@
       Group,
       Cell,
       CellBox,
-      XButton
+      XButton,
+      pay
     }
   }
 </script>
@@ -197,6 +209,19 @@
         background #8e8e8e
       .apply-refund-btn
         background rgb(88, 79, 96)
+    .pay-wrapper
+      position fixed
+      left 0
+      top 0
+      width 100%
+      height 100%
+      transform translate3d(0, 0, 0)
+      background #f1f1f1
+      &.fade-enter-active, &.fade-leave-active
+        transition all .4s ease
+      &.fade-enter, &.fade-leave-active
+        opacity 0
+        transform translate3d(100%, 0, 0)
     .refund-wrapper
       position fixed
       left 0
