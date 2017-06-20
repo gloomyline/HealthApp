@@ -55,12 +55,12 @@
       {
         name: 'score',
         title: '积分商城',
-        link: 'integral'
+        link: '/me/integral'
       },
       {
         name: 'us',
         title: '关于我们',
-        link: 'aboutUS'
+        link: '/me/aboutUS'
       },
       {
         name: 'questing',
