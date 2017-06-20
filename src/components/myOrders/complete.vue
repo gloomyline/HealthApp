@@ -47,7 +47,7 @@
     background #fff
     .content-wrapper
       border-top 5px solid #f1f1f1
-      border-bottom 5px solid #f1f1f1
+      /*border-bottom 5px solid #f1f1f1*/
       height 175px
       .nav
         display flex

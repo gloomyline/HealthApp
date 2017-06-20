@@ -58,8 +58,6 @@
         left 12px
         top 6px
         padding 4px
-        .icon-back
-          display inline-block
     .favourable
       flex 1
       width 100%

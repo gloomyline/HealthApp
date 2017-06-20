@@ -55,17 +55,17 @@
       {
         name: 'score',
         title: '积分商城',
-        link: ''
+        link: 'integral'
       },
       {
         name: 'us',
         title: '关于我们',
-        link: ''
+        link: 'aboutUS'
       },
       {
         name: 'questing',
         title: '常见问题&联系客服',
-        link: '@/components/service'
+        link: 'service'
       }
     ]
   }
