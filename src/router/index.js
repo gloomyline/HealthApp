@@ -11,7 +11,7 @@ import myOrders from '@/components/myOrders'
 import aboutUS from '@/components/aboutUS'
 import integral from '@/components/integral'
 
-import technician from '@/components/technician'
+// import technician from '@/components/technician'
 Vue.use(Router)
 
 export default new Router({
@@ -46,36 +46,29 @@ export default new Router({
         {
           path: 'collect',
           name: 'collect',
-          component: collect,
-          children: [
-            {
-              path: 'technician',
-              name: 'technician',
-              component: technician
-            }
-          ]
+          component: collect
         },
         {
           path: 'myOrders',
           name: 'myOrders',
           component: myOrders
+        },
+        {
+          path: 'aboutUS',
+          name: 'aboutUS',
+          component: aboutUS
+        },
+        {
+          path: 'integral',
+          name: 'integral',
+          component: integral
         }
       ]
-    },
-    {
-      path: 'integral',
-      name: 'integral',
-      component: integral
     },
     {
       path: '/service',
       name: 'orders',
       component: service
-    },
-    {
-      path: 'aboutUS',
-      name: 'aboutUS',
-      component: aboutUS
     }
   ],
   linkActiveClass: 'active'
