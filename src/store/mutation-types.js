@@ -2,9 +2,12 @@
  * Created by Alan on 2017/6/5.
  */
 
+// common
 export const SEND_REQUEST = 'SEND_REQUEST'                    // 发送请求
 export const REQUEST_SUCCESS = 'REQUEST_SUCCESS'              // 请求成功
 export const REQUEST_FAILURE = 'REQUEST_FAILURE'              // 请求失败
+export const SHOWTAB = 'SHOWTAB'                              // 显示主页导航
+export const HIDETAB = 'HIDETAB'                              // 隐藏主页导航
 
 // technicians
 export const RECEIVE_TECHLIST = 'RECEIVE_TECHLIST'            // 接受技师列表

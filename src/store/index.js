@@ -6,6 +6,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
+import common from './modules/common'
 import user from './modules/user'
 import order from './modules/order'
 import technicians from './modules/technicians'
@@ -20,6 +21,7 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
+    common,
     user,
     order,
     technicians,
