@@ -109,10 +109,10 @@
         this.detailShow = false
       },
       afterEnter () {
-        this.$store.commit('HIDETAB')
+//        this.$store.commit('HIDETAB')
       },
       afterLeave () {
-        this.$store.commit('SHOWTAB')
+//        this.$store.commit('SHOWTAB')
       }
     },
     components: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="tab" v-show="tabShow">
+  <div class="tab">
     <li v-for="button in buttons" class="tab-item">
       <router-link :to="button.route">
         <span class="icon" :class="button.icon"></span>
