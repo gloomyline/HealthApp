@@ -2,16 +2,20 @@
   <div :class="orderClass" class="order-items-wrapper">
     <div class="container">
       <p>This is orderType!{{$route.params.type}}</p>
-      <li class="item" v-for="item in itemsList">
+      <li class="item" v-for="item in itemsList" @click="showDetail">
         <item :item="item"></item>
       </li>
     </div>
+    <transition name="fade" @after-enter="afterEnter" @after-leave="afterLeave">
+      <item-detail class="item-detail" v-show="detailShow" @close-item-page="hideDetail"></item-detail>
+    </transition>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
   import item from '@/components/order/item'
+  import itemDetail from '@/components/order/itemDetail'
 
   let itemsList = [
     {
@@ -75,7 +79,8 @@
   export default{
     data () {
       return {
-        itemsList
+        itemsList,
+        detailShow: false
       }
     },
     mounted () {
@@ -95,10 +100,24 @@
         } else {
           this.scroll.refresh()
         }
+      },
+      showDetail (event) {
+        if (!event._constructed) return
+        this.detailShow = true
+      },
+      hideDetail () {
+        this.detailShow = false
+      },
+      afterEnter () {
+        this.$store.commit('HIDETAB')
+      },
+      afterLeave () {
+        this.$store.commit('SHOWTAB')
       }
     },
     components: {
-      item
+      item,
+      itemDetail
     }
   }
 </script>
@@ -117,4 +136,11 @@
         margin-bottom 7px
         &:last-child
           margin-bottom 0
+    .item-detail
+      transform translate3d(0, 0, 0)
+      &.fade-enter-active, &.fade-leave-active
+        transition all .4s ease
+      &.fade-enter, &.fade-leave-active
+        opacity 0
+        transform translate3d(100%, 0, 0)
 </style>
