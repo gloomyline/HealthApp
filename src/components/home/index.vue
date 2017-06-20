@@ -174,7 +174,7 @@
           .star-wrapper
             position absolute
             right 0
-            top 32px
+            top 30px
     .tech-wrapper
       position fixed
       left 0
