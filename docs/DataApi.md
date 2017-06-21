@@ -382,7 +382,8 @@ http://localhost:8080/massage/appCollectData/addCollect.do?Type=0&CustomerId=111
   
   > 请求url示例
   
-http://localhost:8080/massage/appCollectData/getCollectListByCustomerid.do?Type=0&CustomerId=1111   > 返回数据示例
+http://localhost:8080/massage/appCollectData/getCollectListByCustomerid.do?Type=0&CustomerId=1111
+   > 返回数据示例
     
    ```json
 {
@@ -961,3 +962,41 @@ http://localhost:8080/massage/appItemData/getItemFootcityList.do?Customerid=1111
    "Status": 0,
    "Errmsg": "OK"
  }
+   ```
+22. 技师查询 POST
+   
+   - url: **http://hostname:port/massage/appTechnicianData/searchTechnicians.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | Keywords | string |  |  | true | 
+
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appTechnicianData/searchTechnicians.do?Keywords=技师
+ > 返回数据示例
+     
+   ```json
+{
+    "Date": {
+        "TechnicianIds": [
+            "15babeda564b4bf987395f60f3c1768f",
+            "e31e90c70a6a4711b8ad94e34a8c99d4",
+            "d11ee1afb2064e1cbd561431e7e9b552",
+            "244f106457194fe788ea2840c583f2cd"
+        ]
+    },
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+   ```
