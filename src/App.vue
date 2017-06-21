@@ -5,9 +5,7 @@
       <loading v-model="isLoading"></loading>
     </div>
     <keep-alive>
-      <transition>
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
     </keep-alive>
     <div class="footer">
       <tab></tab>
