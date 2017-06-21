@@ -10,8 +10,7 @@
           <span class="text">{{item.name}}</span>
         </h2>
         <div class="star-wrapper">
-          <star class="star" :size="24" :score="item.score"></star>
-          <span class="score">{{item.score}}</span>
+          <star class="star" :size="24" :score="item.score" has-score></star>
           <span class="price">&yen;{{item.price}}/人</span>
         </div>
         <div class="extra">
