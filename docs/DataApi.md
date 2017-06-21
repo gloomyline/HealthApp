@@ -1000,3 +1000,162 @@ http://localhost:8080/massage/appTechnicianData/searchTechnicians.do?Keywords=�
     "ErrMsg": "OK"
 }
    ```
+23. 查看附属技师完成的订单列表 POST
+   
+   - url: **http://hostname:port/massage/appTechleaderData/getTechnicianListByLeaderid.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | Keywords | string |  |  | false | 关键字
+   | TechleaderId | string |  |  | true |  领班id
+   | TimeFrame | string |  |  | true |  时间段（0是全部，1是当天，2是7天内，3是30天内）
+
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appTechleaderData/getTechnicianListByLeaderid.do?Keywords=&TechleaderId=1&TimeFrame=2
+ > 返回数据示例
+     
+   ```json
+{
+    "Date": {
+        "TechnicianIds": [
+            "15babeda564b4bf987395f60f3c1768f",
+            "e31e90c70a6a4711b8ad94e34a8c99d4",
+            "d11ee1afb2064e1cbd561431e7e9b552",
+            "244f106457194fe788ea2840c583f2cd"
+        ]
+    },
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+   ```
+24. 根据领班id获取旗下的技师列表 POST
+   
+   - url: **http://hostname:port/massage/appTechleaderData/getOrderListOfTechByLeaderid.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | TechleaderId | string |  |  | true |  领班id
+
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appTechleaderData/getOrderListOfTechByLeaderid.do?&TechleaderId=1
+ > 返回数据示例
+     
+   ```json
+{
+    "Data": {
+        "Orderlist": [
+            {
+                "OrderNum": 2,
+                "CreateTime": "2017-05-23 20:30:33",
+                "TechnicianName": "组宾",
+                "TransactionId": "",
+                "CustomerId": "1111",
+                "ItemId": "1AA",
+                "OrderTotalprice": 776,
+                "Status": 4,
+                "PayTime": "",
+                "TechconfirmTime": "",
+                "OrderAdd": "haixingxiaoqu",
+                "RefundConfirmTime": "",
+                "RefundEndTime": "",
+                "IfCoupon": 0,
+                "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
+                "OrderTel": "17777777777",
+                "OrderCallTime": "2017-6-18 20:30",
+                "OrderRemark": "hello",
+                "CompeleteTime": "",
+                "OrderNo": "1217519833",
+                "TechleaderPrice": 20,//领班抽成（注：如果订单还没有评论评分，没有返回该抽成字段）
+                "CouponId": "1",
+                "ItemStartTime": "2017-06-17 06:30:33",
+                "OrderId": "06ed3bdf71fd41e48668b41952df52c8",
+                "RefundStartTime": "",
+                "ItemEndTime": "2017-06-17 08:30:33",
+                "OrderRealitypay": 776,
+                "OrderUnitprice": 388
+            },
+            {
+                "OrderNum": 2,
+                "CreateTime": "2017-06-15 02:30:33",
+                "TechnicianName": "组宾",
+                "TransactionId": "",
+                "CustomerId": "1111",
+                "ItemId": "1AA",
+                "OrderTotalprice": 252,
+                "Status": 4,
+                "PayTime": "",
+                "TechconfirmTime": "",
+                "OrderAdd": "haixingxiaoqu",
+                "RefundConfirmTime": "",
+                "RefundEndTime": "",
+                "IfCoupon": 0,
+                "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
+                "OrderTel": "17777777777",
+                "OrderCallTime": "1497235588833",
+                "OrderRemark": "hello",
+                "CompeleteTime": "",
+                "OrderNo": "1434213377",
+                "CouponId": "1",
+                "ItemStartTime": "2017-06-11 11:30:33",
+                "OrderId": "51595217837149108954fb6496e1d594",
+                "RefundStartTime": "",
+                "ItemEndTime": "2017-06-11 13:30:33",
+                "OrderRealitypay": 222,
+                "OrderUnitprice": 126
+            }
+        ]
+    },
+    "Status": 0,
+    "Errmsg": "OK"
+}
+   ```
+25. 领班删除附属技师 POST
+   
+   - url: **http://hostname:port/massage/appTechleaderData/leaderDeletedTech.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | TechnicianId | string |  |  | true |  技师id
+
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appTechleaderData/leaderDeletedTech.do?&TechnicianId=244f106457194fe788ea2840c583f2cd
+ > 返回数据示例
+     
+   ```json
+{
+    "Status": 0,
+    "Errmsg": "OK"
+}
