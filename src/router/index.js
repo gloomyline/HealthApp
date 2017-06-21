@@ -6,7 +6,12 @@ import orderType from '@/components/order/orderType'
 import me from '@/components/me'
 import ticket from '@/components/ticket'
 import service from '@/components/service'
+import collect from '@/components/collect'
+import myOrders from '@/components/myOrders'
+import aboutUS from '@/components/aboutUS'
+import integral from '@/components/integral'
 
+// import technician from '@/components/technician'
 Vue.use(Router)
 
 export default new Router({
@@ -37,12 +42,32 @@ export default new Router({
           path: 'ticket',
           name: 'ticket',
           component: ticket
+        },
+        {
+          path: 'collect',
+          name: 'collect',
+          component: collect
+        },
+        {
+          path: 'myOrders',
+          name: 'myOrders',
+          component: myOrders
+        },
+        {
+          path: 'integral',
+          name: 'integral',
+          component: integral
+        },
+        {
+          path: 'aboutUS',
+          name: 'aboutUS',
+          component: aboutUS
         }
       ]
     },
     {
       path: '/service',
-      name: 'service',
+      name: 'orders',
       component: service
     }
   ],

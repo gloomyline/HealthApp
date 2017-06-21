@@ -37,6 +37,8 @@ module.exports = vuxLoader.merge(webpackConfig, {
 
 [参考链接](https://vux.li/#/zh-CN/vux-loader)
 
+3. 使用 Vux 中 DatetimeRange 组件时，渲染的时候需要等待一段时间，这个需要后续解决 
+
 ## Build Setup
 
 ``` bash

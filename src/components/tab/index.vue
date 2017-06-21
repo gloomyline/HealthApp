@@ -1,5 +1,5 @@
 <template>
-  <div class="tab">
+  <div class="tab" v-show="tabShow">
     <li v-for="button in buttons" class="tab-item">
       <router-link :to="button.route">
         <span class="icon" :class="button.icon"></span>
@@ -10,6 +10,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { mapGetters } from 'vuex'
 
   const buttons = [
     {
@@ -39,6 +40,11 @@
       return {
         buttons
       }
+    },
+    computed: {
+      ...mapGetters({
+        tabShow: 'tabShow'
+      })
     }
   }
 </script>

@@ -2,7 +2,7 @@
   <div class="order-page">
     <div class="order-tab-wrapper order-tab-wrapper-hook">
       <div class="order-tab order-tab-hook">
-        <li v-for="order in orders" class="order-item">
+        <li v-for="order in orders" class="order-tab-item">
           <router-link :to="order.path">{{order.text}}</router-link>
         </li>
       </div>
@@ -103,7 +103,7 @@
         line-height 35px
         text-align center
         font-size 0
-        .order-item
+        .order-tab-item
           display inline-block
           width 61px
           & > a

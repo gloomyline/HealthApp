@@ -38,12 +38,12 @@
       {
         name: 'order',
         title: '我的订单',
-        link: ''
+        link: '/me/myOrders'
       },
       {
         name: 'favorite',
         title: '我的收藏',
-        link: ''
+        link: '/me/collect'
       },
       {
         name: 'ticket',
@@ -55,17 +55,17 @@
       {
         name: 'score',
         title: '积分商城',
-        link: ''
+        link: '/me/integral'
       },
       {
         name: 'us',
         title: '关于我们',
-        link: ''
+        link: '/me/aboutUS'
       },
       {
         name: 'questing',
         title: '常见问题&联系客服',
-        link: ''
+        link: 'service'
       }
     ]
   }

@@ -1,6 +1,7 @@
 <template>
   <div class="star" :class="starType">
     <span v-for="itemClass in itemClasses" :class="itemClass" class="star-item"></span>
+    <span class="score score-hook" v-if="hasScore">{{score}}</span>
   </div>
 </template>
 
@@ -18,6 +19,19 @@
       score: {
         type: Number,
         default: 5
+      },
+      hasScore: {
+        type: Boolean,
+        default: false
+      },
+      scoreProps: {
+        type: Object,
+        default () {
+          return {
+            color: '#fcd344',
+            fontSize: '13px'
+          }
+        }
       }
     },
     computed: {
@@ -41,6 +55,12 @@
 
         return starArr
       }
+    },
+    mounted () {
+      if (!this.hasScore) return
+      let scoreNode = this.$el.querySelector('.score-hook')
+      scoreNode.style.color = this.scoreProps.color
+      scoreNode.style.fontSize = this.scoreProps.fontSize
     }
   }
 </script>
@@ -50,6 +70,8 @@
 
   .star
     font-size 0
+    .star-item
+      margin-top 5px
     &.star-48
       .star-item
         margin-right 22px
@@ -86,4 +108,8 @@
           bg-img('star24_half')
         &.off
           bg-img('star24_off')
+    .score
+      display inline-block
+      vertical-align top
+      font-size 13px
 </style>

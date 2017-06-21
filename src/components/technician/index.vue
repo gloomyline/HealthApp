@@ -4,7 +4,7 @@
       <div class="header-wrapper">
         <h1 class="title">技师详情</h1>
         <div class="back" @click="closeDetail">
-          <span class="icon-back">返回</span>
+          <x-icon type="ios-arrow-back" size="30"></x-icon>
         </div>
       </div>
       <div class="info-wrapper">
@@ -75,7 +75,7 @@
       </div>
     </div>
     <transition name="fade">
-      <div class="subscribe-wrapper" v-show="subscribeShow">
+      <div class="subscribe-wrapper" v-if="subscribeShow">
         <subscribe></subscribe>
       </div>
     </transition>
@@ -173,6 +173,9 @@
       subscribe (event) {
         if (!event._constructed) return
         this.$store.commit('TOGGLE_SUBSCRIBE')
+//        if (this.$refs.subscribe) {
+//          this.$refs.subscribe.showSubscribe()
+//        }
       }
     },
     filters: {
@@ -215,7 +218,7 @@
         .back
           position absolute
           left 12px
-          top 10px
+          top 3px
           padding 4px
           .icon-back
             display inline-block
