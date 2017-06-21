@@ -12,7 +12,6 @@
       <tab class="nav" v-model="index" :line-width=2 active-color="#5B4F60" custom-bar-width="76px">
         <tab-item class="vux-center" v-for="(item, index) in list" :selected="selected === item" :key="index"
                   @click.native="select(index)">{{item.title}}
-
         </tab-item>
       </tab>
       <swiper v-model="index" height="530px" :show-dots="false">

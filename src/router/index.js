@@ -54,14 +54,14 @@ export default new Router({
           component: myOrders
         },
         {
-          path: 'aboutUS',
-          name: 'aboutUS',
-          component: aboutUS
-        },
-        {
           path: 'integral',
           name: 'integral',
           component: integral
+        },
+        {
+          path: 'aboutUS',
+          name: 'aboutUS',
+          component: aboutUS
         }
       ]
     },
