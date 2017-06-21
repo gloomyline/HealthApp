@@ -10,6 +10,7 @@ import common from './modules/common'
 import user from './modules/user'
 import order from './modules/order'
 import technicians from './modules/technicians'
+import item from './modules/item'
 import subscribe from './modules/subscribe'
 import createLogger from '@/common/js/logger.js'
 
@@ -25,6 +26,7 @@ export default new Vuex.Store({
     user,
     order,
     technicians,
+    item,
     subscribe
   },
   strict: debug,

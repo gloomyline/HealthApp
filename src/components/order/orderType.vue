@@ -14,6 +14,7 @@
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import { mapGetters } from 'vuex'
   import item from '@/components/order/item'
   import itemDetail from '@/components/order/itemDetail'
 
@@ -84,14 +85,33 @@
       }
     },
     mounted () {
+      let itemType = this.$route.params.type
+      let itemList = this.itemsLists[itemType]
+      this.itemsList = itemList.length === 0 ? [{}] : itemList
       this.$nextTick(() => {
         this._initScroll()
       })
     },
+    watch: {
+      'itemsLists' () {
+        this.$nextTick(() => {
+          this._initScroll()
+        })
+      }
+    },
     computed: {
       orderClass () {
         return 'order-' + this.$route.params.type
-      }
+      },
+      ...mapGetters({
+        itemsLists: 'itemsList'
+      })
+    },
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+        console.log('222', vm.$route.params.type)
+        vm.$store.dispatch('getItemListById', vm.$route.params.type)
+      })
     },
     methods: {
       _initScroll () {

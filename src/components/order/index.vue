@@ -12,43 +12,16 @@
 </template>
 
 <script type="text/ecmascript-6">
-  //  import router from '../../router'
   import BScroll from 'better-scroll'
+  import config from '@/assets/config'
 
-  let orderList = [
-    {
-      path: '/order/massage',
-      text: '按摩'
-    },
-    {
-      path: '/order/children',
-      text: '小儿'
-    },
-    {
-      path: '/order/SPA',
-      text: 'SPA'
-    },
-    {
-      path: '/order/foot',
-      text: '足疗'
-    },
-    {
-      path: '/order/moxibustion',
-      text: '艾灸'
-    },
-    {
-      path: '/order/recover',
-      text: '康复'
-    },
-    {
-      path: '/order/scraping',
-      text: '刮痧'
-    },
-    {
-      path: '/order/nightTalk',
-      text: '夜间'
-    }
-  ]
+  let orderTypes = config.massageTypeList
+  let typesArr = ['manipulation', 'SPA', 'children', 'moxibustion', 'recover', 'scraping', 'foot']
+  let orderList = []
+  typesArr.forEach((item, index) => {
+    let obj = {path: '/order/' + item, text: orderTypes[index].MassagetypeName}
+    orderList.push(obj)
+  })
 
   export default {
     data () {
@@ -82,8 +55,8 @@
     beforeRouteEnter (to, from, next) {
       next(vm => {
         // default to massage type
-        if (vm.$route.params !== 'massage') {
-          vm.$router.push('/order/massage')
+        if (vm.$route.params !== 'manipulation') {
+          vm.$router.push('/order/manipulation')
         }
       })
     }
