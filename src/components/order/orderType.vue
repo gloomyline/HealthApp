@@ -81,39 +81,77 @@
     data () {
       return {
         itemsList,
+        loadedItemsLists: [], // 已加载数据的项目列表
         detailShow: false
       }
     },
-    mounted () {
-      let itemType = this.$route.params.type
-      let itemList = this.itemsLists[itemType]
-      this.itemsList = itemList.length === 0 ? [{}] : itemList
+    created () {
+      this._fetchData()
       this.$nextTick(() => {
         this._initScroll()
       })
     },
     watch: {
-      'itemsLists' () {
-        this.$nextTick(() => {
-          this._initScroll()
-        })
-      }
+      'manipulation' () {
+        this._afterDataUpdate()
+      },
+      'SPA' () {
+        this._afterDataUpdate()
+      },
+      'children' () {
+        this._afterDataUpdate()
+      },
+      'moxibustion' () {
+        this._afterDataUpdate()
+      },
+      'recover' () {
+        this._afterDataUpdate()
+      },
+      'scraping' () {
+        this._afterDataUpdate()
+      },
+      'foot' () {
+        this._afterDataUpdate()
+      },
+      '$route.params.type': '_fetchData'
     },
     computed: {
       orderClass () {
         return 'order-' + this.$route.params.type
       },
       ...mapGetters({
-        itemsLists: 'itemsList'
-      })
-    },
-    beforeRouteEnter (to, from, next) {
-      next(vm => {
-        console.log('222', vm.$route.params.type)
-        vm.$store.dispatch('getItemListById', vm.$route.params.type)
+        manipulation: 'manipulation',
+        SPA: 'SPA',
+        children: 'children',
+        moxibustion: 'moxibustion',
+        recover: 'recover',
+        scraping: 'scraping',
+        foot: 'foot'
       })
     },
     methods: {
+      _fetchData () {
+        if (!this.$route.params.type) return
+//        if (Object.keys(this.loadedItemsLists).indexOf(this.$route.params.type) !== -1) return
+        this.loadedItemsLists.forEach((item, index) => {
+          console.log('11', item[this.$route.params.type])
+          if (item[this.$route.params.type]) return
+          console.log('111')
+        })
+        this.$store.dispatch('getItemListById', this.$route.params.type)
+      },
+      _afterDataUpdate () {
+        let itemType = this.$route.params.type
+        let itemList = this[itemType]
+        this.itemsList = itemList.length === 0 ? [{}] : itemList
+        this.loadedItemsLists.push({itemType: itemList})
+        if (Object.keys(this.loadedItemsLists).indexOf(itemType) !== -1) {
+          this.itemsList = this.loadedItemsLists[itemType]
+        }
+        this.$nextTick(() => {
+          this._initScroll()
+        })
+      },
       _initScroll () {
         if (!this.scroll) {
           this.scroll = new BScroll(this.$el, {click: true})

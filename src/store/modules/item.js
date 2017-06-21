@@ -23,20 +23,18 @@ const state = {
 
 // getters
 const getters = {
-  // manipulation: state => state.itemsList.manipulation,
-  // SPA: state => state.itemsList.SPA,
-  // children: state => state.itemsList.children,
-  // moxibustion: state => state.itemsList.moxibustion,
-  // recover: state => state.itemsList.recover,
-  // scraping: state => state.itemsList.scraping,
-  // foot: state => state.itemsList.foot
-  itemsList: state => state.itemsList
+  manipulation: state => state.itemsList.manipulation,
+  SPA: state => state.itemsList.SPA,
+  children: state => state.itemsList.children,
+  moxibustion: state => state.itemsList.moxibustion,
+  recover: state => state.itemsList.recover,
+  scraping: state => state.itemsList.scraping,
+  foot: state => state.itemsList.foot
 }
 
 // actions
 const actions = {
   getItemListById ({commit}, payload) {
-    console.log('1111', itemTypes[payload])
     commit(types.SEND_REQUEST)
     item.getItemListById(itemTypes[payload], data => {
       commit(types.REQUEST_SUCCESS)

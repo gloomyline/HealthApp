@@ -17,7 +17,8 @@ export default {
   async getItemListById (massageTypeId, cb) {
     let postData = {PageNow: 1, PageSize: 10, Massagetypeid: massageTypeId}
     let data = await req.reqByPost('/appItemData/getItemFootcityList.do', postData)
-    cb(data)
+    console.log('44', data)
+    cb(data.Itemfootcitylist)
   },
   async getItemListBySize (massageTypeId, start, size, cb) {
     let postData = {PageNow: start, PageSize: size, Massagetypeid: massageTypeId}
