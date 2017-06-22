@@ -132,25 +132,41 @@
     methods: {
       _fetchData () {
         if (!this.$route.params.type) return
-//        if (Object.keys(this.loadedItemsLists).indexOf(this.$route.params.type) !== -1) return
-        this.loadedItemsLists.forEach((item, index) => {
-          console.log('11', item[this.$route.params.type])
-          if (item[this.$route.params.type]) return
-          console.log('111')
-        })
-        this.$store.dispatch('getItemListById', this.$route.params.type)
+        if (this._isLoadedList()) {
+          let loadedIndex = (function () {
+            for (let i = 0; i < this.loadedItemsLists.length; i++) {
+              let item = this.loadedItemsLists[i]
+              if (item.listName === this.$route.params.type) {
+                return i
+              }
+            }
+          }.bind(this))()
+          this.itemsList = this.loadedItemsLists[loadedIndex].list
+          this.$nextTick(() => {
+            this._initScroll()
+          })
+        } else {
+          this.$store.dispatch('getItemListById', this.$route.params.type)
+        }
       },
       _afterDataUpdate () {
         let itemType = this.$route.params.type
         let itemList = this[itemType]
-        this.itemsList = itemList.length === 0 ? [{}] : itemList
-        this.loadedItemsLists.push({itemType: itemList})
-        if (Object.keys(this.loadedItemsLists).indexOf(itemType) !== -1) {
-          this.itemsList = this.loadedItemsLists[itemType]
-        }
+        this.itemsList = itemList.length === 0 ? [] : itemList
+        this.loadedItemsLists.push({listName: this.$route.params.type, list: itemList})
         this.$nextTick(() => {
           this._initScroll()
         })
+      },
+      _isLoadedList () { // 判断当前路由页面中所需套餐列表数据是否已加载
+        for (let i = 0; i < this.loadedItemsLists.length; i++) {
+          let item = this.loadedItemsLists[i]
+          if (item.listName === this.$route.params.type) {
+            return true
+          }
+        }
+
+        return false
       },
       _initScroll () {
         if (!this.scroll) {
