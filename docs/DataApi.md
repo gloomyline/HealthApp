@@ -1009,7 +1009,6 @@ http://localhost:8080/massage/appTechnicianData/searchTechnicians.do?Keywords=�
    | :---: | :---: | :---: | :---: | :---: |:---: |
    | Keywords | string |  |  | false | 关键字
    | TechleaderId | string |  |  | true |  领班id
-   | TimeFrame | string |  |  | true |  时间段（0是全部，1是当天，2是7天内，3是30天内）
 
    
    - response
@@ -1022,7 +1021,7 @@ http://localhost:8080/massage/appTechnicianData/searchTechnicians.do?Keywords=�
    
    > 请求url示例
    
-http://localhost:8080/massage/appTechleaderData/getTechnicianListByLeaderid.do?Keywords=&TechleaderId=1&TimeFrame=2
+http://localhost:8080/massage/appTechleaderData/getTechnicianListByLeaderid.do?Keywords=&TechleaderId=1
  > 返回数据示例
      
    ```json
@@ -1041,12 +1040,13 @@ http://localhost:8080/massage/appTechleaderData/getTechnicianListByLeaderid.do?K
    ```
 24. 根据领班id获取旗下的技师列表 POST
    
-   - url: **http://hostname:port/massage/appTechleaderData/getOrderListOfTechByLeaderid.do**
+   - url: **http://hostname:port/massage/appTechleaderData/getOrderListOfTechByTechid.do**
    - postData
    
    | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
    | :---: | :---: | :---: | :---: | :---: |:---: |
-   | TechleaderId | string |  |  | true |  领班id
+   | TechnicianId | string |  |  | true |  领班id
+   | TimeFrame | string |  |  | true |  时间段（0是全部，1是当天，2是7天内，3是30天内）
 
    
    - response
@@ -1059,16 +1059,16 @@ http://localhost:8080/massage/appTechleaderData/getTechnicianListByLeaderid.do?K
    
    > 请求url示例
    
-http://localhost:8080/massage/appTechleaderData/getOrderListOfTechByLeaderid.do?&TechleaderId=1
+http://localhost:8080/massage/appTechleaderData/getOrderListOfTechByTechid.do?&TechnicianId=1&TimeFrame=0
  > 返回数据示例
      
    ```json
 {
     "Data": {
-        "Orderlist": [
-            {
+        "Technicianlist": [
+                        {
                 "OrderNum": 2,
-                "CreateTime": "2017-05-23 20:30:33",
+                "CreateTime": "2017-05-06 20:30:33",
                 "TechnicianName": "组宾",
                 "TransactionId": "",
                 "CustomerId": "1111",
@@ -1078,52 +1078,25 @@ http://localhost:8080/massage/appTechleaderData/getOrderListOfTechByLeaderid.do?
                 "PayTime": "",
                 "TechconfirmTime": "",
                 "OrderAdd": "haixingxiaoqu",
-                "RefundConfirmTime": "",
-                "RefundEndTime": "",
-                "IfCoupon": 0,
-                "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
-                "OrderTel": "17777777777",
-                "OrderCallTime": "2017-6-18 20:30",
-                "OrderRemark": "hello",
-                "CompeleteTime": "",
-                "OrderNo": "1217519833",
-                "TechleaderPrice": 20,//领班抽成（注：如果订单还没有评论评分，没有返回该抽成字段）
-                "CouponId": "1",
-                "ItemStartTime": "2017-06-17 06:30:33",
-                "OrderId": "06ed3bdf71fd41e48668b41952df52c8",
-                "RefundStartTime": "",
-                "ItemEndTime": "2017-06-17 08:30:33",
-                "OrderRealitypay": 776,
-                "OrderUnitprice": 388
-            },
-            {
-                "OrderNum": 2,
-                "CreateTime": "2017-06-15 02:30:33",
-                "TechnicianName": "组宾",
-                "TransactionId": "",
-                "CustomerId": "1111",
-                "ItemId": "1AA",
-                "OrderTotalprice": 252,
-                "Status": 4,
-                "PayTime": "",
-                "TechconfirmTime": "",
-                "OrderAdd": "haixingxiaoqu",
+                "CommentsId": "dfee293eafb647a48defeed297458ecf",
                 "RefundConfirmTime": "",
                 "RefundEndTime": "",
                 "IfCoupon": 0,
                 "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
                 "OrderTel": "17777777777",
                 "OrderCallTime": "1497235588833",
+                "CommentsStar": 5,//评论星星
                 "OrderRemark": "hello",
+                "CommentsContent": "wonderful",//评语
                 "CompeleteTime": "",
-                "OrderNo": "1434213377",
+                "OrderNo": "1508023656",
                 "CouponId": "1",
-                "ItemStartTime": "2017-06-11 11:30:33",
-                "OrderId": "51595217837149108954fb6496e1d594",
+                "ItemStartTime": "",
+                "OrderId": "adaa9c830e894361b0470ddc3d9ac46e",
                 "RefundStartTime": "",
-                "ItemEndTime": "2017-06-11 13:30:33",
-                "OrderRealitypay": 222,
-                "OrderUnitprice": 126
+                "ItemEndTime": "",
+                "OrderRealitypay": 776,
+                "OrderUnitprice": 388
             }
         ]
     },
