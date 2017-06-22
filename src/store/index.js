@@ -12,6 +12,7 @@ import order from './modules/order'
 import technicians from './modules/technicians'
 import item from './modules/item'
 import subscribe from './modules/subscribe'
+import me from './modules/me'
 import createLogger from '@/common/js/logger.js'
 
 Vue.use(Vuex)
@@ -27,7 +28,8 @@ export default new Vuex.Store({
     order,
     technicians,
     item,
-    subscribe
+    subscribe,
+    me
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

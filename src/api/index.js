@@ -4,8 +4,9 @@
 
 import user from './user'
 import technician from './technician'
-
+import me from './me'
 export default {
   user,
-  technician
+  technician,
+  me
 }

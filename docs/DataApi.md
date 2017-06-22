@@ -1,3 +1,4 @@
+
 # 数据接口需求
 
 ## 技师相关
@@ -523,7 +524,7 @@ http://localhost:8080/massage/appCollectData/getCollectListByCustomerid.do?Type=
     | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
     | :---: | :---: | :---: | :---: | :---: |:---: |
  
-  | COSTOMER_ID | string |  |  | true | 客户ID
+  | CUSTOMER_ID | string |  |  | true | 客户ID
   - response
     
   | KEY | TYPE | DEFAULT | VALUE | DESC |

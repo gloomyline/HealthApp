@@ -46,3 +46,22 @@
     其中'CollectList'中是所有已收藏的技师id或者项目id
     
 3. 发现某些接口没有做参数校验，请求数据结构不对，仍然返回'ok',比如说请求某个项目的列表接口
+
+9.客户下单
+异常
+
+11. 处理订单
+{
+    "Status": -1,
+    "ErrMsg": "异常"
+}
+Name        Value                             Domain           Path       Expires    HTTP       Secure
+JSESSIONID  12589351E1C7C69D37362875C631D418  192.168.1.126    /massage              false      false
+
+
+15.   提交评论
+应用程序异常
+抱歉！您访问的页面出现异常，请稍后重试或联系管理员。
+
+17. 获取所有常量值
+HTTP Status 405 - Request method 'POST' not supported
