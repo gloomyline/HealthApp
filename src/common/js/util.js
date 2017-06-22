@@ -6,9 +6,11 @@
  * @param {Function} f
  * @return {*}
  */
-function find (list, f) {
+function _find (list, f) {
   return list.filter(f)[0]
 }
+
+export const find = _find
 
 /**
  * Deep copy the given object considering circular structure.
@@ -26,7 +28,7 @@ export function deepCopy (obj, cache = []) {
   }
 
   // if obj is hit, it is in circular structure
-  const hit = find(cache, c => c.original === obj)
+  const hit = _find(cache, c => c.original === obj)
   if (hit) {
     return hit.copy
   }
