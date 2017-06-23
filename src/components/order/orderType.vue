@@ -1,7 +1,6 @@
 <template>
   <div :class="orderClass" class="order-items-wrapper">
     <div class="container">
-      <p>This is orderType!{{$route.params.type}}</p>
       <li class="item" v-for="item in itemsList" @click="showDetail">
         <item :item="item"></item>
       </li>
@@ -201,7 +200,8 @@
     position fixed
     left 0
     top 35px
-    bottom 0
+    bottom 49px
+    padding-bottom 49px
     overflow hidden
     .container
       padding: 7px 7px 0

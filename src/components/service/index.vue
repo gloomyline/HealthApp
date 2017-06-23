@@ -62,6 +62,8 @@
       height 47px
       color #fff
       background rgb(88, 79, 96)
+      .icon
+        bg-img('list_icon')
       .title
         padding-top 12px
         text-align center
