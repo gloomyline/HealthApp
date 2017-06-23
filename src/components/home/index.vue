@@ -57,8 +57,8 @@
     },
     mounted () {
       let payload = {
-        page_now: 1,
-        page_size: 10
+        PageNow: 1,
+        PageSize: 10
       }
       this.$store.dispatch('getAllTechnicians', payload)
       this.$nextTick(() => {

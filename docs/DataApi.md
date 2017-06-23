@@ -424,7 +424,7 @@ http://localhost:8080/massage/appCollectData/getCollectListByCustomerid.do?Type=
   | Data | json(array) |  |  | 返回的数据 |
   
   > 请求url示例
-  
+  http://192.168.1.126:8080/massage/appOrderData/submitOrder.do?CustomerId=1111&TechnicianId=6bab8de3e2aa40b3910611f9472e67fb&ItemId=1AA&OrderNum=2&OrderTel=17777777777&OrderAdd=haixingxiaoqu&OrderCallTime=2017-6-18 20:30&OrderRemark=hello&CouponId=1
   http://localhost:8080/massage/appOrderData/submitOrder.do?CUSTOMER_ID=1111&TECHNICIAN_ID=6bab8de3e2aa40b3910611f9472e67fb&ITEM_ID=1AA&ORDER_NUM=2&ORDER_TEL=17777777777&ORDER_ADD=haixingxiaoqu&ORDER_CALL_TIME=2017-6-18 20:30&ORDER_REMARK=hello&COUPON_ID=1
    > 返回数据示例
     

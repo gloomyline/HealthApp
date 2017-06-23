@@ -28,9 +28,6 @@
       })
     },
     created () {
-      userApi.getCouponList(null, (data) => {
-        console.log('13', data)
-      })
       userApi.addFavorite({CustomerId: 1111, Type: 0}, (data) => {
         console.log('06', data)
       })
@@ -40,23 +37,53 @@
       userApi.getFavoriteList({CustomerId: 1111, Type: 0}, (data) => {
         console.log('08', data)
       })
-      allApi.submitOrder({CUSTOMER_ID: 1111}, (data) => {
-        console.log('09', data)
-      })
+//      allApi.submitOrder({}, (data) => {
+//        console.log('09', data)
+//      })
       allApi.getOrderList({}, (data) => {
         console.log('10', data)
       })
+//      allApi.getTechnicianIds({}, (data) => {
+//        console.log('11', data)
+//      })
       allApi.getAdsList({}, (data) => {
         console.log('12', data)
+      })
+      userApi.getCouponlist(null, (data) => {
+        console.log('13', data)
+      })
+      allApi.getAdsList({}, (data) => {
+        console.log('15', data)
       })
       allApi.registerTechnician({}, (data) => {
         console.log('16', data)
       })
-      allApi.getAllCertificatelist({}, (data) => {
-        console.log('17', data)
-      })
       allApi.changeGiftInfo({}, (data) => {
         console.log('18', data)
+      })
+//      allApi.withdrawDeposit({}, (data) => {
+//        console.log('19', data)
+//      })
+      allApi.getGiftsdetaillist({TechnicianId: '15babeda564b4bf987395f60f3c1768f'}, (data) => {
+        console.log('20', data)
+      })
+//      allApi.getItemfootcitylist({}, (data) => {
+//        console.log('21', data)
+//      })
+      allApi.getTechnicianIds({}, (data) => {
+        console.log('22', data)
+      })
+      allApi.getTechnicianListByLeaderid({TechleaderId: 1}, (data) => {
+        console.log('23', data)
+      })
+      allApi.getOrderListOfTechByTechid({}, (data) => {
+        console.log('24', data)
+      })
+      allApi.leaderDeletedTech({}, (data) => {
+        console.log('25', data)
+      })
+      allApi.getOrderlisttoday({TechleaderId: 1}, (data) => {
+        console.log('26', data)
       })
     },
     methods: {},
