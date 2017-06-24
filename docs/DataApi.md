@@ -1372,7 +1372,28 @@ http://localhost:8081/massage/appTechleaderData/getServerName.do
     "ErrMsg": "OK"
 }
 
+28.领班修改管理接口
+http://localhost:8081/massage/appTechleaderData/modifyTechnicianInfo.do?technician_id=01ff16a2bb124679a8b53b130a979400&name=测试&headImg=ddddd&gender=1&server_city=泉州&level=0&server_name=精油&price=200&time=90
 
+
+ 	* TODO 技师 下面这写字段 可以选 填写
+	 *<p>Description: 领班修改技师信息 需要提交审核 </p>
+	 * @param	technician_id	技师ID
+	 * @param	headImg	头像
+	 * @param	name	姓名
+	 * @param	gender	性别
+	 * @param	server_city	服务城市
+	 * @param	level	技术等级
+	 * @param	server_name	服务名称
+	 * @param	price	价格
+	 * @param	time	时间
+	 
+返回结果：
+Status	int		0/-1	返回状态码
+ErrMsg	str		ok/desc	请求错误描述
+
+
+	 
 
 
 
