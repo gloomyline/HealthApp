@@ -1297,3 +1297,83 @@ http://localhost:8080/massage/appTechleaderData/getLeaderHomePage.do?&Techleader
     "Errmsg": "OK"
 }
    ```
+
+27.服务项目名称列表接口
+http://localhost:8081/massage/appTechleaderData/getServerName.do
+> 返回数据示例
+     
+   ```json
+{
+    "Status": 0,
+    "Data": {
+        "serverNameList": [
+            {
+                "ITEM_NAME": "深度全身理疗"
+            },
+            {
+                "ITEM_NAME": "夜间推拿理疗"
+            },
+            {
+                "ITEM_NAME": "全身理疗"
+            },
+            {
+                "ITEM_NAME": "头颈肩理疗（坐）"
+            },
+            {
+                "ITEM_NAME": "康复理疗（单次）"
+            },
+            {
+                "ITEM_NAME": "全息足疗"
+            },
+            {
+                "ITEM_NAME": "精油疏络SPA"
+            },
+            {
+                "ITEM_NAME": "肩背精油SPA"
+            },
+            {
+                "ITEM_NAME": "小儿综合调理"
+            },
+            {
+                "ITEM_NAME": "小儿积食厌食调理"
+            },
+            {
+                "ITEM_NAME": "小儿便秘腹泻调理"
+            },
+            {
+                "ITEM_NAME": "无痛通乳"
+            },
+            {
+                "ITEM_NAME": "增加乳汁分泌"
+            },
+            {
+                "ITEM_NAME": "满月蒸汗"
+            },
+            {
+                "ITEM_NAME": "急慢性乳腺炎"
+            },
+            {
+                "ITEM_NAME": "产后开奶"
+            },
+            {
+                "ITEM_NAME": "回奶/排残奶"
+            },
+            {
+                "ITEM_NAME": "艾灸调理"
+            },
+            {
+                "ITEM_NAME": "深度艾灸调理"
+            },
+            {
+                "ITEM_NAME": "小儿咳嗽感冒调理"
+            }
+        ]
+    },
+    "ErrMsg": "OK"
+}
+
+
+
+
+
+
