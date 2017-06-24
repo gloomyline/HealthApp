@@ -8,7 +8,7 @@ export default {
   async getTechList (postData, cb) {
     postData = postData || {page_now: 0, page_size: 10}
     let data = await req.reqByPost('/appTechnicianData/getTechniciansList.do', postData)
-    cb(data.TechnicianLists)
+    cb(data.Technicianlists)
   },
   async getTech (postData, cb) {
     let data = req.reqByPost('/appTechnicianData/getTechnicianInfo.do', postData)

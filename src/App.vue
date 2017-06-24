@@ -18,8 +18,8 @@
   import { Loading } from 'vux'
   import vHeader from '@/components/header'
   import tab from '@/components/tab'
-  import userApi from '@/api/user'
-  import allApi from '@/api/all'
+  //  import userApi from '@/api/user'
+  //  import allApi from '@/api/all'
   export default {
     name: 'app',
     computed: {
@@ -27,38 +27,38 @@
         isLoading: 'isLoading'
       })
     },
-    created () {
-      userApi.getCouponList(null, (data) => {
-        console.log('13', data)
-      })
-      userApi.addFavorite({CustomerId: 1111, Type: 0}, (data) => {
-        console.log('06', data)
-      })
-      userApi.cancelFavorite({CustomerId: 1111, Type: 0}, (data) => {
-        console.log('07', data)
-      })
-      userApi.getFavoriteList({CustomerId: 1111, Type: 0}, (data) => {
-        console.log('08', data)
-      })
-      allApi.submitOrder({CUSTOMER_ID: 1111}, (data) => {
-        console.log('09', data)
-      })
-      allApi.getOrderList({}, (data) => {
-        console.log('10', data)
-      })
-      allApi.getAdsList({}, (data) => {
-        console.log('12', data)
-      })
-      allApi.registerTechnician({}, (data) => {
-        console.log('16', data)
-      })
-      allApi.getAllCertificatelist({}, (data) => {
-        console.log('17', data)
-      })
-      allApi.changeGiftInfo({}, (data) => {
-        console.log('18', data)
-      })
-    },
+//    created () {
+//      userApi.getCouponList(null, (data) => {
+//        console.log('13', data)
+//      })
+//      userApi.addFavorite({CustomerId: 1111, Type: 0}, (data) => {
+//        console.log('06', data)
+//      })
+//      userApi.cancelFavorite({CustomerId: 1111, Type: 0}, (data) => {
+//        console.log('07', data)
+//      })
+//      userApi.getFavoriteList({CustomerId: 1111, Type: 0}, (data) => {
+//        console.log('08', data)
+//      })
+//      allApi.submitOrder({CUSTOMER_ID: 1111}, (data) => {
+//        console.log('09', data)
+//      })
+//      allApi.getOrderList({}, (data) => {
+//        console.log('10', data)
+//      })
+//      allApi.getAdsList({}, (data) => {
+//        console.log('12', data)
+//      })
+//      allApi.registerTechnician({}, (data) => {
+//        console.log('16', data)
+//      })
+//      allApi.getAllCertificatelist({}, (data) => {
+//        console.log('17', data)
+//      })
+//      allApi.changeGiftInfo({}, (data) => {
+//        console.log('18', data)
+//      })
+//    },
     methods: {},
     components: {
       Loading,

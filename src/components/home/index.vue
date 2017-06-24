@@ -8,27 +8,30 @@
         <li v-for="(tech, index) in technicians" class="tech-item" @click="showDetail(index, $event)">
           <div class="avatar">
             <!-- 默认加载本地一张图片 -->
-            <img width="73" height="73" :src="tech.AVATAR" class="avatar-img"
+            <img width="73" height="73" :src="tech.Avatar" class="avatar-img"
                  onerror="this.src='http://192.168.1.128:9999/static/imgs/jishi-default.png'">
-            <span v-show="tech.LEVEL === 1" class="level"></span>
+            <span v-show="tech.Level === 1" class="level"></span>
           </div>
           <div class="content">
             <div class="title-wrapper">
-              <span class="name">{{tech.NAME}}</span>
-              <span class="today-about">{{tech.TODAY_ABOUT | todayAbout}}</span>
+              <span class="name">{{tech.Name}}</span>
+              <span class="today-about">{{tech.TodayAbout | todayAbout}}</span>
             </div>
             <div class="info-wrapper">
-              <span class="age">{{tech.AGE}}岁</span>
+              <span class="age">{{tech.Age}}岁</span>
               <dot></dot>
-              <span class="registar">{{tech.REGISTAR}}</span>
+              <span class="registar">{{tech.Registar}}</span>
               <dot v-show="tech.CERTIFICATE_IDS"></dot>
-              <span class="cretificate">高级推拿师</span>
+              <div class="cretificates">
+                <span v-if="item" v-for="item in certificate(tech.CertificateIds)"
+                      class="cretificate">{{item.CertificateName}}</span>
+              </div>
             </div>
             <div class="desc-wrapper">
-              <p class="text">{{tech.SERVE_CONTENT}}</p>
+              <p class="text">{{tech.ServeContent}}</p>
             </div>
             <div class="star-wrapper">
-              <star :size="36"></star>
+              <star :size="36" :score="tech.Star"></star>
             </div>
           </div>
         </li>
@@ -45,6 +48,7 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
   import { mapGetters } from 'vuex'
+  import { find } from '@/common/js/util'
 
   import vHeader from '@/components/header'
   import dot from '@/components/uiComponents/dot'
@@ -57,8 +61,8 @@
     },
     mounted () {
       let payload = {
-        page_now: 1,
-        page_size: 10
+        PageNow: 1,
+        PageSize: 10
       }
       this.$store.dispatch('getAllTechnicians', payload)
       this.$nextTick(() => {
@@ -91,6 +95,16 @@
         let selectedTech = this.technicians[index]
         this.$store.commit('SELECT_TECHNICIAN', {selectedTech})
         this.$refs.technician.showDetail()
+      },
+      certificate (arr) {
+        arr = (!Array.isArray(arr) || arr.length === 0) ? ['1'] : arr
+        let certificateConfig = this.getStaticConfig().techCertificate
+        let resArr = []
+        arr.forEach((item, index) => {
+          let res = find(certificateConfig, _item => _item.CertificateId === item)
+          resArr.push(res)
+        })
+        return resArr
       }
     },
     filters: {
@@ -164,6 +178,9 @@
             margin-bottom 16px
             font-size 12px
             color #555
+            .cretificates
+              display inline-block
+              vertical-align top
           .desc-wrapper
             margin-bottom 16px
             overflow hidden
