@@ -17,7 +17,7 @@ let options = {emulateJSON: true}
 
 export function reqByPost (url, postData = {}) {
   return new Promise((resolve, reject) => {
-    postData = Object.assign({}, {Customerid: 1111}, postData)
+    postData = Object.assign({}, {CustomerId: 1111}, postData)
     Vue.http.post(prefix + url, postData, options)
       .then(res => {
         let _res = res.body
