@@ -4,8 +4,8 @@
 
 'use strict'
 
-import order from '@/components/order'
-import orderType from '@/components/order/orderType'
+import order from '@/views/customer/order'
+import orderType from '@/views/customer/order/orderType'
 
 export default {
   path: '/order',

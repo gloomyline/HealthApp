@@ -4,12 +4,12 @@
 
 'use strict'
 
-import me from '@/components/me'
-import ticket from '@/components/ticket'
-import collect from '@/components/collect'
-import myOrders from '@/components/myOrders'
-import aboutUS from '@/components/aboutUS'
-import integral from '@/components/integral'
+import me from '@/views/customer/me'
+import ticket from '@/views/customer/ticket'
+import collect from '@/views/customer/collect'
+import myOrders from '@/views/customer/myOrders'
+import aboutUS from '@/views/customer/aboutUS'
+import integral from '@/views/customer/integral'
 
 export default {
   path: '/me',

@@ -4,7 +4,7 @@
 
 'use strict'
 
-import home from '@/components/home'
+import home from '@/views/customer/home'
 
 export default {
   path: '/home',
