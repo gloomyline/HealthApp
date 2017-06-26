@@ -1298,81 +1298,8 @@ http://localhost:8080/massage/appTechleaderData/getLeaderHomePage.do?&Techleader
 }
    ```
 
-27.服务项目名称列表接口
-http://localhost:8081/massage/appTechleaderData/getServerName.do
-> 返回数据示例
-     
-   ```json
-{
-    "Status": 0,
-    "Data": {
-        "serverNameList": [
-            {
-                "ITEM_NAME": "深度全身理疗"
-            },
-            {
-                "ITEM_NAME": "夜间推拿理疗"
-            },
-            {
-                "ITEM_NAME": "全身理疗"
-            },
-            {
-                "ITEM_NAME": "头颈肩理疗（坐）"
-            },
-            {
-                "ITEM_NAME": "康复理疗（单次）"
-            },
-            {
-                "ITEM_NAME": "全息足疗"
-            },
-            {
-                "ITEM_NAME": "精油疏络SPA"
-            },
-            {
-                "ITEM_NAME": "肩背精油SPA"
-            },
-            {
-                "ITEM_NAME": "小儿综合调理"
-            },
-            {
-                "ITEM_NAME": "小儿积食厌食调理"
-            },
-            {
-                "ITEM_NAME": "小儿便秘腹泻调理"
-            },
-            {
-                "ITEM_NAME": "无痛通乳"
-            },
-            {
-                "ITEM_NAME": "增加乳汁分泌"
-            },
-            {
-                "ITEM_NAME": "满月蒸汗"
-            },
-            {
-                "ITEM_NAME": "急慢性乳腺炎"
-            },
-            {
-                "ITEM_NAME": "产后开奶"
-            },
-            {
-                "ITEM_NAME": "回奶/排残奶"
-            },
-            {
-                "ITEM_NAME": "艾灸调理"
-            },
-            {
-                "ITEM_NAME": "深度艾灸调理"
-            },
-            {
-                "ITEM_NAME": "小儿咳嗽感冒调理"
-            }
-        ]
-    },
-    "ErrMsg": "OK"
-}
 
-28.领班修改管理接口
+27.领班修改管理接口
 http://localhost:8081/massage/appTechleaderData/modifyTechnicianInfo.do?technician_id=01ff16a2bb124679a8b53b130a979400&name=测试&headImg=ddddd&gender=1&server_city=泉州&level=0&server_name=精油&price=200&time=90
 
 
@@ -1391,6 +1318,32 @@ http://localhost:8081/massage/appTechleaderData/modifyTechnicianInfo.do?technici
 返回结果：
 Status	int		0/-1	返回状态码
 ErrMsg	str		ok/desc	请求错误描述
+
+28.领班个人信息详情
+http://localhost:8081/massage/appTechleaderData/getTechnicianInfo.do?TECHLEADER_ID=
+
+请求参数：
+* <p>Description: 获取领班个人信息（领班基础资料和金额） </p>
+* @param	TECHLEADER_ID 领班Id
+
+返回结果：
+{
+    "technicianInfo": {
+        "TECHLEADER_ID": "333cf4b974c54ebc92d7e4ecfe0ceb78",	
+        "BALANCE": 0,	//领班余额
+        "AVATAR": "",	//领班头像
+        "NAME": "陈领班",	//领班姓名
+        "AGE": "18",	//年龄
+        "TEL": "13506092806",	//电话
+        "SEX": "1",	//性别
+        "LEVEL": "0",	//等级
+        "REGISTER_TIME": "2017-06-26 12:24:54",
+        "QR_CODE_PATH": "http://localhost:8081/massage/uploadFiles/twoDimensionCode/2babee0c98aa438c86aadfa4d8c5c268.png"	//领班二维码
+    },
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+
 
 
 	 
