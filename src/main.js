@@ -20,10 +20,10 @@ Vue.use(vueResource)
 // toggle client stat
 let href = window.location.href
 if (/customer/.test(href)) {
-  window.location.href = href.replace(/\/customer#/, '')
+  // window.location.href = href.replace(/\/customer#/, '')
   store.commit('CUSTOMER_APP_STATUS')
 } else if (/technician/.test(href)) {
-  window.location.href = href.replace(/\/technician#/, '')
+  // window.location.href = href.replace(/\/technician#/, '')
   store.commit('TECHNICIAN_APP_STATUS')
 } else {
   store.commit('CUSTOMER_APP_STATUS')
