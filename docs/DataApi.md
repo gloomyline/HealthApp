@@ -1327,6 +1327,7 @@ http://localhost:8081/massage/appTechleaderData/getTechnicianInfo.do?TECHLEADER_
 * @param	TECHLEADER_ID 领班Id
 
 返回结果：
+   ```json
 {
     "technicianInfo": {
         "TECHLEADER_ID": "333cf4b974c54ebc92d7e4ecfe0ceb78",	
@@ -1343,7 +1344,7 @@ http://localhost:8081/massage/appTechleaderData/getTechnicianInfo.do?TECHLEADER_
     "Status": 0,
     "ErrMsg": "OK"
 }
-
+```
 
 
 	 
