@@ -1346,6 +1346,20 @@ http://localhost:8081/massage/appTechleaderData/getTechnicianInfo.do?TECHLEADER_
 }
 ```
 
+29. 控制技师上线下线接口
+	-http://localhost:8081/massage/appTechnicianData/setOnline.do?technicianId=15babeda564b4bf987395f60f3c1768f&onlineType=1
+	
+	-请求参数：
+	 * @param technicianId	技术ID 
+	 * @param onlineType	是否在线，0在线，1不在线
+	 
+返回结果：
+   ```json
+{
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+```
 
 	 
 
