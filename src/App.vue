@@ -13,7 +13,22 @@
           <tab></tab>
         </div>
       </div>
-      <div class="technician-client" v-else=""></div>
+      <div class="technician-client" v-else>
+        <ul>
+          <li>
+            <router-link to="/technician/home">首页</router-link>
+          </li>
+          <li>
+            <router-link to="/technician/order">订单</router-link>
+          </li>
+          <li>
+            <router-link to="/technician/me">我的</router-link>
+          </li>
+        </ul>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +49,11 @@
       })
     },
     created () {
+      if (this.appStat === 0) {
+        this.$router.push('/home')
+      } else {
+        this.$router.push('/technician/home')
+      }
 //      userApi.addFavorite({CustomerId: 1111, Type: 0}, (data) => {
 //        console.log('06', data)
 //      })

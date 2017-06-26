@@ -11,6 +11,9 @@ import myOrders from '@/components/myOrders'
 import aboutUS from '@/components/aboutUS'
 import integral from '@/components/integral'
 
+// technician client route
+import * as technicianRoute from './technicianClient'
+
 // import technician from '@/components/technician'
 Vue.use(Router)
 
@@ -69,7 +72,10 @@ export default new Router({
       path: '/service',
       name: 'orders',
       component: service
-    }
+    },
+    technicianRoute.home,
+    technicianRoute.order,
+    technicianRoute.me
   ],
   linkActiveClass: 'active'
 })
