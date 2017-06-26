@@ -4,11 +4,31 @@
     <div class="loading-wrapper">
       <loading v-model="isLoading"></loading>
     </div>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
-    <div class="footer">
-      <tab></tab>
+    <div class="client-container">
+      <div class="customer-client" v-if="appStat === 0">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+        <div class="footer">
+          <tab></tab>
+        </div>
+      </div>
+      <div class="technician-client" v-else>
+        <ul>
+          <li>
+            <router-link to="/technician/home">首页</router-link>
+          </li>
+          <li>
+            <router-link to="/technician/order">订单</router-link>
+          </li>
+          <li>
+            <router-link to="/technician/me">我的</router-link>
+          </li>
+        </ul>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </div>
     </div>
   </div>
 </template>
@@ -18,16 +38,22 @@
   import { Loading } from 'vux'
   import vHeader from '@/components/header'
   import tab from '@/components/tab'
-//  import userApi from '@/api/user'
+  //  import userApi from '@/api/user'
   //  import allApi from '@/api/all'
   export default {
     name: 'app',
     computed: {
       ...mapGetters({
+        appStat: 'appStat',
         isLoading: 'isLoading'
       })
     },
     created () {
+      if (this.appStat === 0) {
+        this.$router.push('/home')
+      } else {
+        this.$router.push('/technician/home')
+      }
 //      userApi.addFavorite({CustomerId: 1111, Type: 0}, (data) => {
 //        console.log('06', data)
 //      })

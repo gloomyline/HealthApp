@@ -11,7 +11,7 @@ export default {
     cb(data.Technicianlists)
   },
   async getTech (postData, cb) {
-    let data = req.reqByPost('/appTechnicianData/getTechnicianInfo.do', postData)
+    let data = await req.reqByPost('/appTechnicianData/getTechnicianInfo.do', postData)
     cb(data)
   }
 }

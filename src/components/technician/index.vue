@@ -10,19 +10,19 @@
       <div class="info-wrapper">
         <div class="info">
           <div class="info-left">
-            <img class="avatar" width="73" height="73" :src="technicianInfo.AVATAR"
+            <img class="avatar" width="73" height="73" :src="technicianInfo.Avatar"
                  onerror="this.src='http://192.168.1.128:9999/static/imgs/jishi-default.png'">
           </div>
           <div class="info-right">
             <div class="name-wrapper">
-              <span class="name">{{technicianInfo.NAME}}</span>
+              <span class="name">{{technicianInfo.Name}}</span>
             </div>
             <div class="sim-info-wrapper">
-              <span class="sex">{{technicianInfo.SEX | sexFormat}}</span>
+              <span class="sex">{{technicianInfo.Sex | sexFormat}}</span>
               <dot></dot>
-              <span class="age">{{technicianInfo.AGE}}岁</span>
+              <span class="age">{{technicianInfo.Age}}岁</span>
               <dot></dot>
-              <span class="registar">{{technicianInfo.REGISTAR}}</span>
+              <span class="registar">{{technicianInfo.Registar}}</span>
             </div>
             <div class="certificate">
               <span class="name">高级推拿师</span>
@@ -63,12 +63,12 @@
         <div class="ratings-list">
           <li v-for="rating in ratings" class="rating-item">
             <div class="star-wrapper">
-              <star :size="36" :score="rating.COMMENTS_STAR"></star>
+              <star :size="36" :score="rating.CommentsStar"></star>
             </div>
-            <p class="content">{{rating.COMMENTS_CONTENT}}</p>
+            <p class="content">{{rating.CommentsContent}}</p>
             <div class="extra">
-              <span class="tel">{{rating.CUSTOMER_TEL}}</span>
-              <span class="time">{{rating.CREATETIME}}</span>
+              <span class="tel">{{rating.CustomerTel}}</span>
+              <span class="time">{{rating.Createtime | formatTime}}</span>
             </div>
           </li>
         </div>
@@ -86,6 +86,7 @@
 <script type="text/ecmascript-6">
   import { mapGetters } from 'vuex'
   import BScroll from 'better-scroll'
+  import { formatDate } from '@/common/js/date'
   import subscribe from '@/components/subscribe'
   import dot from '@/components/uiComponents/dot'
   import star from '@/components/uiComponents/star'
@@ -122,7 +123,7 @@
         subscribeShow: 'subscribeShow'
       }),
       isFavorite () {
-        return this.loadFromLocal(this.technicianInfo.TECHNICIAN_ID, 'favorite', this.favorite)
+        return this.loadFromLocal(this.technicianInfo.TechnicianId, 'favorite', this.favorite)
       },
       ratingsCount () {
         if (!this.ratings) return
@@ -131,8 +132,8 @@
     },
     watch: {
       'technicianInfo' () {
-        this.favorite = this.technicianInfo.IF_COLLECT || false
-        this.ratings = this.technicianInfo.CommentsList
+        this.favorite = this.technicianInfo.IfCollect || false
+        this.ratings = this.technicianInfo.Commentslist
         this.$nextTick(() => {
           this._initScroll()
         })
@@ -150,10 +151,9 @@
         this.services = services
         this.$store.commit('TOGGLE_TECH_DETAIL')
         let payload = {
-          CUSTOMER_ID: 1111,
-          TECHNICIAN_ID: this.technicianInfo.TECHNICIAN_ID,
-          page_now: 0,
-          page_size: 10
+          TechnicianId: this.technicianInfo.TechnicianId,
+          PageNow: 1,
+          PageSize: 10
         }
         this.$store.dispatch('getTechnicians', payload)
       },
@@ -168,7 +168,7 @@
       toggleFavorite (event) {
         if (!event._constructed) return
         this.favorite = !this.favorite
-        this.saveToLocal(this.technicianInfo.TECHNICIAN_ID, 'favorite', this.favorite)
+        this.saveToLocal(this.technicianInfo.TechnicianId, 'favorite', this.favorite)
       },
       subscribe (event) {
         if (!event._constructed) return
@@ -187,6 +187,10 @@
           return str.substr(0, 100) + '...'
         }
         return str
+      },
+      formatTime (timeStamp) {
+        timeStamp = timeStamp * 1
+        return formatDate(new Date(timeStamp), 'yyyy-MM-dd hh:mm')
       }
     },
     components: {

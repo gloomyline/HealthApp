@@ -6,6 +6,7 @@ import * as types from '../mutation-types'
 
 // init state
 const state = {
+  appStat: 1,
   tabShow: true
 }
 
@@ -22,6 +23,12 @@ const mutations = {
   },
   [types.HIDETAB] (state) {
     state.tabShow = false
+  },
+  [types.CUSTOMER_APP_STATUS] (state) {
+    state.appStat = 0
+  },
+  [types.TECHNICIAN_APP_STATUS] (state) {
+    state.appStat = 1
   }
 }
 

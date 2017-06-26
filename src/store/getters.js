@@ -8,3 +8,5 @@ export const isLoading = state => {
 export const tabShow = state => {
   return state.common.tabShow
 }
+
+export const appStat = state => state.common.appStat

@@ -17,7 +17,7 @@ Vue.prototype.getStaticConfig = function () {
 
 Vue.use(vueResource)
 
-router.push('/home')
+// router.push('/home')
 
 Vue.config.productionTip = false
 
