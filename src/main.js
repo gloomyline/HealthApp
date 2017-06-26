@@ -17,7 +17,17 @@ Vue.prototype.getStaticConfig = function () {
 
 Vue.use(vueResource)
 
-// router.push('/home')
+// toggle client stat
+let href = window.location.href
+if (/customer/.test(href)) {
+  window.location.href = href.replace(/\/customer#/, '')
+  store.commit('CUSTOMER_APP_STATUS')
+} else if (/technician/.test(href)) {
+  window.location.href = href.replace(/\/technician#/, '')
+  store.commit('TECHNICIAN_APP_STATUS')
+} else {
+  store.commit('CUSTOMER_APP_STATUS')
+}
 
 Vue.config.productionTip = false
 

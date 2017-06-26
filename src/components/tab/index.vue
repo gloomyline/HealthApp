@@ -12,7 +12,7 @@
 <script type="text/ecmascript-6">
   import { mapGetters } from 'vuex'
 
-  const buttons = [
+  const customerButtons = [
     {
       icon: 'home',
       title: '首页',
@@ -35,14 +35,40 @@
     }
   ]
 
+  const technicianButtons = [
+    {
+      icon: 'home',
+      title: '首页',
+      route: '/technician/home'
+    },
+    {
+      icon: 'order',
+      title: '订单',
+      route: '/technician/order'
+    },
+    {
+      icon: 'me',
+      title: '我的',
+      route: '/technician/me'
+    }
+  ]
+
   export default {
     data () {
       return {
-        buttons
+        buttons: []
       }
+    },
+    beforeCreate () {
+    },
+    created () {
+      this.buttons = this.appStat === 0 ? customerButtons : technicianButtons
+    },
+    mounted () {
     },
     computed: {
       ...mapGetters({
+        appStat: 'appStat',
         tabShow: 'tabShow'
       })
     }

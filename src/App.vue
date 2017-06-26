@@ -5,6 +5,7 @@
       <loading v-model="isLoading"></loading>
     </div>
     <div class="client-container">
+      <!-- 客户端 -->
       <div class="customer-client" v-if="appStat === 0">
         <keep-alive>
           <router-view></router-view>
@@ -13,21 +14,14 @@
           <tab></tab>
         </div>
       </div>
+      <!-- 技师端 -->
       <div class="technician-client" v-else>
-        <ul>
-          <li>
-            <router-link to="/technician/home">首页</router-link>
-          </li>
-          <li>
-            <router-link to="/technician/order">订单</router-link>
-          </li>
-          <li>
-            <router-link to="/technician/me">我的</router-link>
-          </li>
-        </ul>
         <keep-alive>
           <router-view></router-view>
         </keep-alive>
+        <div class="footer">
+          <tab></tab>
+        </div>
       </div>
     </div>
   </div>
@@ -121,7 +115,7 @@
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
   #app
     .loading-wrapper
       .weui-toast
