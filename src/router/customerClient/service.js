@@ -4,7 +4,7 @@
 
 'use strict'
 
-import service from '@/components/service'
+import service from '@/views/customer/service'
 
 export default {
   path: '/service',

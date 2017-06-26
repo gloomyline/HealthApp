@@ -6,7 +6,7 @@ import * as types from '../mutation-types'
 
 // init state
 const state = {
-  appStat: 1,
+  appStat: 0,
   tabShow: true
 }
 

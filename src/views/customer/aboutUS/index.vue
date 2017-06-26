@@ -58,7 +58,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "../../common/stylus/mixin.styl"
+  @import "../../../common/stylus/mixin.styl"
   .about-page
     position fixed
     left 0
