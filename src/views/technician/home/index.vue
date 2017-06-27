@@ -14,6 +14,45 @@
         </div>
       </transition>
     </div>
+    <div class="order-wrapper">
+      <div class="today-order">
+        <div class="title">
+          <h2 class="text">今天</h2>
+          <div class="total-order-count">
+            <span class="name">总订单</span>
+            <span class="val">6单</span>
+          </div>
+        </div>
+        <div class="order-cate">
+          <div class="waiting"></div>
+          <div class="completed"></div>
+          <div class="canceled"></div>
+        </div>
+      </div>
+      <div class="yesterday-order">
+        <div class="title">
+          <h2 class="text">昨天</h2>
+          <div class="total-order-count">
+            <span class="name">总订单</span>
+            <span class="val">6单</span>
+          </div>
+        </div>
+        <div class="income-cate">
+          <div class="yesterday-income"></div>
+          <div class="month-income"></div>
+          <div class="detail"></div>
+        </div>
+      </div>
+      <div class="latest-order">
+        <h2 class="title">最近订单</h2>
+        <div class="content-wrapper">
+          <div class="content"></div>
+          <div class="btn-container">
+            <button>确认接单</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <transition name="mask-fade">
       <div class="mask" v-show="listShow" @click="toggleList"></div>
     </transition>
@@ -79,6 +118,7 @@
         height 41px
         line-height 41px
         padding-left 16px
+        box-sizing border-box
         font-size 0
         color #fff
         background rgb(88, 79, 96)
@@ -90,7 +130,7 @@
           font-size 15px
         .list-toggle-btn
           position absolute
-          right 24px
+          right 12px
           top 13px
           height 14px
           padding 4px
