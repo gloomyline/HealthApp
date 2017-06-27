@@ -57,6 +57,7 @@
     methods: {
       selectStatus (index) {
         this.nowStatus = this.statusList[index].status
+        this.toggleList()
       },
       toggleList () {
         this.listShow = !this.listShow
@@ -107,12 +108,12 @@
         left 0
         top 0
         width 100%
-        transform translate3d(0, 100%, 0)
+        transform translate3d(0, 80%, 0)
         background #fff
         z-index 5
         .list-item
-          height 20px
-          line-height 20px
+          height 24px
+          line-height 24px
           padding 0 12px
           border-bottom 1px solid rgb(155, 155, 155)
           font-size 12px
@@ -128,7 +129,7 @@
       bottom 49px
       width 100%
       height 100%
-      background #9b9b9b
+      background rgba(0, 0, 0, .5)
       z-index 5
       &.mask-fade-enter-active, &.mask-fade-leave-active
         transition all .3s ease
