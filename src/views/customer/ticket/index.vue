@@ -10,7 +10,7 @@
     </div>
     <div class="favourable">
       <input class="infan" type="text" placeholder="请输入优惠券激活码"/>
-      <button class="icon">激活</button>
+      <div class="icon">激活</div>
     </div>
     <div class="coupon">
       <div class="coupon-item">
@@ -59,55 +59,52 @@
         top 6px
         padding 4px
     .favourable
-      flex 1
+      display flex
       width 100%
       height 42px
       background #fff
       border-bottom 15px solid #f1f1f1
       .infan
+        position relative
         height 27px
-        width 285px
+        flex 80% 0 0
         border 1px solid #9B9B9B
         margin 8px
         border-radius 5px
         box-sizing border-box
         padding-left 13px
       .icon
-        width 60px
-        height 27px
+        flex 0 0 15%
+        position relative
+        height 20px
         border-radius 5px
-        border 0px
         background rgb(88, 79, 96)
         font-size 15px
         color #fff
         text-align center
-
+        padding-top 6px
+        top 8px
     .coupon
       width 100%
       .coupon-item
         position absolute
-        width 360px
+        width 100%
         height 100px
         background #fff
         margin 8px
         border-radius 5px
         .item
-          display block
           bg-img('card-bg')
           height 80px
-          width 330px
-          margin-left 15px
-          margin-top 10px
+          background-size contain
+          background-repeat no-repeat
+          display flex
           .indate, .price
             display inline-block
             color #fff
             box-sizing border-box
           .indate
-            margin-left 8px
-            margin-top 8px
-            margin-bottom 8px
             border-right 1px
-            width 260px
             .text
               position relative
               top -5px

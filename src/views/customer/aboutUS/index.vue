@@ -13,12 +13,12 @@
       <span class="text">好多养生</span>
     </div>
     <group class="content-wrapper">
-      <cell is-link class="content" @click.native="showProtocol">
+      <cell-box is-link class="content" @click.native="showProtocol">
         <div class="text">使用协议</div>
-      </cell>
-      <cell is-link class="content" @click.native="showStatement">
+      </cell-box>
+      <cell-box is-link class="content" @click.native="showStatement">
         <div class="text">责任声明</div>
-      </cell>
+      </cell-box>
     </group>
     <div class="iphone">
       <div class="icon"></div>
@@ -85,15 +85,18 @@
     .logo
       width 100%
       height 250px
-      margin 80px 150px
       display flex
-      flex-direction column
+      justify-content center
+      padding-top 80px
+      padding-bottom 50px
+      /*flex-direction column*/
       .img
         inline-icon(71px, 71px)
         bg-img('iTunesArtwork-Retina')
       .text
+        position fixed
         font-size 13px
-        margin 15px 8px
+        padding-top 90px
     .content-wrapper
       width 100%
       height 90px
@@ -110,14 +113,19 @@
       height 40px
       font-size 13px
       padding-top 40px
+      justify-content center
       .icon
-        width 15px
+        /*flex 0 0 30%*/
+        bg-img(list_icon)
+        background-repeat no-repeat
+        background-position right
+        width 36px
         height 15px
-        padding-left 60px
+        background-size 15px
       .text
-        padding-left 15px
+        padding-left 10px
       .num
-        padding-left 25px
+        padding-left 15px
     .copyright
       font-size 11px
       color #7e8c8d

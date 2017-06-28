@@ -2,7 +2,7 @@
   <div class="me-page">
     <div class="header">
       <group>
-        <cell-box is-link>
+        <cell-box is-link :link="list.link1">
           <div class="avatar">
             <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
           </div>
@@ -47,8 +47,13 @@
 
 <script type="text/ecmascript-6">
   import { CellBox, Group, Cell } from 'vux'
+  //  let list = [{link1: '/information'}]
   export default{
-
+    data () {
+      return {
+        list: [{link1: '/information'}]
+      }
+    },
     components: {
       CellBox,
       Group,
