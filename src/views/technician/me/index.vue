@@ -2,7 +2,7 @@
   <div class="me-page">
     <div class="header">
       <group>
-        <cell-box is-link :link="list.link1">
+        <cell-box is-link link="me/information">
           <div class="avatar">
             <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
           </div>
@@ -21,7 +21,7 @@
       <div class="tag">高级按摩师</div>
     </div>
     <group class="set-wrapper">
-      <cell-box is-link>
+      <cell-box is-link link="me/balance">
         <div class="icon"></div>
         <div class="set">设置服务区</div>
       </cell-box>
@@ -44,15 +44,19 @@
     </div>
   </div>
 </template>
-
 <script type="text/ecmascript-6">
   import { CellBox, Group, Cell } from 'vux'
   //  let list = [{link1: '/information'}]
   export default{
     data () {
       return {
-        list: [{link1: '/information'}]
+//        list: [{link: '/information'}]
       }
+    },
+    methods: {
+//      toNew: function () {
+//        this.$router.push({path: '/technician/me/information'})
+//      }
     },
     components: {
       CellBox,
