@@ -615,6 +615,7 @@ http://localhost:8080/massage/appCommentsData/sendComment.do?OrderId=18828c7c79e
 | Position | string |  |  | true | 应聘职位（0中医推拿，1SPA推拿，2小儿推拿师）
 | ExperienceYear | string |  |  | true | 工作年限（0是5年以下，1是5-8年，2是8-15年，3是15年以上）
 | Experience | string |  |  | true | 工作经历
+| Openid | string |  |  | true | 用户授权登录获取的openid
 
 
 - response
@@ -627,7 +628,7 @@ http://localhost:8080/massage/appCommentsData/sendComment.do?OrderId=18828c7c79e
 
 > 请求url示例
 
-http://localhost:8080/massage/appTechnicianData/registerTechnician.do?TechleaderId=&Avatar=3212315&Name=alan&Age=28&Sex=0&ServerCity=xiamen&Tel=16666666666&Addr=donghaidajie&Position=1&ExperienceYear=1&Experience=She is very beautiful
+http://localhost:8080/massage/appTechnicianData/registerTechnician.do?TechleaderId=&Avatar=3212315&Name=alan&Age=28&Sex=0&ServerCity=xiamen&Tel=13606013761&Addr=donghaidajie&Position=1&ExperienceYear=1&Experience=She is very beautiful&Openid=o-9OW0p0PPEs_b-5NS_ozLBDbwAU
 > 返回数据示例
   
 ```json
