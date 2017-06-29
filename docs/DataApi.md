@@ -1397,7 +1397,7 @@ ErrMsg	str		ok/desc	请求错误描述
     "ErrMsg": "OK"
 }
 ``` 
-31. 接口
+31. 根据微信用户id获取各自角色接口
    - url: **http://hostname:port/massage/appOrderData/getRoleByOpenid.do**
    - postData
    
