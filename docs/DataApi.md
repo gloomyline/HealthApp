@@ -1397,7 +1397,37 @@ ErrMsg	str		ok/desc	请求错误描述
     "ErrMsg": "OK"
 }
 ``` 
-	  
+31. 接口
+   - url: **http://hostname:port/massage/appOrderData/getRoleByOpenid.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | Openid | string |  |  | true | 微信用户与公众号的唯一标识
+
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appOrderData/getRoleByOpenid.do?Openid=o-9OW0v0J_s8gJQdWRAVQ67tTYrQ
+ 
+
+返回结果：
+   ```json
+   
+{
+    "Data": 2, //1客户，2技师，3领班，4技师+领班
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+``` 
 
 
 
