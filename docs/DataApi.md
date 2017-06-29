@@ -631,6 +631,7 @@ http://localhost:8080/massage/appCommentsData/sendComment.do?OrderId=18828c7c79e
 http://localhost:8080/massage/appTechnicianData/registerTechnician.do?TechleaderId=&Avatar=3212315&Name=alan&Age=28&Sex=0&ServerCity=xiamen&Tel=13606013761&Addr=donghaidajie&Position=1&ExperienceYear=1&Experience=She is very beautiful&Openid=o-9OW0p0PPEs_b-5NS_ozLBDbwAU
 > 返回数据示例
   
+  
 ```json
 {
   "Status": 0,
