@@ -1361,7 +1361,43 @@ ErrMsg	str		ok/desc	请求错误描述
 }
 ```
 
+30. 所有酒店列表接口
+	- http://192.168.1.52:8081/massage/appOrderData/hotelLists.do
 	 
+	 - 请求参数：无
+
+返回结果：
+   ```json
+{
+    "listHote": [
+        {
+            "HOTEL_NAME": "悦华酒店",
+            "HOTEL_CITY": "11",
+            "HOTEL_TEL": "110011110",
+            "CREATE_TIME": "2017-06-15 20:30:22",
+            "HOTEL_LONGITUDE": "118.68460083007813",
+            "HOTEL_PROVINCE": "1",
+            "HOTEL_ID": "1",
+            "HOTEL_ADD": "丰泽街110号",
+            "HOTEL_LATITUDE": "24.87724494934082"
+        },
+        {
+            "HOTEL_NAME": "老钱饭店",
+            "HOTEL_CITY": "11",
+            "HOTEL_TEL": "110011110",
+            "CREATE_TIME": "2017-06-15 20:30:22",
+            "HOTEL_LONGITUDE": "118.68388366699219",
+            "HOTEL_PROVINCE": "1",
+            "HOTEL_ID": "2",
+            "HOTEL_ADD": "东海街道110号",
+            "HOTEL_LATITUDE": "24.87771987915039"
+        }
+    ],
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+``` 
+	  
 
 
 
