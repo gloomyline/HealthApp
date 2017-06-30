@@ -34,7 +34,7 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
-    hostname: '192.168.1.126',
-    _port: 8080
+    hostname: '192.168.1.52',
+    _port: 8081
   }
 }
