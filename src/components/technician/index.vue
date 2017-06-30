@@ -145,7 +145,10 @@
     methods: {
       _initScroll () {
         if (!this.scroll) {
-          this.scroll = new BScroll(this.$el, {click: true})
+          this.scroll = new BScroll(this.$el, {click: true, probeType: 3})
+          this.scroll.on('scroll', pos => {
+//            console.log('x:' + pos.x, 'y:' + pos.y)
+          })
         } else {
           this.scroll.refresh()
         }

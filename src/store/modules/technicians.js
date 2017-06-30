@@ -48,7 +48,7 @@ const mutations = {
     state._isLoading = false
   },
   [types.RECEIVE_TECHLIST] (state, {technicians}) {
-    state.all = technicians
+    state.all = state.all.concat(technicians)
   },
   [types.RECEIVE_TECH] (state, {technician}) {
     let selected = state.selected

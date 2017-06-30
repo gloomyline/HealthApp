@@ -4,7 +4,7 @@
       <v-header></v-header>
     </div>
     <div class="tech-list-wrapper tech-list-hook">
-      <ul>
+      <ul class="tech-list-content-hook">
         <li v-for="(tech, index) in technicians" class="tech-item" @click="showDetail(index, $event)">
           <div class="avatar">
             <!-- 默认加载本地一张图片 -->
@@ -55,14 +55,20 @@
   import star from '@/components/uiComponents/star'
   import technician from '@/components/technician'
 
+  // define how many strips of records was loaded by default
+  const PAGE_SIZE = 10
+
   export default {
     data () {
-      return {}
+      return {
+        listHeight: 0,
+        pageNow: 1
+      }
     },
     mounted () {
       let payload = {
-        PageNow: 1,
-        PageSize: 10
+        PageNow: this.pageNow,
+        PageSize: PAGE_SIZE
       }
       this.$store.dispatch('getAllTechnicians', payload)
       this.$nextTick(() => {
@@ -73,11 +79,13 @@
       'technicians' () {
         this.$nextTick(() => {
           this._initScroll()
+          this._calculateHeight()
         })
       }
     },
     computed: {
       ...mapGetters({
+        isLoading: 'isLoading',
         detailShow: 'detailShow',
         technicians: 'allTechnicians'
       })
@@ -85,10 +93,26 @@
     methods: {
       _initScroll () {
         if (!this.scroll) {
-          this.scroll = new BScroll(this.$el.querySelector('.tech-list-hook'), {click: true})
+          this.scroll = new BScroll(this.$el.querySelector('.tech-list-hook'), {click: true, probeType: 3})
+          this.scroll.on('scroll', pos => {
+            let listWindowHeight = this.$el.querySelector('.tech-list-hook').clientHeight
+            if (this.listHeight + pos.y <= listWindowHeight) {
+              if (this.isLoading) return // forbid send request repeatedly
+              this.pageNow++
+              let payload = {
+                PageNow: (this.pageNow - 1) * PAGE_SIZE + 1,
+                PageSize: PAGE_SIZE
+              }
+              this.$store.dispatch('getAllTechnicians', payload)
+            }
+          })
         } else {
           this.scroll.refresh()
         }
+      },
+      _calculateHeight () {
+        let scrollList = this.$el.querySelector('.tech-list-content-hook')
+        this.listHeight = scrollList.clientHeight
       },
       showDetail (index, event) {
         if (!event._constructed) return
