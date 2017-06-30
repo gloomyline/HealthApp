@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <p>This is canceled!</p>
+  <div class="confirming-order">
+    <p>This is confirming!</p>
   </div>
 </template>
 
@@ -9,5 +9,6 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+  .confirming-order
+    background #fff
 </style>

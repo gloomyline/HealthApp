@@ -8,6 +8,7 @@ export const REQUEST_SUCCESS = 'REQUEST_SUCCESS'              // 请求成功
 export const REQUEST_FAILURE = 'REQUEST_FAILURE'              // 请求失败
 export const CUSTOMER_APP_STATUS = 'CUSTOMER_APP_STATUS'      // 切换app状态到客户端(0: 客户端, 1: 技师端)
 export const TECHNICIAN_APP_STATUS = 'TECHNICIAN_APP_STATUS'  // 切换app状态到技师端(0: 客户端, 1: 技师端)
+export const CAPTAIN_APP_STATUS = 'CAPTAIN_APP_STATUS'        // 切换app状态到技师端(0: 客户端, 1: 技师端, 2: 领班端)
 export const SHOWTAB = 'SHOWTAB'                              // 显示主页导航
 export const HIDETAB = 'HIDETAB'                              // 隐藏主页导航
 

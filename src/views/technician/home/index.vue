@@ -110,19 +110,19 @@
   const ON_WORKING = 1
   const statusList = [
     {
-      name: '下班',
-      status: OFF_WORKING
-    },
-    {
       name: '上班',
       status: ON_WORKING
+    },
+    {
+      name: '下班',
+      status: OFF_WORKING
     }
   ]
 
   export default{
     data () {
       return {
-        nowStatus: 0,
+        nowStatus: 1,
         statusList,
         listShow: false
       }
@@ -195,16 +195,17 @@
         left 0
         top 0
         width 100%
-        transform translate3d(0, 80%, 0)
-        background #fff
+        transform translate3d(0, 50%, 0)
+        background #f1f1f1
         z-index 5
         .list-item
-          height 24px
-          line-height 24px
-          padding 0 12px
+          height 41px
+          line-height 41px
+          text-align center
+          box-sizing border-box
           border-bottom 1px solid rgb(155, 155, 155)
-          font-size 12px
-          color rgb(155, 155, 155)
+          font-size 15px
+          color rgb(47, 47, 53)
         &.fade-enter-active, &.fade-leave-active
           transition all .4s ease
         &.fade-enter, &.fade-leave-active

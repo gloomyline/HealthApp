@@ -13,7 +13,7 @@ export default {
   component: technicianMe,
   children: [
     {
-      path: 'technician/me/information',
+      path: 'information',
       name: 'information',
       component: information
     }

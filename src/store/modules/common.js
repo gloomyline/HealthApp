@@ -29,6 +29,9 @@ const mutations = {
   },
   [types.TECHNICIAN_APP_STATUS] (state) {
     state.appStat = 1
+  },
+  [types.CAPTAIN_APP_STATUS] (state) {
+    state.appStat = 2
   }
 }
 

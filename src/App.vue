@@ -15,7 +15,16 @@
         </div>
       </div>
       <!-- 技师端 -->
-      <div class="technician-client" v-else>
+      <div class="technician-client" v-else-if="appStat === 1">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+        <div class="footer">
+          <tab></tab>
+        </div>
+      </div>
+      <!-- 领班端 -->
+      <div class="captain-client" v-else>
         <keep-alive>
           <router-view></router-view>
         </keep-alive>
@@ -45,8 +54,10 @@
     created () {
       if (this.appStat === 0) {
         this.$router.push('/home')
-      } else {
+      } else if (this.appStat === 1) {
         this.$router.push('/technician/home')
+      } else if (this.appStat === 2) {
+        this.$router.push('/captain/home')
       }
 //      userApi.addFavorite({CustomerId: 1111, Type: 0}, (data) => {
 //        console.log('06', data)
