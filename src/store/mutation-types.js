@@ -19,6 +19,7 @@ export const TOGGLE_TECH_DETAIL = 'TOGGLE_TECH_DETAIL'        // 切换技师详
 export const SELECT_TECHNICIAN = 'SELECT_TECHNICIAN'          // 选择技师
 export const TOGGLE_SUBSCRIBE = 'TOGGLE_SUBSCRIBE'            // 切换预约
 export const SELECT_SUBSCRIBE = 'SELECT_SUBSCRIBE'            // 选择预约技师
+export const CONFIRMED_SUBSCRIBE = 'CONFIRMED_SUBSCRIBE'      // 确认预约订单
 
 // orders
 export const RECEIVE_ITEM_LIST = 'RECEIVE_ITEM_LIST'          // 接收项目列表

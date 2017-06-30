@@ -6,12 +6,15 @@ import * as types from '../mutation-types'
 // init state
 const state = {
   isSubscribing: false,
-  subscribing: {}
+  subscribing: {},
+  subscribed: {}
 }
 
 // getters
 const getters = {
-  subscribeShow: state => state.isSubscribing
+  subscribeShow: state => state.isSubscribing,
+  subscribingItem: state => state.subscribing,
+  subscribedOrder: state => state.subscribed
 }
 
 // actions
@@ -23,7 +26,10 @@ const mutations = {
     state.isSubscribing = !state.isSubscribing
   },
   [types.SELECT_SUBSCRIBE] (state, {subscribingTech}) {
-    state.subscribing = subscribingTech || {}
+    state.subscribing = subscribingTech
+  },
+  [types.CONFIRMED_SUBSCRIBE] (state, {confirmedOrderInfo}) {
+    state.subscribed = confirmedOrderInfo
   }
 }
 

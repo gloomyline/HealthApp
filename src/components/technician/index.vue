@@ -49,10 +49,10 @@
       <div class="services">
         <h2 class="title">服务项目</h2>
         <ul class="service-list">
-          <li class="service-item" v-for="service in services">
+          <li class="service-item" v-for="(service, index) in services">
             <span class="title">{{service.ItemName}}</span>
             <span class="price"><span class="red">&yen;{{service.Price}}</span>/{{service.Times}}分钟</span>
-            <span class="subscribe" @click="subscribe">预约</span>
+            <span class="subscribe" @click="subscribe($event, index)">预约</span>
           </li>
         </ul>
       </div>
@@ -78,7 +78,7 @@
     </div>
     <transition name="fade">
       <div class="subscribe-wrapper" v-if="subscribeShow">
-        <subscribe></subscribe>
+        <subscribe ref="subscribe"></subscribe>
       </div>
     </transition>
     <div class="technician-mask"></div>
@@ -185,12 +185,12 @@
           this.$store.dispatch('cancelFavorite', postData)
         }
       },
-      subscribe (event) {
+      subscribe (event, index) {
         if (!event._constructed) return
+        let subscribingTech = this.services[index]
+        let payload = {subscribingTech}
+        this.$store.commit('SELECT_SUBSCRIBE', payload)
         this.$store.commit('TOGGLE_SUBSCRIBE')
-//        if (this.$refs.subscribe) {
-//          this.$refs.subscribe.showSubscribe()
-//        }
       },
       formatCertification (arr) {
         if (!Array.isArray(arr)) return

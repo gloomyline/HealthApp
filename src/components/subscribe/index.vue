@@ -4,12 +4,12 @@
     <div class="content">
       <group class="sim-info">
         <cell-box class="technician">
-          <img width="44" height="44" src="http://139.196.106.144:8080/testImg/jishi.png" class="avatar">
-          <span class="name">林技师</span>
+          <img width="44" height="44" :src="selectedTechnician.Avatar" class="avatar">
+          <span class="name">{{selectedTechnician.Name}}</span>
         </cell-box>
         <cell-box class="item">
-          <span class="name">全身理疗</span>
-          <span class="time">&yen;168/60分钟</span>
+          <span class="name">{{subscribingItem.ItemName}}</span>
+          <span class="time">&yen;{{subscribingItem.Price}}/{{subscribingItem.Times}}分钟</span>
         </cell-box>
         <x-number class="count" title="服务份数" :value="itemCount" :min="0" @on-change="changeCount"></x-number>
       </group>
@@ -66,7 +66,6 @@
     data () {
       return {
         itemCount: 0,
-        now: new Date(),
         serviceTime: ['2017-01-15', '03', '05'], // 获取上门服务时间
         phone: '',
         address: '',
@@ -75,22 +74,20 @@
       }
     },
     created () {
+      let timeStr = formatDate(new Date(), 'yyyy-MM-dd,hh,mm')
+      this.serviceTime = timeStr.split(',')
     },
     mounted () {
-      this.now = new Date()
     },
     computed: {
       ...mapGetters({
+        selectedTechnician: 'selectedTechnician',
+        subscribingItem: 'subscribingItem',
         orderDetailShow: 'orderDetailShow'
-      }),
-      getNow () {
-        let timeStr = formatDate(this.now, 'yyyy-MM-dd,hh,mm')
-        return timeStr.split(',')
-      }
+      })
     },
     methods: {
 //      showSubscribe () {
-//        this.now = new Date()
 //      },
       closeSubscribe () {
         this.$store.commit('TOGGLE_SUBSCRIBE')
@@ -107,9 +104,21 @@
       confirmOrder () {
         if (this.isLoading) return
         this.isLoading = true
+        // 模拟向服务器请求用户下单
         setTimeout(() => {
           this.isLoading = false
           this.$store.commit('TOGGLE_ORDER')
+          let confirmedOrderInfo = {
+            TechnicianId: this.selectedTechnician.TechnicianId,
+            ItemId: this.subscribingItem.ItemId,
+            OrderNum: this.itemCount,
+            OrderTel: this.phone,
+            OrderAdd: this.address,
+            OrderRemark: this.message,
+            OrderCallTime: this.serviceTime,
+            CouponId: ''
+          }
+          this.$store.commit('CONFIRMED_SUBSCRIBE', {confirmedOrderInfo})
           this.$refs.orderDetail.showDetail()
         }, 2000)
       }

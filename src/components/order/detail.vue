@@ -6,38 +6,38 @@
         <div class="info-left">
           <div class="service-content">
             <span class="name">服务内容:</span>
-            <span class="text">全身理疗  (卧)</span>
+            <span class="text">{{subscribingItem.ItemName}}</span>
           </div>
           <div class="count">
             <span class="name">数量:</span>
-            <span class="text">1份</span>
+            <span class="text">{{subscribedOrder.OrderNum}}份</span>
           </div>
           <div class="price">
             <span class="name">价格:</span>
-            <span class="text">168元/60分钟</span>
+            <span class="text">{{subscribingItem.Price}}元/{{subscribingItem.Times}}分钟</span>
           </div>
         </div>
         <div class="info-right">
-          <img width="50" height="50" src="http://139.196.106.144:8080/testImg/jishi.png">
+          <img width="50" height="50" :src="selectedTechnician.Avatar">
         </div>
       </cell-box>
       <cell-box class="coupon">
         <span class="name">优惠券:</span>
-        <span class="text">减20元</span>
+        <span class="text">减{{discount}}元</span>
       </cell-box>
       <cell-box class="pay">
-        <span class="text">&yen;148</span>
+        <span class="text">&yen;{{totalPay}}</span>
       </cell-box>
     </group>
     <group class="order-info" title="订单信息">
       <cell-box class="contact-info">
         <div class="phone">
           <span class="name">手机:</span>
-          <span class="text">13154220555</span>
+          <span class="text">{{subscribedOrder.OrderTel}}</span>
         </div>
         <div class="address">
           <span class="name">地址:</span>
-          <span class="text">xxx酒店xx楼xxx号</span>
+          <span class="text">{{subscribedOrder.OrderAdd}}</span>
         </div>
       </cell-box>
       <cell-box class="order-info-content">
@@ -47,11 +47,11 @@
         </div>
         <div class="order-time">
           <span class="name">下单时间:</span>
-          <span class="text">2017-06-15 15:10</span>
+          <span class="text">{{subscribedOrder.OrderCallTime | formateDate}}</span>
         </div>
         <div class="service-time">
           <span class="name">服务时间:</span>
-          <span class="text">2017-05-24 19:30</span>
+          <span class="text">{{subscribedOrder.OrderCallTime | formateDate}}</span>
         </div>
         <div class="order-state">
           <span class="name">订单状态:</span>
@@ -94,6 +94,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { mapGetters } from 'vuex'
   import titleWrapper from '@/components/uiComponents/titleWrapper'
   import { Group, Cell, CellBox, XButton } from 'vux'
   import pay from '@/components/pay'
@@ -107,6 +108,21 @@
         refundShow: false,
         refundReason: '预约行程有变更'
       }
+    },
+    computed: {
+      discount () {
+        return 20
+      },
+      totalPay () {
+        let price = this.subscribingItem.Price
+        let count = this.subscribedOrder.OrderNum
+        return price * count - this.discount
+      },
+      ...mapGetters({
+        selectedTechnician: 'selectedTechnician',
+        subscribingItem: 'subscribingItem',
+        subscribedOrder: 'subscribedOrder'
+      })
     },
     methods: {
       showDetail () {
@@ -135,6 +151,11 @@
           this.isLoading = false
           this.refundShow = true
         }, 2000)
+      }
+    },
+    filters: {
+      formateDate (arr) {
+        return arr[0] + ' ' + arr[1] + ':' + arr[2]
       }
     },
     components: {

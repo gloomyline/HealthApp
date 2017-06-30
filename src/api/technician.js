@@ -11,7 +11,7 @@ export default {
     let data = await req.reqByPost('/appTechnicianData/getTechniciansList.do', postData)
     // count++
     // console.log('count:' + count)
-    console.log('data:', data.Technicianlists)
+    // console.log('data:', data.Technicianlists)
     cb(data.Technicianlists)
   },
   async getTech (postData, cb) {
