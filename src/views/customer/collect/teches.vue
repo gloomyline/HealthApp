@@ -44,16 +44,21 @@
     top 0
     width 100%
     height 100%
-    background #fff
+    /*background #fff*/
     .content-wrapper
-      /*position relative*/
-      /*display flex*/
+      position relative
+      display flex
       border-top 5px solid #f1f1f1
       border-bottom 5px solid #f1f1f1
+      width 100%
+      .weui-cells
+        width 100%
+        margin 0
+        height 130px
       .weui-cells:before
-        border-top 0px
+        display none
         .weui-cell:before
-          border-top none
+          display none
       .avtar
         position fixed
       .content

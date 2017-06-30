@@ -96,15 +96,16 @@
         .item
           bg-img('card-bg')
           height 80px
-          background-size contain
+          background-size 95% 100%
           background-repeat no-repeat
+          margin 10px auto 0 10px
           display flex
           .indate, .price
             display inline-block
             color #fff
             box-sizing border-box
           .indate
-            border-right 1px
+            flex 0 0 78%
             .text
               position relative
               top -5px
@@ -116,7 +117,7 @@
               padding-left 5px
               font-size 13px
           .price
-            margin-left -4px
+            padding-top 22px
             .num
               position relative
               display block
