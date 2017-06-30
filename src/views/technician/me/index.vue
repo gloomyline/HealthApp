@@ -22,20 +22,20 @@
       <div class="tag">高级按摩师</div>
     </div>
     <group class="set-wrapper">
-      <cell-box is-link link="me/balance">
+      <cell-box is-link>
         <div class="icon"></div>
         <div class="set">设置服务区</div>
       </cell-box>
     </group>
     <div class="examine-wrapper">
       <group>
-        <cell-box is-link>
+        <cell-box is-link link="/technician/me/balance">
           <div class="yue-wrapper">
             <div class="icon"></div>
             <div class="yue">余额</div>
           </div>
         </cell-box>
-        <cell-box is-link>
+        <cell-box is-link link="/technician/me/password">
           <div class="mima-wrapper">
             <div class="icon"></div>
             <div class="mima">提现密码</div>

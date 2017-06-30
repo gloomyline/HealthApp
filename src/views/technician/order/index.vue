@@ -59,7 +59,6 @@
     background #f1f1f1
     .order-tab
       height 37px
-      margin-bottom 7px
       .vux-tab-item
         line-height 37px
         font-size 15px

@@ -156,6 +156,11 @@
 
   .home-page
     background #f1f1f1
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
     .title-wrapper
       position relative
       z-index 10
@@ -212,7 +217,7 @@
           opacity 0
           transform translate3d(0, 0, 0)
     .order-wrapper
-      margin-top 12px
+      margin-top 10px
       .today-order, .yesterday-order
         background #fff
         .title

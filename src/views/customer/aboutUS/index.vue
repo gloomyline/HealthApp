@@ -87,8 +87,9 @@
       height 250px
       display flex
       justify-content center
-      padding-top 80px
-      padding-bottom 50px
+      margin 50px auto
+      /*padding-top 80px*/
+      /*padding-bottom 50px*/
       /*flex-direction column*/
       .img
         inline-icon(71px, 71px)
@@ -99,18 +100,18 @@
         padding-top 90px
     .content-wrapper
       width 100%
-      height 90px
       margin-top -175px
       .content
         font-size 13px
         .text
           color #000
+          width 100%
           text-align left
           margin-right 280px
     .iphone
       display flex
       width 100%
-      height 40px
+      /*height 40px*/
       font-size 13px
       padding-top 40px
       justify-content center
@@ -120,17 +121,19 @@
         background-repeat no-repeat
         background-position right
         width 36px
-        height 15px
+        /*height 15px*/
         background-size 15px
       .text
         padding-left 10px
       .num
         padding-left 15px
     .copyright
+      position fixed
+      bottom 0
+      left 0
       font-size 11px
       color #7e8c8d
       width 100%
-      height 50px
       text-align center
-      padding-top 125px
+      margin-bottom 55px
 </style>

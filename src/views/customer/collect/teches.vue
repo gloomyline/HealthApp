@@ -2,7 +2,7 @@
   <div class="teches">
     <group class="content-wrapper">
       <cell-box is-link>
-        <div class="avtar">
+        <div class="avatar">
           <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
         </div>
         <div class="content">
@@ -46,11 +46,12 @@
     height 100%
     /*background #fff*/
     .content-wrapper
-      position relative
+      /*position relative*/
       display flex
       border-top 5px solid #f1f1f1
       border-bottom 5px solid #f1f1f1
       width 100%
+      height 100%
       .weui-cells
         width 100%
         margin 0
@@ -59,7 +60,7 @@
         display none
         .weui-cell:before
           display none
-      .avtar
+      .avatar
         position fixed
       .content
         padding-left 100px

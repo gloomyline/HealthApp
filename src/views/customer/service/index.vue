@@ -76,7 +76,11 @@
       color #322E36
       border-bottom 6px solid #f1f1f1
       .icon
-        padding 16px 12px 16px 12px
+        bg-img(list_icon)
+        width 15px
+        margin 10px 15px
+        background-repeat no-repeat
+        background-size 15px 15px
       .title
         font-size 15px
         padding-top 11px
