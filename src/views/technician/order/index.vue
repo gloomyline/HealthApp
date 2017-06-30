@@ -1,64 +1,44 @@
 <template>
   <div class="order-page">
-    <div class="header">
-      <tab class="nav" v-model="index" :line-width=2 active-color="#5B4F60" custom-bar-width="76px"
-           style="color: #7e8c8d">
-        <tab-item class="vux-center" v-for="(item, index) in list" :selected="selected === item" :key="index"
-                  @click.native="select(index)">{{item.title}}
-        </tab-item>
-      </tab>
-      <swiper v-model="index" height="530px" :show-dots="false">
-        <swiper-item>
-          <combo></combo>
-        </swiper-item>
-        <swiper-item>
-          <service></service>
-        </swiper-item>
-        <swiper-item>
-          <completed></completed>
-        </swiper-item>
-        <swiper-item>
-          <canceled></canceled>
-        </swiper-item>
-      </swiper>
-    </div>
+    <tab class="order-tab" :line-width=2 active-color='rgb(88, 79, 96)' v-model="selectedIndex">
+      <tab-item class="vux-center"
+                :selected="defaultSelected === item"
+                v-for="(item, index) in orderList"
+                :key="index">{{item}}
+      </tab-item>
+    </tab>
+    <swiper v-model="selectedIndex" :show-dots="false">
+      <swiper-item v-for="(item, index) in orderList" :key="index">
+        <div class="tab-swiper">
+          <confirming v-if="selectedIndex === 0"></confirming>
+          <servicing v-if="selectedIndex === 1"></servicing>
+          <completed v-if="selectedIndex === 2"></completed>
+          <canceled v-if="selectedIndex === 3"></canceled>
+        </div>
+      </swiper-item>
+    </swiper>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { Tab, TabItem, Swiper, SwiperItem } from 'vux'
-  import combo from './combo.vue'
-  import service from './service.vue'
-  import completed from './completed.vue'
-  import canceled from './canceled.vue'
+  import confirming from '@/views/technician/order/confirming'
+  import servicing from '@/views/technician/order/servicing'
+  import completed from '@/views/technician/order/completed'
+  import canceled from '@/views/technician/order/canceled'
+
+  const orderList = ['待确认', '待服务', '已完成', '已取消']
+
   export default{
     data () {
       return {
-        list: [
-          {
-            title: '待确认',
-            template: ''
-          },
-          {
-            title: '待服务',
-            template: ''
-          },
-          {
-            title: '已完成',
-            template: ''
-          },
-          {
-            title: '已取消',
-            template: ''
-          }
-        ],
-        selected: '待确认',
-        index: 0
+        orderList,
+        selectedIndex: 0
       }
     },
-    methods: {
-      select (index) {
-        console.log('on item click:', index)
+    computed: {
+      defaultSelected () {
+        return this.orderList[0]
       }
     },
     components: {
@@ -66,21 +46,22 @@
       TabItem,
       Swiper,
       SwiperItem,
-      combo,
-      service,
+      confirming,
+      servicing,
       completed,
       canceled
     }
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
-  @import "../../../common/stylus/mixin.styl"
+<style lang="stylus" rel="stylesheet/stylus" scoped>
   .order-page
-    position relative
-    top 0
-    left 0
-    width 100%
-    height 100%
     background #f1f1f1
+    .order-tab
+      height 37px
+      margin-bottom 7px
+      .vux-tab-item
+        line-height 37px
+        font-size 15px
+        color rgb(133, 133, 133)
 </style>

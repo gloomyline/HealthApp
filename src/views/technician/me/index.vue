@@ -1,8 +1,9 @@
 <template>
   <div class="me-page">
+    <router-view class="me-pages-container"></router-view>
     <div class="header">
       <group>
-        <cell-box is-link link="me/information">
+        <cell-box is-link link="/technician/me/information">
           <div class="avatar">
             <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
           </div>
@@ -70,6 +71,8 @@
   @import "../../../common/stylus/mixin.styl"
   .me-page
     background #f1f1f1
+    .me-pages-container
+      z-index 100
     .header
       .weui-cells
         margin 0
