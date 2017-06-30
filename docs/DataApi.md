@@ -181,28 +181,53 @@
 
 > 请求url示例
 
-http://localhost:8080/massage/appTechnicianData/getTechnicianInfo.do?TECHNICIAN_ID=a082147cf09f471f96c6380d1c77a43b&CUSTOMER_ID=1111&page_now=1&page_size=10
- > 返回数据示例
+http://localhost:8080/massage/appTechnicianData/getTechnicianInfo.do?TechnicianId=a082147cf09f471f96c6380d1c77a43b&CustomerId=1111&PageNow=1&PageSize=10 > 返回数据示例
   
  ```json
  {
-   "Status": 0,
-   "Data": {
-     "CommentsList": [
-       {
-         "COMMENTS_STATUS": 0,
-         "COMMENTS_ID": "1",
-         "COMMENTS_CONTENT": "ddddddddddd",
-         "CREATETIME": "2017-5-25",
-         "TECHNICIAN_ID": "6bab8de3e2aa40b3910611f9472e67fb",
-         "CUSTOMER_TEL": "1212",
-         "COMMENTS_STAR": 1
-       }
-     ],
-     "IF_COLLECT": 1,
-     "CERTIFICATE_NUM": 1
-   },
-   "ErrMsg": "OK"
+     "Data": {
+         "Techitemlist": [
+             {
+                 "Price": 666,//价格
+                 "ItemName": "小儿便秘腹泻调理",
+                 "Times": 100,//时间
+                 "ItemId": "u", //常量项目id，要获取项目详情就传这个去item表里面找
+                 "TechnicianId": "a082147cf09f471f96c6380d1c77a43b",
+                 "Num": 0,
+                 "ItemTechId": "123"
+             }
+         ],
+         "CertificateNum": 2,
+         "IfCollect": 1,
+         "Commentslist": [
+             {
+                 "CommentsLevel": 1,
+                 "CommentsStatus": 0,
+                 "OrderId": "18828c7c79e14ae0952a502363a1d813",
+                 "CommentsStar": 5,
+                 "CommentsId": "ed9f02fefb3a4772be0adc180c761d3f",
+                 "CommentsContent": "wonderful",
+                 "Createtime": "1498182215186",
+                 "TechnicianId": "a082147cf09f471f96c6380d1c77a43b",
+                 "CustomerTel": "1885990000",
+                 "Type": 0
+             },
+             {
+                 "CommentsLevel": 1,
+                 "CommentsStatus": 0,
+                 "OrderId": "18828c7c79e14ae0952a502363a1d813",
+                 "CommentsStar": 5,
+                 "CommentsId": "9b982f6556cc4cceadd19c857445b9b7",
+                 "CommentsContent": "wonderful",
+                 "Createtime": "1498183094321",
+                 "TechnicianId": "a082147cf09f471f96c6380d1c77a43b",
+                 "CustomerTel": "1885990000",
+                 "Type": 0
+             }
+         ]
+     },
+     "Status": 0,
+     "Errmsg": "OK"
  }
  ```
   
