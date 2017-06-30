@@ -2,7 +2,7 @@
   <div class="completed-page">
     <div class="completed-wrapper">
       <div class="completed">已完成</div>
-      <div class="odd">
+      <!--<div class="odd">
         <div class="text">单号 :</div>
         <div class="num">1111111111</div>
       </div>
@@ -28,7 +28,7 @@
       <div class="address">
         <div class="text">地址 :</div>
         <div class="num">厦门xx酒店xx楼xx号</div>
-      </div>
+      </div>-->
       <div class="ta-wrapper">
         <div class="left-wrapper">
           <div class="grade">

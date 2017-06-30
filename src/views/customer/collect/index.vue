@@ -14,7 +14,7 @@
                   @click.native="select(index)">{{item.title}}
         </tab-item>
       </tab>
-      <swiper v-model="index" height="530px" :show-dots="false">
+      <swiper v-model="index" height="530px" style="width: 100%" :show-dots="false">
         <swiper-item>
           <teches></teches>
         </swiper-item>
