@@ -191,13 +191,11 @@
       },
       formatCertification (arr) {
         if (!Array.isArray(arr)) return
-        let itemList = this.staticConfig.itemList
+        let techCertificate = this.staticConfig.techCertificate
         let resArr = []
         arr.forEach((item, index) => {
-          let _resItem = find(itemList, _item => _item.CertificateId === item)
-          if (_resItem) {
-            resArr.push(_resItem.CertificateName)
-          }
+          let _resItem = find(techCertificate, _item => _item.CertificateId === item)
+          resArr.push(_resItem.CertificateName)
         })
         return resArr
       }

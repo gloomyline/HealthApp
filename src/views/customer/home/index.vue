@@ -9,7 +9,7 @@
           <div class="avatar">
             <!-- 默认加载本地一张图片 -->
             <img width="73" height="73" :src="tech.Avatar" class="avatar-img"
-                 onerror="this.src='http://192.168.1.128:9999/static/imgs/jishi-default.png'">
+                 onerror="this.src='http://localhost:9999/static/imgs/jishi-default.png'">
             <span v-show="tech.Level === 1" class="level"></span>
           </div>
           <div class="content">
@@ -28,7 +28,7 @@
               </div>
             </div>
             <div class="desc-wrapper">
-              <p class="text">{{tech.ServeContent}}</p>
+              <p class="text">{{tech.Experience}}</p>
             </div>
             <div class="star-wrapper">
               <star :size="36" :score="tech.Star"></star>
@@ -97,8 +97,7 @@
         this.$refs.technician.showDetail()
       },
       certificate (arr) {
-        arr = (!Array.isArray(arr) || arr.length === 0) ? ['1'] : arr
-        let certificateConfig = this.getStaticConfig().techCertificate
+        let certificateConfig = this.staticConfig.techCertificate
         let resArr = []
         arr.forEach((item, index) => {
           let res = find(certificateConfig, _item => _item.CertificateId === item)
@@ -182,10 +181,8 @@
               display inline-block
               vertical-align top
           .desc-wrapper
+            width 100%
             margin-bottom 16px
-            overflow hidden
-            white-space nowrap
-            text-overflow ellipsis
             font-size 11px
             color #919191
           .star-wrapper
