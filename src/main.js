@@ -25,6 +25,8 @@ if (/customer/.test(href)) {
 } else if (/technician/.test(href)) {
   // window.location.href = href.replace(/\/technician#/, '')
   store.commit('TECHNICIAN_APP_STATUS')
+} else if (/captain/.test(href)) {
+  store.commit('CAPTAIN_APP_STATUS')
 } else {
   store.commit('CUSTOMER_APP_STATUS')
 }

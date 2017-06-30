@@ -7,6 +7,9 @@ import customerRoute from './customerClient/index'
 // technician client route
 import technicianRoute from './technicianClient/index'
 
+// captain client route
+import captainRoute from './captainClient/index'
+
 Vue.use(Router)
 
 export default new Router({
@@ -17,7 +20,10 @@ export default new Router({
     customerRoute.service,
     technicianRoute.home,
     technicianRoute.order,
-    technicianRoute.me
+    technicianRoute.me,
+    captainRoute.home,
+    captainRoute.team,
+    captainRoute.me
   ],
   linkActiveClass: 'active'
 })

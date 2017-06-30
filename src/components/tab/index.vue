@@ -53,6 +53,24 @@
     }
   ]
 
+  const captainButtons = [
+    {
+      icon: 'home',
+      title: '首页',
+      route: '/captain/home'
+    },
+    {
+      icon: 'team',
+      title: '团队',
+      route: '/captain/team'
+    },
+    {
+      icon: 'me',
+      title: '我的',
+      route: '/captain/me'
+    }
+  ]
+
   export default {
     data () {
       return {
@@ -62,7 +80,20 @@
     beforeCreate () {
     },
     created () {
-      this.buttons = this.appStat === 0 ? customerButtons : technicianButtons
+      switch (this.appStat) {
+        case 0:
+          this.buttons = customerButtons
+          break
+        case 1:
+          this.buttons = technicianButtons
+          break
+        case 2:
+          this.buttons = captainButtons
+          break
+        default:
+          this.buttons = customerButtons
+          break
+      }
     },
     mounted () {
     },
