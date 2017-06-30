@@ -615,6 +615,7 @@ http://localhost:8080/massage/appCommentsData/sendComment.do?OrderId=18828c7c79e
 | Position | string |  |  | true | 应聘职位（0中医推拿，1SPA推拿，2小儿推拿师）
 | ExperienceYear | string |  |  | true | 工作年限（0是5年以下，1是5-8年，2是8-15年，3是15年以上）
 | Experience | string |  |  | true | 工作经历
+| Openid | string |  |  | true | 用户授权登录获取的openid
 
 
 - response
@@ -627,8 +628,9 @@ http://localhost:8080/massage/appCommentsData/sendComment.do?OrderId=18828c7c79e
 
 > 请求url示例
 
-http://localhost:8080/massage/appTechnicianData/registerTechnician.do?TechleaderId=&Avatar=3212315&Name=alan&Age=28&Sex=0&ServerCity=xiamen&Tel=16666666666&Addr=donghaidajie&Position=1&ExperienceYear=1&Experience=She is very beautiful
+http://localhost:8080/massage/appTechnicianData/registerTechnician.do?TechleaderId=&Avatar=3212315&Name=alan&Age=28&Sex=0&ServerCity=xiamen&Tel=13606013761&Addr=donghaidajie&Position=1&ExperienceYear=1&Experience=She is very beautiful&Openid=o-9OW0p0PPEs_b-5NS_ozLBDbwAU
 > 返回数据示例
+  
   
 ```json
 {
@@ -1361,7 +1363,73 @@ ErrMsg	str		ok/desc	请求错误描述
 }
 ```
 
+30. 所有酒店列表接口
+	- http://192.168.1.52:8081/massage/appOrderData/hotelLists.do
 	 
+	 - 请求参数：无
+
+返回结果：
+   ```json
+{
+    "listHote": [
+        {
+            "HOTEL_NAME": "悦华酒店",
+            "HOTEL_CITY": "11",
+            "HOTEL_TEL": "110011110",
+            "CREATE_TIME": "2017-06-15 20:30:22",
+            "HOTEL_LONGITUDE": "118.68460083007813",
+            "HOTEL_PROVINCE": "1",
+            "HOTEL_ID": "1",
+            "HOTEL_ADD": "丰泽街110号",
+            "HOTEL_LATITUDE": "24.87724494934082"
+        },
+        {
+            "HOTEL_NAME": "老钱饭店",
+            "HOTEL_CITY": "11",
+            "HOTEL_TEL": "110011110",
+            "CREATE_TIME": "2017-06-15 20:30:22",
+            "HOTEL_LONGITUDE": "118.68388366699219",
+            "HOTEL_PROVINCE": "1",
+            "HOTEL_ID": "2",
+            "HOTEL_ADD": "东海街道110号",
+            "HOTEL_LATITUDE": "24.87771987915039"
+        }
+    ],
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+``` 
+31. 根据微信用户id获取各自角色接口
+   - url: **http://hostname:port/massage/appOrderData/getRoleByOpenid.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | Openid | string |  |  | true | 微信用户与公众号的唯一标识
+
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appOrderData/getRoleByOpenid.do?Openid=o-9OW0v0J_s8gJQdWRAVQ67tTYrQ
+ 
+
+返回结果：
+   ```json
+   
+{
+    "Data": 2, //1客户，2技师，3领班，4技师+领班
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+``` 
 
 
 
