@@ -14,6 +14,11 @@ Vue.prototype.loadFromLocal = loadFromLocal
 Vue.prototype.getStaticConfig = function () {
   return config
 }
+Object.defineProperty(Vue.prototype, 'staticConfig', {
+  get: function () {
+    return config
+  }
+})
 
 Vue.use(vueResource)
 

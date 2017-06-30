@@ -11,7 +11,7 @@
         <div class="info">
           <div class="info-left">
             <img class="avatar" width="73" height="73" :src="technicianInfo.Avatar"
-                 onerror="this.src='http://192.168.1.128:9999/static/imgs/jishi-default.png'">
+                 onerror="this.src='http://localhost:9999/static/imgs/jishi-default.png'">
           </div>
           <div class="info-right">
             <div class="name-wrapper">
@@ -25,7 +25,9 @@
               <span class="registar">{{technicianInfo.Registar}}</span>
             </div>
             <div class="certificate">
-              <span class="name">高级推拿师</span>
+              <span class="certificate-item"
+                    v-if="item"
+                    v-for="item in formatCertification(technicianInfo.CertificateIds)">{{item}}</span>
             </div>
           </div>
           <!-- 额外功能：收藏与分享 -->
@@ -85,6 +87,7 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters } from 'vuex'
+  import { find } from '@/common/js/util'
   import BScroll from 'better-scroll'
   import { formatDate } from '@/common/js/date'
   import subscribe from '@/components/subscribe'
@@ -176,6 +179,18 @@
 //        if (this.$refs.subscribe) {
 //          this.$refs.subscribe.showSubscribe()
 //        }
+      },
+      formatCertification (arr) {
+        if (!Array.isArray(arr)) return
+        let itemList = this.staticConfig.itemList
+        let resArr = []
+        arr.forEach((item, index) => {
+          let _resItem = find(itemList, _item => _item.CertificateId === item)
+          if (_resItem) {
+            resArr.push(_resItem.CertificateName)
+          }
+        })
+        return resArr
       }
     },
     filters: {
@@ -256,16 +271,20 @@
               .dot
                 margin 5px 2px 0 0
             .certificate
-              width 70px
-              height 26px
-              text-align center
-              color #56b7d2
-              border 2px solid #56b7d2
-              box-sizing border-box
-              border-radius 6px
-              .name
+              .certificate-item
+                display inline-block
+                width 70px
+                height 26px
+                margin-right 4px
+                text-align center
+                color #56b7d2
+                border 2px solid #56b7d2
+                box-sizing border-box
+                border-radius 6px
                 line-height 22px
                 font-size 11px
+                &:last-child
+                  margin-right 0
           .extra
             position absolute
             top 18px

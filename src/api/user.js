@@ -7,7 +7,6 @@ import * as req from './base'
 export default {
   // 我的优惠券
   async getCouponlist (postData, cb) {
-    postData = postData || {CustomerId: 1111}
     let data = await req.reqByPost('/appCouponData/getMyCouponList.do', postData)
     cb(data.Couponlist)
   },
