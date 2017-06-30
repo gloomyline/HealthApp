@@ -36,7 +36,7 @@
               <span class="icon"></span>
             </div>
             <div class="favorite" @click="toggleFavorite">
-              <span class="icon" :class="{active: isFavorite}"></span>
+              <span class="icon" :class="{active: favorite}"></span>
             </div>
           </div>
         </div>
@@ -50,8 +50,8 @@
         <h2 class="title">服务项目</h2>
         <ul class="service-list">
           <li class="service-item" v-for="service in services">
-            <span class="title">{{service.name}}</span>
-            <span class="price"><span class="red">&yen;{{service.price}}</span>/{{service.time}}分钟</span>
+            <span class="title">{{service.ItemName}}</span>
+            <span class="price"><span class="red">&yen;{{service.Price}}</span>/{{service.Times}}分钟</span>
             <span class="subscribe" @click="subscribe">预约</span>
           </li>
         </ul>
@@ -125,9 +125,9 @@
         technicianInfo: 'selectedTechnician',
         subscribeShow: 'subscribeShow'
       }),
-      isFavorite () {
-        return this.loadFromLocal(this.technicianInfo.TechnicianId, 'favorite', this.favorite)
-      },
+//      isFavorite () {
+//        return this.loadFromLocal(this.technicianInfo.TechnicianId, 'favorite', this.favorite)
+//      },
       ratingsCount () {
         if (!this.ratings) return
         return this.ratings.length
@@ -135,7 +135,8 @@
     },
     watch: {
       'technicianInfo' () {
-        this.favorite = this.technicianInfo.IfCollect || false
+        this.favorite = this.technicianInfo.IfCollect
+        this.services = this.technicianInfo.Techitemlist
         this.ratings = this.technicianInfo.Commentslist
         this.$nextTick(() => {
           this._initScroll()
@@ -147,7 +148,6 @@
         if (!this.scroll) {
           this.scroll = new BScroll(this.$el, {click: true, probeType: 3})
           this.scroll.on('scroll', pos => {
-//            console.log('x:' + pos.x, 'y:' + pos.y)
           })
         } else {
           this.scroll.refresh()
@@ -174,12 +174,12 @@
       toggleFavorite (event) {
         if (!event._constructed) return
         this.favorite = !this.favorite
-        this.saveToLocal(this.technicianInfo.TechnicianId, 'favorite', this.favorite)
+//        this.saveToLocal(this.technicianInfo.TechnicianId, 'favorite', this.favorite)
         let postData = {
           Type: 0,
           TechnicianId: this.technicianInfo.TechnicianId
         }
-        if (this.favorite) {
+        if (!this.favorite) {
           this.$store.dispatch('addFavorite', postData)
         } else {
           this.$store.dispatch('cancelFavorite', postData)

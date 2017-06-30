@@ -3,14 +3,14 @@
  */
 
 import * as req from './base'
-let count = 0
+// let count = 0
 
 export default {
   async getTechList (postData, cb) {
     postData = postData || {page_now: 0, page_size: 10}
     let data = await req.reqByPost('/appTechnicianData/getTechniciansList.do', postData)
-    count++
-    console.log('count:' + count)
+    // count++
+    // console.log('count:' + count)
     console.log('data:', data.Technicianlists)
     cb(data.Technicianlists)
   },
