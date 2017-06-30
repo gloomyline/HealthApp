@@ -172,6 +172,15 @@
         if (!event._constructed) return
         this.favorite = !this.favorite
         this.saveToLocal(this.technicianInfo.TechnicianId, 'favorite', this.favorite)
+        let postData = {
+          Type: 0,
+          TechnicianId: this.technicianInfo.TechnicianId
+        }
+        if (this.favorite) {
+          this.$store.dispatch('addFavorite', postData)
+        } else {
+          this.$store.dispatch('cancelFavorite', postData)
+        }
       },
       subscribe (event) {
         if (!event._constructed) return

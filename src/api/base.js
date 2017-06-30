@@ -15,6 +15,8 @@ let prefix = 'http://' + config[env].hostname + ':' + config[env]._port + '/mass
 // send request body as 'application/x-www-form-urlencoded' content type
 let options = {emulateJSON: true}
 
+console.log('prefix:', prefix)
+
 export function reqByPost (url, postData = {}) {
   return new Promise((resolve, reject) => {
     postData = Object.assign({}, {CustomerId: 1111}, postData)
@@ -22,7 +24,11 @@ export function reqByPost (url, postData = {}) {
       .then(res => {
         let _res = res.body
         if (_res.Status === 0) {
-          resolve(_res.Data)
+          if (_res.Data) {
+            resolve(_res.Data)
+          } else {
+            resolve(_res.Status)
+          }
         } else {
           console.log('errMsg:', _res.msg)
           reject(_res)
