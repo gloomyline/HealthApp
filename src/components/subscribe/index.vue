@@ -20,7 +20,7 @@
         <datetime-range
           class="service-time"
           title="上门时间"
-          start-date="2017-01-01"
+          :start-date="startTime"
           end-date="2027-02-02"
           format="YYYY年MM月DD日"
           v-model="serviceTime"
@@ -35,11 +35,11 @@
       <group class="pay">
         <cell-box class="discount" is-link @click.native="chooseDiscount">
           <span class="name">优惠券</span>
-          <span class="val">减20元</span>
+          <span class="val">减{{discount}}元</span>
         </cell-box>
         <cell-box class="truecount" is-link>
           <span class="name">预计实付</span>
-          <span class="val">148元</span>
+          <span class="val">{{totalPay}}元</span>
         </cell-box>
       </group>
     </div>
@@ -66,6 +66,8 @@
     data () {
       return {
         itemCount: 0,
+        discount: 20,
+        startTime: '2017-7-1',
         serviceTime: ['2017-01-15', '03', '05'], // 获取上门服务时间
         phone: '',
         address: '',
@@ -76,6 +78,7 @@
     created () {
       let timeStr = formatDate(new Date(), 'yyyy-MM-dd,hh,mm')
       this.serviceTime = timeStr.split(',')
+      this.startTime = this.serviceTime[0]
     },
     mounted () {
     },
@@ -84,11 +87,19 @@
         selectedTechnician: 'selectedTechnician',
         subscribingItem: 'subscribingItem',
         orderDetailShow: 'orderDetailShow'
-      })
+      }),
+      totalPay () {
+        let res = this.itemCount * this.subscribingItem.Price - this.discount
+        return res <= 0 ? 0 : res
+      }
     },
     methods: {
-//      showSubscribe () {
-//      },
+      _validate () {
+        if (this.itemCount === 0) return false
+        if (this.phone.replace(/\s+/, '') === '') return false
+        if (this.address.replace(/\s+/, '') === '') return false
+        return true
+      },
       closeSubscribe () {
         this.$store.commit('TOGGLE_SUBSCRIBE')
       },
@@ -103,6 +114,8 @@
       },
       confirmOrder () {
         if (this.isLoading) return
+        // 服务订单数不可为'0'， 电话与服务地址不能为空
+        if (!this._validate()) return
         this.isLoading = true
         // 模拟向服务器请求用户下单
         setTimeout(() => {
