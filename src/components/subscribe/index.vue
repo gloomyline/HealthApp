@@ -85,10 +85,8 @@
         phone: '',
         address: '',
         message: '',
-        alertShow: false,
         alertTittle: 'order req title',
-        alertContent: 'order req response message',
-        isLoading: false
+        alertContent: 'order req response message'
       }
     },
     created () {
@@ -100,6 +98,8 @@
     },
     computed: {
       ...mapGetters({
+        alertShow: 'alertShow',
+        isLoading: 'isOrderLoading',
         selectedTechnician: 'selectedTechnician',
         subscribingItem: 'subscribingItem'
 //        orderDetailShow: 'orderDetailShow'
@@ -132,24 +132,21 @@
         if (this.isLoading) return
         // 服务订单数不可为'0'， 电话与服务地址不能为空
         if (!this._validate()) return
-        this.isLoading = true
-        // 模拟向服务器请求用户下单
+        let confirmedOrderInfo = {
+          TechnicianId: this.selectedTechnician.TechnicianId,
+          ItemId: this.subscribingItem.ItemId,
+          OrderNum: this.itemCount,
+          OrderTel: this.phone,
+          OrderAdd: this.address,
+          OrderRemark: this.message,
+          OrderCallTime: this.serviceTime,
+          CouponId: ''
+        }
+        this.$store.dispatch('submitOrder', confirmedOrderInfo)
         setTimeout(() => {
-          this.isLoading = false
 //          this.$store.commit('TOGGLE_ORDER')
-          let confirmedOrderInfo = {
-            TechnicianId: this.selectedTechnician.TechnicianId,
-            ItemId: this.subscribingItem.ItemId,
-            OrderNum: this.itemCount,
-            OrderTel: this.phone,
-            OrderAdd: this.address,
-            OrderRemark: this.message,
-            OrderCallTime: this.serviceTime,
-            CouponId: ''
-          }
           this.$store.commit('CONFIRMED_SUBSCRIBE', {confirmedOrderInfo})
 //          this.$refs.orderDetail.showDetail()
-          this.alertShow = true
         }, 2000)
       },
       onHide () {

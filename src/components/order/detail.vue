@@ -102,7 +102,7 @@
   export default{
     data () {
       return {
-        orderState: 0,
+        orderState: 1,
         isLoading: false,
         payShow: false,
         refundShow: false,
@@ -155,6 +155,7 @@
     },
     filters: {
       formateDate (arr) {
+        if (!Array.isArray(arr)) return
         return arr[0] + ' ' + arr[1] + ':' + arr[2]
       }
     },

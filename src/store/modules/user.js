@@ -7,7 +7,7 @@ import user from '@/api/user'
 
 // init state
 const state = {
-  _isLoading: false,
+  isOrderLoading: false,
   userId: 1111,
   favoriteTechs: [],
   favoriteProjects: [],
