@@ -82,3 +82,10 @@ HTTP Status 405 - Request method 'POST' not supported
 
     - 已解决，属前端处理问题，后端下发数据木有问题。
 5. **important** 首页技师列表返回的数据会一直是最后9条记录！如果没有数据了，我们期望返回的技师列表是一个空数组。
+6. **important** 下单接口返回异常
+    ```JSON
+    {
+        "Status": -1,
+        "Errmsg": "异常"
+    }
+    ```
