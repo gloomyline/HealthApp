@@ -47,11 +47,15 @@
       <x-button class="confirm-btn" type="primary" :show-loading="isLoading" mini @click.native="confirmOrder">确认订单
       </x-button>
     </div>
-    <transition name="fade">
-      <div class="order-detail-wrapper" v-show="orderDetailShow">
-        <order-detail ref="orderDetail"></order-detail>
-      </div>
-    </transition>
+    <!--<transition name="fade">-->
+    <!--<div class="order-detail-wrapper" v-show="orderDetailShow">-->
+    <!--<order-detail ref="orderDetail"></order-detail>-->
+    <!--</div>-->
+    <!--</transition>-->
+    <div v-transfer-dom>
+      <alert v-model="alertShow" :title="alertTittle" :content="alertContent" @on-show="onShow"
+             @on-hide="onHide"></alert>
+    </div>
   </div>
 </template>
 
@@ -59,7 +63,16 @@
   import { formatDate } from '@/common/js/date'
   import { mapGetters } from 'vuex'
   import titleWrapper from '@/components/uiComponents/titleWrapper'
-  import { Group, CellBox, XNumber, XInput, XButton, DatetimeRange } from 'vux'
+  import {
+    Alert,
+    Group,
+    CellBox,
+    XNumber,
+    XInput,
+    XButton,
+    DatetimeRange,
+    TransferDomDirective as TransferDom
+  } from 'vux'
   import orderDetail from '@/components/order/detail'
 
   export default{
@@ -72,6 +85,9 @@
         phone: '',
         address: '',
         message: '',
+        alertShow: false,
+        alertTittle: 'order req title',
+        alertContent: 'order req response message',
         isLoading: false
       }
     },
@@ -85,8 +101,8 @@
     computed: {
       ...mapGetters({
         selectedTechnician: 'selectedTechnician',
-        subscribingItem: 'subscribingItem',
-        orderDetailShow: 'orderDetailShow'
+        subscribingItem: 'subscribingItem'
+//        orderDetailShow: 'orderDetailShow'
       }),
       totalPay () {
         let res = this.itemCount * this.subscribingItem.Price - this.discount
@@ -120,7 +136,7 @@
         // 模拟向服务器请求用户下单
         setTimeout(() => {
           this.isLoading = false
-          this.$store.commit('TOGGLE_ORDER')
+//          this.$store.commit('TOGGLE_ORDER')
           let confirmedOrderInfo = {
             TechnicianId: this.selectedTechnician.TechnicianId,
             ItemId: this.subscribingItem.ItemId,
@@ -132,12 +148,23 @@
             CouponId: ''
           }
           this.$store.commit('CONFIRMED_SUBSCRIBE', {confirmedOrderInfo})
-          this.$refs.orderDetail.showDetail()
+//          this.$refs.orderDetail.showDetail()
+          this.alertShow = true
         }, 2000)
+      },
+      onHide () {
+        console.log('on hide')
+      },
+      onShow () {
+        console.log('on show')
       }
+    },
+    directives: {
+      TransferDom
     },
     components: {
       titleWrapper,
+      Alert,
       Group,
       CellBox,
       XNumber,
