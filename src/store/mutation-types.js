@@ -28,6 +28,7 @@ export const RECEIVE_ITEM_LIST = 'RECEIVE_ITEM_LIST'          // 接收项目列
 export const TOGGLE_ORDER = 'TOGGLE_ORDER'                    // 切换订单详情
 
 // users
+export const RECEIVE_USRE_INFO = 'RECEIVE_USRE_INFO'          // 接收用户信息
 export const RECEIVE_FAVORITE_LIST = 'RECEIVE_FAVORITE_LIST'  // 接收用户收藏列表
 export const ORDER_RESPONSE = 'ORDER_RESPONSE'                // 用户订单确认返回结果
 

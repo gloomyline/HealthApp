@@ -35,5 +35,11 @@ export default {
     postData = postData || {CustomerId: 1111}
     let data = await req.reqByPost('/appOrderData/submitOrder.do', postData)
     cb(data)
+  },
+  // 请求用户信息
+  async fetchUserInfos (postData, cb) {
+    postData = postData || {Openid: 'o-9OW0v0J_s8gJQdWRAVQ67tTYrQ'}
+    let data = await req.reqByPost('/appOrderData/getRoleByOpenid.do', postData)
+    cb(data)
   }
 }

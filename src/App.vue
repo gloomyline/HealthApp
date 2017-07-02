@@ -52,7 +52,8 @@
       })
     },
     created () {
-      if (this.appStat === 0) {
+      if (this.appStat === 0) { // customerClient
+        this.$store.dispatch('fetchUserInfos')
         this.$router.push('/home')
       } else if (this.appStat === 1) {
         this.$router.push('/technician/home')

@@ -6,7 +6,7 @@
       </div>
       <div class="account">
         <span class="text">账户:</span>
-        <span class="content">136XXXX2315</span>
+        <span class="content" v-if="userInfo.Customerinfo">{{userInfo.Customerinfo.Nickname}}</span>
       </div>
     </div>
     <group class="about-me">
@@ -79,6 +79,7 @@
     },
     computed: {
       ...mapGetters({
+        userInfo: 'userInfo',
         ticketsShow: 'ticketsShow'
       }),
       isBindCellPhone () {

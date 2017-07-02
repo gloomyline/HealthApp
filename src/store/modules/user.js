@@ -7,8 +7,8 @@ import user from '@/api/user'
 
 // init state
 const state = {
+  userInformation: {},
   isOrderLoading: false,
-  userId: 1111,
   favoriteTechs: [],
   favoriteProjects: [],
   ticketsShow: false,
@@ -17,7 +17,7 @@ const state = {
 
 // getters
 const getters = {
-  getUserId: state => state.userId
+  userInfo: state => state.userInformation
 }
 
 // actions
@@ -35,6 +35,13 @@ const actions = {
       commit(types.REQUEST_SUCCESS)
       // console.log('22', data)
     })
+  },
+  fetchUserInfos ({commit}, payload) {
+    commit(types.SEND_REQUEST)
+    user.fetchUserInfos(payload, userInfo => {
+      commit(types.REQUEST_SUCCESS)
+      commit(types.RECEIVE_USRE_INFO, {userInfo})
+    })
   }
 }
 
@@ -45,6 +52,9 @@ const mutations = {
   },
   [types.REQUEST_SUCCESS] (state) {
     state._isLoading = false
+  },
+  [types.RECEIVE_USRE_INFO] (state, {userInfo}) {
+    state.userInformation = userInfo
   }
 }
 
