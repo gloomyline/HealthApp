@@ -11,7 +11,7 @@ import Vue from 'vue'
 
 let env = process.env.NODE_ENV === 'production' ? 'build' : 'dev'
 
-let prefix = 'http://' + config[env].hostname + ':' + config[env]._port + '/massage'
+let prefix = 'http://' + config[env]._hostname + ':' + config[env]._port + '/massage'
 // send request body as 'application/x-www-form-urlencoded' content type
 let options = {emulateJSON: true}
 

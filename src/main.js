@@ -7,16 +7,20 @@ import store from './store'
 // global config or methods
 import { saveToLocal, loadFromLocal } from '@/common/js/localStore'
 import '@/common/stylus/index.styl'
-import config from '@/assets/config'
+import constConfig from '@/assets/config'
+import envConfig from '@/../config/index.js'
+
+// get config of app env
+let _envConfig = process.env.NODE_ENV === 'production' ? envConfig.build : envConfig.dev
 
 Vue.prototype.saveToLocal = saveToLocal
 Vue.prototype.loadFromLocal = loadFromLocal
 Vue.prototype.getStaticConfig = function () {
-  return config
+  return Object.assign({}, constConfig, _envConfig)
 }
 Object.defineProperty(Vue.prototype, 'staticConfig', {
   get: function () {
-    return config
+    return Object.assign({}, constConfig, _envConfig)
   }
 })
 
