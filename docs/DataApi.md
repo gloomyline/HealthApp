@@ -73,8 +73,8 @@
   "ErrMsg": "OK"
 }
 ```
-
-
+请求例子：
+http://localhost:8080/massage/appTechnicianData/getTechniciansList.do?PageNow=1&PageSize=10
 2. 获取技师的推拿时间段 POST
 - url: **http://hostname:port/massage/appTechnicianData/getTechniciansList.do**
 - postData
@@ -181,7 +181,8 @@
 
 > 请求url示例
 
-http://localhost:8080/massage/appTechnicianData/getTechnicianInfo.do?TechnicianId=a082147cf09f471f96c6380d1c77a43b&CustomerId=1111&PageNow=1&PageSize=10 > 返回数据示例
+http://localhost:8080/massage/appTechnicianData/getTechnicianInfo.do?TechnicianId=0883fcdd15f8455a88ed2beaa26ea48d&CustomerId=1111&PageNow=1&PageSize=10 
+> 返回数据示例
   
  ```json
  {
@@ -451,7 +452,8 @@ http://localhost:8080/massage/appCollectData/getCollectListByCustomerid.do?Type=
   > 请求url示例
   http://192.168.1.126:8080/massage/appOrderData/submitOrder.do?CustomerId=1111&TechnicianId=6bab8de3e2aa40b3910611f9472e67fb&ItemId=1AA&OrderNum=2&OrderTel=17777777777&OrderAdd=haixingxiaoqu&OrderCallTime=2017-6-18 20:30&OrderRemark=hello&CouponId=1
   http://localhost:8080/massage/appOrderData/submitOrder.do?CUSTOMER_ID=1111&TECHNICIAN_ID=6bab8de3e2aa40b3910611f9472e67fb&ITEM_ID=1AA&ORDER_NUM=2&ORDER_TEL=17777777777&ORDER_ADD=haixingxiaoqu&ORDER_CALL_TIME=2017-6-18 20:30&ORDER_REMARK=hello&COUPON_ID=1
-   > 返回数据示例
+
+> 返回数据示例
     
    ```json
 {
@@ -495,7 +497,7 @@ http://localhost:8080/massage/appCollectData/getCollectListByCustomerid.do?Type=
    | :---: | :---: | :---: | :---: | :---: |:---: |
 
  | OrderId | string |  |  | true | 客户ID
- | Type | int |  |  | true |（0技师接单，1技师开始项目，2技师结束项目,3技师拒单，订单关闭,4客户申请退款，改为退款中）
+ | Type | int |  |  | true |（0技师接单，1技师开始项目，2技师结束项目,3技师拒单，订单关闭,4客户申请退款，改为退款中，5，客户取消订单，订单关闭）
    - response
    
    | KEY | TYPE | DEFAULT | VALUE | DESC |
@@ -506,8 +508,8 @@ http://localhost:8080/massage/appCollectData/getCollectListByCustomerid.do?Type=
    
    > 请求url示例
    
-   http://localhost:8080/massage/appOrderData/handleOrder.do?OrderId=18828c7c79e14ae0952a502363a1d813&type=0
-    > 返回数据示例
+   http://localhost:8080/massage/appOrderData/handleOrder.do?OrderId=18828c7c79e14ae0952a502363a1d813&Type=0
+> 返回数据示例
      
     ```json
  {
@@ -1443,19 +1445,290 @@ ErrMsg	str		ok/desc	请求错误描述
    
    > 请求url示例
    
-http://localhost:8080/massage/appOrderData/getRoleByOpenid.do?Openid=o-9OW0v0J_s8gJQdWRAVQ67tTYrQ
+http://localhost:8080/massage/appOrderData/getRoleByOpenid.do?Openid=http://localhost:8080/massage/appOrderData/getRoleByOpenid.do?Openid=o-9OW0oJpfF1x8xbFgKkSX3aaSJI
  
 
-返回结果：
+返回结果： //1客户，2技师，3领班，4技师+领班
    ```json
    
 {
-    "Data": 2, //1客户，2技师，3领班，4技师+领班
+    "Data": {
+        "Technicianinfo": {
+            "TechleaderId": "1",
+            "Avatar": "http://www.wangsanchuan.cn/testImg/jishi.png",
+            "Star": 5,
+            "Rights": "",
+            "Status": 0,
+            "Hot": 1,
+            "IfLine": 0,
+            "CertificateIds": "2,3",
+            "Items": "4,3",
+            "Tel": "13606013761",
+            "Sex": 0,
+            "Addr": "东海大街",
+            "TechnicianId": "a082147cf09f471f96c6380d1c77a43b",
+            "Position": 1,
+            "ExperienceYear": 1,
+            "ServeContent": "的是坎坎坷坷扩扩扩",
+            "OnOff": 0,
+            "Name": "礼技师",
+            "Age": "28",
+            "AverageScore": 5,
+            "Level": 0,
+            "Openid": "",
+            "NumScore": 21,
+            "TotalScore": 105,
+            "Experience": "本人为人和善，医德高尚，对生活充满激情。勤学好问，认真负责，对工作细心、热忱。She is very beautiful",
+            "Registar": "泉州",
+            "TodayAbout": 1,
+            "RegisterTime": "2017-06-28 23:39:49",
+            "ServerCity": ""
+        },
+        "Techleaderinfo": {
+            "TechleaderId": "1",
+            "Avatar": "http://localhost:8080/massage/uploadFiles/uploadImgs/20170525/da859b4fd5944fc19f79bf0797a06d26.jpg",
+            "Name": "黄礼根",
+            "Age": "18",
+            "Tel": "18859959000",
+            "Sex": "1",
+            "Registar": "福建",
+            "Level": "1",
+            "RegisterTime": "2017-06-15 20:30:22",
+            "Openid": "o-9OW0oJpfF1x8xbFgKkSX3aaSJI"
+        },
+        "Type": 4
+    },
     "Status": 0,
-    "ErrMsg": "OK"
+    "Errmsg": "OK"
 }
 ``` 
+32. 技师首页数据接口 POST
+   
+   - url: **http://hostname:port/massage/appTechnicianData/getTechnicianHomePage.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | TechnicianId | string |  |  | true |  领班id
 
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appTechnicianData/getTechnicianHomePage.do?&TechnicianId=6bab8de3e2aa40b3910611f9472e67fb
+ > 返回数据示例
+     
+   ```json
+{
+    "Data": {
+        "Recentlyorder": {
+            "OrderNum": 2,
+            "CreateTime": "2017-07-02 15:38:15",
+            "TransactionId": "",
+            "CustomerId": "1111",
+            "ItemId": "1AA",
+            "OrderTotalprice": 776,
+            "Status": 10,
+            "PayTime": "",
+            "TechconfirmTime": "",
+            "OrderAdd": "haixingxiaoqu",
+            "CommentsId": "",
+            "RefundConfirmTime": "",
+            "RefundEndTime": "",
+            "IfCoupon": 0,
+            "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
+            "OrderTel": "17777777777",
+            "OrderCallTime": "2017-6-18 20:30",
+            "OrderRemark": "hello",
+            "RefundBecause": "",
+            "CompeleteTime": "",
+            "OrderNo": "1538157548",
+            "CouponId": "1",
+            "ItemStartTime": "",
+            "OrderId": "0f0fd4a268584208896281e7441b3310",
+            "RefundStartTime": "2017-07-02 16:10:01",
+            "ItemEndTime": "",
+            "OrderRealitypay": 776,
+            "OrderUnitprice": 388
+        },
+        "Orderlisttoday": [
+            {
+                "OrderNum": 2,
+                "CreateTime": "2017-07-02 15:36:18",
+                "TechnicianName": "组宾",
+                "TransactionId": "",
+                "CustomerId": "1111",
+                "ItemId": "1AA",
+                "OrderTotalprice": 776,
+                "Status": 0,
+                "PayTime": "",
+                "TechconfirmTime": "",
+                "OrderAdd": "haixingxiaoqu",
+                "CommentsId": "",
+                "RefundConfirmTime": "",
+                "RefundEndTime": "",
+                "IfCoupon": 0,
+                "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
+                "OrderTel": "17777777777",
+                "OrderCallTime": "2017-6-18 20:30",
+                "OrderRemark": "hello",
+                "RefundBecause": "",
+                "CompeleteTime": "",
+                "OrderNo": "1536168546",
+                "CouponId": "1",
+                "ItemStartTime": "",
+                "OrderId": "03b70293f64148efbbbf78690fc4663e",
+                "RefundStartTime": "",
+                "ItemEndTime": "",
+                "OrderRealitypay": 776,
+                "OrderUnitprice": 388
+            }
+        ],
+        "Orderlisttodaycancel": [
+            {
+                "OrderNum": 2,
+                "CreateTime": "2017-07-02 15:38:15",
+                "TechnicianName": "组宾",
+                "TransactionId": "",
+                "CustomerId": "1111",
+                "ItemId": "1AA",
+                "OrderTotalprice": 776,
+                "Status": 10,
+                "PayTime": "",
+                "TechconfirmTime": "",
+                "OrderAdd": "haixingxiaoqu",
+                "CommentsId": "",
+                "RefundConfirmTime": "",
+                "RefundEndTime": "",
+                "IfCoupon": 0,
+                "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
+                "OrderTel": "17777777777",
+                "OrderCallTime": "2017-6-18 20:30",
+                "OrderRemark": "hello",
+                "RefundBecause": "",
+                "CompeleteTime": "",
+                "OrderNo": "1538157548",
+                "CouponId": "1",
+                "ItemStartTime": "",
+                "OrderId": "0f0fd4a268584208896281e7441b3310",
+                "RefundStartTime": "2017-07-02 16:10:01",
+                "ItemEndTime": "",
+                "OrderRealitypay": 776,
+                "OrderUnitprice": 388
+            }
+        ],
+        "Orderlisttodaycomp": [],
+        "Orderlisttodayuncomp": [
+            {
+                "OrderNum": 2,
+                "CreateTime": "2017-07-02 15:36:18",
+                "TechnicianName": "组宾",
+                "TransactionId": "",
+                "CustomerId": "1111",
+                "ItemId": "1AA",
+                "OrderTotalprice": 776,
+                "Status": 0,
+                "PayTime": "",
+                "TechconfirmTime": "",
+                "OrderAdd": "haixingxiaoqu",
+                "CommentsId": "",
+                "RefundConfirmTime": "",
+                "RefundEndTime": "",
+                "IfCoupon": 0,
+                "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
+                "OrderTel": "17777777777",
+                "OrderCallTime": "2017-6-18 20:30",
+                "OrderRemark": "hello",
+                "RefundBecause": "",
+                "CompeleteTime": "",
+                "OrderNo": "1536168546",
+                "CouponId": "1",
+                "ItemStartTime": "",
+                "OrderId": "03b70293f64148efbbbf78690fc4663e",
+                "RefundStartTime": "",
+                "ItemEndTime": "",
+                "OrderRealitypay": 776,
+                "OrderUnitprice": 388
+            }
+        ],
+        "Orderlistyes": [
+            {
+                "OrderNum": 2,
+                "CreateTime": "2017-07-01 15:37:45",
+                "TechnicianName": "组宾",
+                "TransactionId": "",
+                "CustomerId": "1111",
+                "ItemId": "1AA",
+                "OrderTotalprice": 776,
+                "Status": 0,
+                "PayTime": "",
+                "TechconfirmTime": "",
+                "OrderAdd": "haixingxiaoqu",
+                "CommentsId": "",
+                "RefundConfirmTime": "",
+                "RefundEndTime": "",
+                "IfCoupon": 0,
+                "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
+                "OrderTel": "17777777777",
+                "OrderCallTime": "2017-6-18 20:30",
+                "OrderRemark": "hello",
+                "RefundBecause": "",
+                "CompeleteTime": "",
+                "OrderNo": "1537459169",
+                "CouponId": "1",
+                "ItemStartTime": "",
+                "OrderId": "24237f84b89a4ebdb1d53ba5cc97bbd6",
+                "RefundStartTime": "",
+                "ItemEndTime": "",
+                "OrderRealitypay": 776,
+                "OrderUnitprice": 388
+            },
+            {
+                "OrderNum": 2,
+                "CreateTime": "2017-07-01 15:39:09",
+                "TechnicianName": "组宾",
+                "TransactionId": "",
+                "CustomerId": "1111",
+                "ItemId": "1AA",
+                "OrderTotalprice": 776,
+                "Status": 0,
+                "PayTime": "",
+                "TechconfirmTime": "",
+                "OrderAdd": "haixingxiaoqu",
+                "CommentsId": "",
+                "RefundConfirmTime": "",
+                "RefundEndTime": "",
+                "IfCoupon": 0,
+                "TechnicianId": "6bab8de3e2aa40b3910611f9472e67fb",
+                "OrderTel": "17777777777",
+                "OrderCallTime": "2017-6-18 20:30",
+                "OrderRemark": "hello",
+                "RefundBecause": "",
+                "CompeleteTime": "",
+                "OrderNo": "1539092195",
+                "CouponId": "1",
+                "ItemStartTime": "",
+                "OrderId": "ca13fcc13a7347bda9955356d150fd89",
+                "RefundStartTime": "",
+                "ItemEndTime": "",
+                "OrderRealitypay": 776,
+                "OrderUnitprice": 388
+            }
+        ],
+        "Totaltechnicianpriceyes": 0,
+        "Totaltechnicianpricemonth": 130
+    },
+    "Status": 0,
+    "Errmsg": "OK"
+}
+   ```
 
 
 
