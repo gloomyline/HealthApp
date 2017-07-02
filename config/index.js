@@ -8,6 +8,12 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    // production backend server info(hostname & _port)
+    _hostname: '192.168.1.52',
+    _port: 8081,
+    // frontend server info
+    hostname: 'localhost',
+    port: 2333,
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
@@ -34,7 +40,7 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
-    hostname: '192.168.1.52',
+    _hostname: '192.168.1.52',
     _port: 8081
   }
 }
