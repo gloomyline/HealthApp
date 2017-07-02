@@ -5,6 +5,18 @@
 import * as req from './base'
 
 export default {
+  // 请求用户信息
+  async fetchUserInfos (postData, cb) {
+    postData = postData || {Openid: 'o-9OW0v0J_s8gJQdWRAVQ67tTYrQ'}
+    let data = await req.reqByPost('/appOrderData/getRoleByOpenid.do', postData)
+    cb(data)
+  },
+  // 我的订单
+  async fetchMyOrderLists (postData, cb) {
+    postData = postData || {}
+    let data = await req.reqByPost('')
+    cb(data)
+  },
   // 我的优惠券列表
   async getCouponlist (postData, cb) {
     let data = await req.reqByPost('/appCouponData/getMyCouponList.do', postData)
@@ -34,12 +46,6 @@ export default {
   async submitOrder (postData, cb) {
     postData = postData || {CustomerId: 1111}
     let data = await req.reqByPost('/appOrderData/submitOrder.do', postData)
-    cb(data)
-  },
-  // 请求用户信息
-  async fetchUserInfos (postData, cb) {
-    postData = postData || {Openid: 'o-9OW0v0J_s8gJQdWRAVQ67tTYrQ'}
-    let data = await req.reqByPost('/appOrderData/getRoleByOpenid.do', postData)
     cb(data)
   }
 }
