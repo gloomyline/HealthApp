@@ -10,7 +10,8 @@ const state = {
   _isLoading: false,
   all: [],
   detailShow: false,
-  selected: {}
+  selected: {},
+  alertShow: false
 }
 
 // getters
@@ -18,7 +19,8 @@ const getters = {
   _isLoading: state => state._isLoading,
   allTechnicians: state => state.all,
   detailShow: state => state.detailShow,
-  selectedTechnician: state => state.selected
+  selectedTechnician: state => state.selected,
+  techListAlertShow: state => state.alertShow
 }
 
 // actions
@@ -48,6 +50,10 @@ const mutations = {
     state._isLoading = false
   },
   [types.RECEIVE_TECHLIST] (state, {technicians}) {
+    if (technicians.length === 0) {
+      state.alertShow = true
+      return
+    }
     state.all = state.all.concat(technicians)
   },
   [types.RECEIVE_TECH] (state, {technician}) {

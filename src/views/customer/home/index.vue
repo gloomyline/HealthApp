@@ -9,7 +9,7 @@
           <div class="avatar">
             <!-- 默认加载本地一张图片 -->
             <img width="73" height="73" :src="tech.Avatar" class="avatar-img"
-                 onerror="this.src='http://localhost:9999/static/imgs/jishi-default.png'">
+                 :onerror="onErrorImgUrl">
             <span v-show="tech.Level === 1" class="level"></span>
           </div>
           <div class="content">
@@ -84,6 +84,11 @@
       }
     },
     computed: {
+      onErrorImgUrl () {
+        let hostname = this.staticConfig.hostname
+        let port = this.staticConfig.port
+        return `this.src='http://${hostname}:${port}/static/imgs/jishi-default.png'`
+      },
       ...mapGetters({
         isLoading: 'isLoading',
         detailShow: 'detailShow',
