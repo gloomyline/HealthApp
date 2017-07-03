@@ -5,7 +5,7 @@
               placeholder="搜索附属技师"></search>
     </div>
     <div class="content-wrapper">
-      <div class="content">
+      <div class="content" @click="showToggle">
         <div class="avatar">
           <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
         </div>
@@ -24,7 +24,7 @@
       </div>
       <div class="content">
         <div class="avatar">
-          <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
+          <img src="http://www.wangsanchuan.cn/testImg/jishi.png" alt="" width="73" height="73">
         </div>
         <div class="detail-wrapper">
           <div class="name">林技师</div>
@@ -41,7 +41,7 @@
       </div>
       <div class="content">
         <div class="avatar">
-          <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
+          <img src="http://www.wangsanchuan.cn/testImg/jishi.png" alt="" width="73" height="73">
         </div>
         <div class="detail-wrapper">
           <div class="name">林技师</div>
@@ -58,7 +58,7 @@
       </div>
       <div class="content">
         <div class="avatar">
-          <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
+          <img src="http://www.wangsanchuan.cn/testImg/jishi.png" alt="" width="73" height="73">
         </div>
         <div class="detail-wrapper">
           <div class="name">林技师</div>
@@ -74,15 +74,23 @@
         </div>
       </div>
     </div>
+    <transition name="fade">
+      <div class="technician-wrapper" v-show="isShow">
+        <technicianDetail ref="technician" @close-captain-page="showToggle"></technicianDetail>
+      </div>
+    </transition>
+    <!--<div class="technician-mask"></div>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { Search } from 'vux'
+  import technicianDetail from '@/views/captain/team/technicianDetail'
   export default{
     data () {
       return {
-        autoFixed: false
+        autoFixed: false,
+        isShow: false
       }
     },
     methods: {
@@ -94,10 +102,14 @@
       },
       onFocus () {
         console.log('on focus')
+      },
+      showToggle: function () {
+        this.isShow = !this.isShow
       }
     },
     components: {
-      Search
+      Search,
+      technicianDetail
     }
   }
 </script>
@@ -165,4 +177,17 @@
           padding-top 11px
           font-size 12px
           color rgb(155, 155, 155)
+    .technician-wrapper
+      position fixed
+      left 0
+      top 0
+      bottom 0
+      width 100%
+      z-index 20
+      transform translate3d(0, 0, 0)
+      &.fade-enter-active, &.fade-leave-active
+        transition all .4s ease
+      &.fade-enter, &.fade-leave-active
+        opacity 0
+        transform translate3d(100%, 0, 0)
 </style>
