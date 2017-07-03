@@ -10,12 +10,12 @@
     </div>
     <h1 class="content">请输入提现密码，已验证身份</h1>
     <div class="input-wrapper">
-      <div class="input"></div>
-      <div class="input"></div>
-      <div class="input"></div>
-      <div class="input"></div>
-      <div class="input"></div>
-      <div class="input"></div>
+      <input class="input" onkeydown="if(event.keyCode==13)event.keyCode=9"/>
+      <input class="input"/>
+      <input class="input"/>
+      <input class="input"/>
+      <input class="input"/>
+      <input class="input"/>
     </div>
     <div class="btn">
       <div class="text">确认</div>
@@ -66,6 +66,7 @@
         height 40px
         background-color rgb(255, 255, 255)
         margin 6px
+        /*color transparent*/
     .btn
       position relative
       width 100%
