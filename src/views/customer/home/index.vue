@@ -92,7 +92,8 @@
       ...mapGetters({
         isLoading: 'isLoading',
         detailShow: 'detailShow',
-        technicians: 'allTechnicians'
+        technicians: 'allTechnicians',
+        finite: 'finite'
       })
     },
     methods: {
