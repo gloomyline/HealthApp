@@ -88,3 +88,4 @@ HTTP Status 405 - Request method 'POST' not supported
 8. **important** 绑定手机接口（用户下订单前置接口功能，用户必须绑定手机后才可下单）
 9. **important** 客户端项目列表接口 ==BOOM==
 10. **important** 客户端获取订单列表接口目前木有数据，无法前端展示
+11. 服务端缺少绑定手机验证码获取接口

@@ -44,7 +44,11 @@ export function reqByGet (url, params = {}) {
       .then(res => {
         let _res = res.body
         if (_res.Status === 0) {
-          resolve(_res.Data)
+          if (_res.Data === '') {
+            resolve(_res.Status)
+          } else {
+            resolve(_res.Data)
+          }
         } else {
           console.log('errMsg:', _res.msg)
           reject(_res)

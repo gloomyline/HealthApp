@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div class="captain-home-page">
     <div class="title-wrapper">
       <div class="title">领班首页</div>
     </div>
@@ -170,7 +170,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../../common/stylus/mixin.styl"
-  .home-page
+  .captain-home-page
     background #f1f1f1
     position fixed
     top 0

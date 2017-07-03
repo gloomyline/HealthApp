@@ -29,6 +29,10 @@ export const TOGGLE_ORDER = 'TOGGLE_ORDER'                    // 切换订单详
 
 // users
 export const RECEIVE_USRE_INFO = 'RECEIVE_USRE_INFO'          // 接收用户信息
+export const RECEIVE_MY_COUPONLISTS = 'RECEIVE_MY_COUPONLISTS'// 接收用户优惠券列表
 export const RECEIVE_FAVORITE_LIST = 'RECEIVE_FAVORITE_LIST'  // 接收用户收藏列表
 export const ORDER_RESPONSE = 'ORDER_RESPONSE'                // 用户订单确认返回结果
+export const OPEN_PHONE_BINDING = 'OPEN_PHONE_BINDING'        // 用户打开绑定手机页面
+export const CLOSE_PHONE_BINDING = 'CLOSE_PHONE_BINDING'      // 用户关闭绑定手机页面
+export const UPDATE_USER_MOBILE_INFO = 'UPDATE_USER_MOBILE_INFO' // 更新用户绑定手机信息
 

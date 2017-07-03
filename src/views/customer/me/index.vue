@@ -25,6 +25,7 @@
     <div class="bind-cell-phone" @click="toggleBind">
       <span class="text" :class="{unbind: bindFlag}">{{isBindCellPhone}}</span>
     </div>
+    <bind-phone></bind-phone>
   </div>
 
 </template>
@@ -32,6 +33,7 @@
 <script type="text/ecmascript-6">
   import { Group, Cell, CellBox } from 'vux'
   import { mapGetters } from 'vuex'
+  import bindPhone from '@/components/bindPhone'
 
   let lists = {
     aboutMe: [
@@ -73,13 +75,32 @@
   export default {
     data () {
       return {
-        lists,
-        bindFlag: true
+        bindFlag: false,
+        lists
+      }
+    },
+    created () {
+      let tel = this.userInfo.Customerinfo.Tel
+      if (tel) {
+        this.bindFlag = true
+      } else {
+        this.bindFlag = false
+      }
+    },
+    watch: {
+      'userInfo' () {
+        let tel = this.userInfo.Customerinfo.Tel
+        if (tel) {
+          this.bindFlag = true
+        } else {
+          this.bindFlag = false
+        }
       }
     },
     computed: {
       ...mapGetters({
         userInfo: 'userInfo',
+        phoneBindingShow: 'phoneBindingShow',
         ticketsShow: 'ticketsShow'
       }),
       isBindCellPhone () {
@@ -88,13 +109,15 @@
     },
     methods: {
       toggleBind () {
-        this.bindFlag = !this.bindFlag
+//        this.bindFlag = !this.bindFlag
+        this.$store.commit('OPEN_PHONE_BINDING')
       }
     },
     components: {
       Group,
       Cell,
-      CellBox
+      CellBox,
+      bindPhone
     }
   }
 </script>

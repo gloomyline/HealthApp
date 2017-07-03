@@ -30,7 +30,31 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{}
+  import { mapGetters } from 'vuex'
+
+  export default{
+    data () {
+      return {}
+    },
+    created () {
+      // fetch data when this component was created && the data is observed now
+      this._fetchData()
+    },
+    watch: {
+      // fetch data again when the route is changed
+      '$route': 'fetchData'
+    },
+    computed: {
+      ...mapGetters({
+        couponList: 'couponList'
+      })
+    },
+    methods: {
+      _fetchData () {
+        this.$store.dispatch('fetchMyCouponList')
+      }
+    }
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
@@ -65,7 +89,6 @@
       background #fff
       border-bottom 15px solid #f1f1f1
       .infan
-        position relative
         height 27px
         flex 80% 0 0
         border 1px solid #9B9B9B
@@ -87,7 +110,6 @@
     .coupon
       width 100%
       .coupon-item
-        position absolute
         width 100%
         height 100px
         background #fff

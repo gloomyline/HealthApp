@@ -47,5 +47,11 @@ export default {
     postData = postData || {CustomerId: 1111}
     let data = await req.reqByPost('/appOrderData/submitOrder.do', postData)
     cb(data)
+  },
+  async bindMobile (postData, cb) {
+    console.log(postData)
+    let data = await req.reqByGet('/appuser/setCustomerPhone.do', postData)
+    data = Object.assign({}, data, {Tel: postData.userPhone})
+    cb(data)
   }
 }
