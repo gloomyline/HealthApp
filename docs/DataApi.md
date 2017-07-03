@@ -1747,5 +1747,34 @@ http://localhost:8080/massage/appTechnicianData/getTechnicianHomePage.do?&Techni
     "Status": 0,
     "ErrMsg": "OK"
 }
-``` 	
+   ```
+34. 微信支付接口 POST
+   
+   - url: **http://hostname:port/massage/appPay/weixinPay.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | OrderNo | string |  |  | true |  订单号
+   | TotalFee | string |  |  | true |  支付金额
+
+
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appPay/weixinPay.do?OrderNo=0c4f7744b63e48c8ae59e5b81b82dca3&TotalFee=1
+ > 返回数据示例
+     
+   ```json
+
+   ```
+   
 
