@@ -1730,5 +1730,22 @@ http://localhost:8080/massage/appTechnicianData/getTechnicianHomePage.do?&Techni
 }
    ```
 
+33. 绑定电话号码接口
+   - url: **http://192.168.1.52:8081/massage/appuser/setCustomerPhone.do?customerId=1e668cbcc3754196b7b45fc69caa7b7a&userPhone=13506092801&authCode=1234**
+   - postData
 
+* @param	customerId	客户ID
+* @param	userPhone	用户电话
+* @param	authCode	验证码
+
+
+
+返回结果：
+   ```json
+   
+{
+    "Status": 0,
+    "ErrMsg": "OK"
+}
+``` 	
 
