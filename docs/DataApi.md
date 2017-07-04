@@ -1806,4 +1806,139 @@ http://localhost:8080/massage/appuser/getAuthCode.do?userPhone=18859959027
    ```json
 
    ```
+36. 客户下单 POST
+  - url: **http://hostname:port/massage/appOrderData/submitOrderOfItem.do**
+  - postData
+  
+  | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+  | :---: | :---: | :---: | :---: | :---: |:---: |
+| CustomerAdd | string |  |  | true | 客户当前所选地址
+| CustomerId | string |  |  | true | 客户ID
+| ItemId | string |  |  | true | 项目ID
+| OrderNum | int |  |  | true | 下单项目数量
+| OrderTel | string |  |  | true | 下单联系电话
+| OrderAdd | string |  |  | true | 下单服务地址
+| OrderCallTime | string |  |  | true | 上门时间
+| OrderRemark | string |  |  | true | 备注
+| CouponId | string |  |  | false | （有就传，没有就不传）优惠券
+  - response
+  
+  | KEY | TYPE | DEFAULT | VALUE | DESC |
+  | :---: | :---: | :---: | :---: | :---: |
+  | Status | int |  | 0/-1 | 返回状态码 |
+  | ErrMsg | str |  | ok/desc | 请求错误描述 |
+  | Data | json(array) |  |  | 返回的数据 |
+  
+  > 请求url示例
+  http://localhost:8080/massage/appOrderData/submitOrderOfItem.do?CustomerAdd=福建省泉州市丰泽区&CustomerId=1111&ItemId=1AA&OrderNum=2&OrderTel=17777777777&OrderAdd=太古广场&OrderCallTime=2017-6-18 20:30&OrderRemark=无&CouponId=1
+
+
+> 返回数据示例
+    
+   ```json
+{
+  "Status": 0,
+  "ErrMsg": "OK"
+}
+   ```
+ 37. 城市接口 get
+   - url: **http://hostname:port/massage/appuser/getCitys.do**
+   - postData
    
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+ - response
+   
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   http://localhost:8080/massage/appuser/getCitys.do
+ 
+ > 返回数据示例
+ 
+     
+   ```json
+{
+    "Data": [
+        {
+            "CityId": "3",
+            "CityName": "广东省",
+            "Subcity": []
+        },
+        {
+            "CityId": "2",
+            "CityName": "浙江省",
+            "Subcity": []
+        },
+        {
+            "CityId": "1",
+            "CityName": "福建省",
+            "Subcity": [
+                {
+                    "CityId": "13",
+                    "CityName": "厦门市",
+                    "Subcity": [
+                        {
+                            "CityId": "18",
+                            "CityName": "思明区",
+                            "Subcity": []
+                        },
+                        {
+                            "CityId": "19",
+                            "CityName": "护理区",
+                            "Subcity": []
+                        },
+                        {
+                            "CityId": "17",
+                            "CityName": "翔安区",
+                            "Subcity": []
+                        }
+                    ]
+                },
+                {
+                    "CityId": "11",
+                    "CityName": "泉州市",
+                    "Subcity": [
+                        {
+                            "CityId": "14",
+                            "CityName": "丰泽区",
+                            "Subcity": []
+                        },
+                        {
+                            "CityId": "16",
+                            "CityName": "洛江区",
+                            "Subcity": []
+                        },
+                        {
+                            "CityId": "15",
+                            "CityName": "鲤城区",
+                            "Subcity": []
+                        }
+                    ]
+                },
+                {
+                    "CityId": "14",
+                    "CityName": "福州市",
+                    "Subcity": []
+                },
+                {
+                    "CityId": "12",
+                    "CityName": "莆田市",
+                    "Subcity": []
+                },
+                {
+                    "CityId": "15",
+                    "CityName": "龙岩市",
+                    "Subcity": []
+                }
+            ]
+        }
+    ],
+    "Status": 0,
+    "Errmsg": "OK"
+}
+   ```     
