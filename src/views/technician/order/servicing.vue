@@ -2,40 +2,40 @@
   <div class="service-page">
     <div class="service-wrapper">
       <div class="wait">待服务</div>
-      <!--<div class="odd">-->
-      <!--<div class="text">单号 :</div>-->
-      <!--<div class="num">1111111111</div>-->
+      <div class="odd">
+        <div class="text">单号 :</div>
+        <div class="num">1111111111</div>
+      </div>
+      <div class="service">
+        <div class="text">服务 :</div>
+        <div class="num">全身理疗（卧）</div>
+        <div class="duration">/60分钟</div>
+        <div class="day">X1</div>
+      </div>
+      <div class="price">
+        <div class="text">价格 :</div>
+        <div class="num">111元</div>
+      </div>
+      <div class="client">
+        <div class="text">客户 :</div>
+        <div class="num">xxxx</div>
+      </div>
+      <div class="time">
+        <div class="text">时间 :</div>
+        <div class="num">2017-01-01 19:30</div>
+        <div class="day">【今天】</div>
+      </div>
+      <div class="address">
+        <div class="text">地址 :</div>
+        <div class="num">厦门xx酒店xx楼xx号</div>
+      </div>
+      <!--<li class="item" v-for="item in lists">-->
+      <!--&lt;!&ndash;<item :item="item"></item>&ndash;&gt;-->
+      <!--<div class="">-->
+      <!--<div class="text">{{lists.text}}</div>-->
+      <!--<div class="num">{{lists.num}}</div>-->
       <!--</div>-->
-      <!--<div class="service">-->
-      <!--<div class="text">服务 :</div>-->
-      <!--<div class="num">全身理疗（卧）</div>-->
-      <!--<div class="duration">/60分钟</div>-->
-      <!--<div class="day">X1</div>-->
-      <!--</div>-->
-      <!--<div class="price">-->
-      <!--<div class="text">价格 :</div>-->
-      <!--<div class="num">111元</div>-->
-      <!--</div>-->
-      <!--<div class="client">-->
-      <!--<div class="text">客户 :</div>-->
-      <!--<div class="num">xxxx</div>-->
-      <!--</div>-->
-      <!--<div class="time">-->
-      <!--<div class="text">时间 :</div>-->
-      <!--<div class="num">2017-01-01 19:30</div>-->
-      <!--<div class="day">【今天】</div>-->
-      <!--</div>-->
-      <!--<div class="address">-->
-      <!--<div class="text">地址 :</div>-->
-      <!--<div class="num">厦门xx酒店xx楼xx号</div>-->
-      <!--</div>-->
-      <li class="item" v-for="item in lists">
-        <!--<item :item="item"></item>-->
-        <div class="">
-          <div class="text">{{lists.text}}</div>
-          <div class="num">{{lists.num}}</div>
-        </div>
-      </li>
+      <!--</li>-->
       <div class="but">
         <div class="text">完成服务</div>
       </div>
@@ -106,7 +106,7 @@
         font-size 15px
         padding-top 11px
         padding-left 15px
-      /*.odd, .service, .price, .client, .time, .address
+      .odd, .service, .price, .client, .time, .address
         display flex
         padding-top 8px
         font-size 14px
@@ -117,7 +117,7 @@
         .num
           padding-left 15px
         .day
-          color rgb(255, 172, 48)*/
+          color rgb(255, 172, 48)
       .item
         width 100%
         display flex
