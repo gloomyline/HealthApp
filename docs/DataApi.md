@@ -1821,6 +1821,7 @@ http://localhost:8080/massage/appuser/getAuthCode.do?userPhone=18859959027
 | OrderCallTime | string |  |  | true | 上门时间
 | OrderRemark | string |  |  | true | 备注
 | CouponId | string |  |  | false | （有就传，没有就不传）优惠券
+  HotelId | string |  |  | false | （有就传，没有就不传）酒店id | string |  |  | false | （有就传，没有就不传）优惠券
   - response
   
   | KEY | TYPE | DEFAULT | VALUE | DESC |
@@ -1830,7 +1831,7 @@ http://localhost:8080/massage/appuser/getAuthCode.do?userPhone=18859959027
   | Data | json(array) |  |  | 返回的数据 |
   
   > 请求url示例
-  http://localhost:8080/massage/appOrderData/submitOrderOfItem.do?CustomerAdd=福建省泉州市丰泽区&CustomerId=1111&ItemId=1AA&OrderNum=2&OrderTel=17777777777&OrderAdd=太古广场&OrderCallTime=2017-6-18 20:30&OrderRemark=无&CouponId=1
+  http://localhost:8080/massage/appOrderData/submitOrderOfItem.do?CustomerAdd=福建省泉州市丰泽区&CustomerId=1111&ItemId=1AA&OrderNum=2&OrderTel=17777777777&OrderAdd=太古广场&OrderCallTime=2017-6-18 20:30&OrderRemark=无&CouponId=1&HotelId=0beaed45ded24cc1a0dd5b5d058d5ae1
 
 
 > 返回数据示例
