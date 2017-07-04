@@ -72,6 +72,12 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .order-page
+    position fixed
+    left 0
+    top 0
+    bottom 0
+    width 100%
+    z-index 50
     .order-tab-wrapper
       height 35px
       width 100%
