@@ -201,7 +201,7 @@
     left 0
     top 35px
     bottom 49px
-    padding-bottom 49px
+    width 100%
     overflow hidden
     .container
       padding: 7px 7px 0
