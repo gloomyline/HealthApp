@@ -19,7 +19,7 @@ class Loader {
           if (data.Status === 0) {
             resolve(data.Data)
           } else {
-            reject(data.Data)
+            reject(data)
           }
         })
         .catch((err) => {
