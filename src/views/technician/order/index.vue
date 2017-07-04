@@ -5,10 +5,9 @@
                 :selected="defaultSelected === item"
                 v-for="(item, index) in orderList"
                 :key="index">{{item}}
-
       </tab-item>
     </tab>
-    <swiper v-model="selectedIndex" :show-dots="false">
+    <swiper v-model="selectedIndex" :show-dots="false" height="600px">
       <swiper-item v-for="(item, index) in orderList" :key="index">
         <div class="tab-swiper">
           <confirming v-if="selectedIndex === 0"></confirming>

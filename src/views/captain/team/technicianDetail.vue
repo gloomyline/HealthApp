@@ -22,7 +22,7 @@
       </div>
     </div>
     <group class="indent-wrapper">
-      <cell-box is-link class="indent">近一个月的单子</cell-box>
+      <cell-box is-link style="arrow-direction:up-down" class="indent">近一个月的单子</cell-box>
     </group>
     <div class="content-wrapper">
       <div class="content">
@@ -208,6 +208,7 @@
           font-size 15px
     .content-wrapper
       position relative
+      background rgb(255, 255, 255)
       .content
         padding 10px 16px 0
         margin-top 7px

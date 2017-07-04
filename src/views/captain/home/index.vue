@@ -52,105 +52,44 @@
       </div>
       <div class="latest-order">
         <h2 class="title">营业单数</h2>
-        <div class="detail-wrapper">
-          <div class="avatar">
-            <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="42" height="42">
-            <div class="text">林技师</div>
-          </div>
-          <div class="completed">
-            <div class="num">1</div>
-            <div class="text">已完成单数</div>
-          </div>
-          <div class="day">
-            <div class="num1">4</div>
-            <div class="text">日单数</div>
-          </div>
-          <div class="month">
-            <div class="num2">100</div>
-            <div class="text">月单数</div>
-          </div>
-        </div>
-        <div class="detail-wrapper latest-order-hook">
-          <div class="avatar">
-            <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="42" height="42">
-            <div class="text">林技师</div>
-          </div>
-          <div class="completed">
-            <div class="num">0</div>
-            <div class="text">已完成单数</div>
-          </div>
-          <div class="day">
-            <div class="num1">5</div>
-            <div class="text">日单数</div>
-          </div>
-          <div class="month">
-            <div class="num2">200</div>
-            <div class="text">月单数</div>
-          </div>
-        </div>
-        <div class="detail-wrapper">
-          <div class="avatar">
-            <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="42" height="42">
-            <div class="text">林技师</div>
-          </div>
-          <div class="completed">
-            <div class="num">0</div>
-            <div class="text">已完成单数</div>
-          </div>
-          <div class="day">
-            <div class="num1">5</div>
-            <div class="text">日单数</div>
-          </div>
-          <div class="month">
-            <div class="num2">200</div>
-            <div class="text">月单数</div>
-          </div>
-        </div>
-        <div class="detail-wrapper">
-          <div class="avatar">
-            <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="42" height="42">
-            <div class="text">林技师</div>
-          </div>
-          <div class="completed">
-            <div class="num">0</div>
-            <div class="text">已完成单数</div>
-          </div>
-          <div class="day">
-            <div class="num1">5</div>
-            <div class="text">日单数</div>
-          </div>
-          <div class="month">
-            <div class="num2">200</div>
-            <div class="text">月单数</div>
-          </div>
-        </div>
-        <div class="detail-wrapper">
-          <div class="avatar">
-            <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="42" height="42">
-            <div class="text">林技师</div>
-          </div>
-          <div class="completed">
-            <div class="num">0</div>
-            <div class="text">已完成单数</div>
-          </div>
-          <div class="day">
-            <div class="num1">5</div>
-            <div class="text">日单数</div>
-          </div>
-          <div class="month">
-            <div class="num2">200</div>
-            <div class="text">月单数</div>
-          </div>
+        <div class="latest" ref="latestOrder">
+          <ul>
+            <li class="item" v-for="item in lists">
+              <detail-item :item="item"></detail-item>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import detailItem from '@/components/captain-home/detailItem'
   import BScroll from 'better-scroll'
+  let lists = [
+    {
+      text: '林技师'
+    },
+    {
+      num: 1,
+      text: '已完成单数'
+    },
+    {
+      num: 4,
+      text: '日单数'
+    },
+    {
+      num: 100,
+      text: '月单数'
+    }, {}, {}, {}
+  ]
   export default{
+    data () {
+      return {
+        lists
+      }
+    },
     mounted () {
       this.$nextTick(() => {
         this._initScroll()
@@ -159,11 +98,14 @@
     methods: {
       _initScroll () {
         if (!this.scroll) {
-          this.scroll = new BScroll(this.$el.querySelector('.latest-order-hook'), {click: true})
+          this.scroll = new BScroll(this.$refs.latestOrder, {click: true})
         } else {
           this.scroll.refresh()
         }
       }
+    },
+    components: {
+      detailItem
     }
   }
 </script>
@@ -332,6 +274,8 @@
       .latest-order
         margin-top 8px
         background #fff
+        width 100%
+        height 300px
         .title
           height 36px
           line-height 36px
@@ -340,30 +284,35 @@
           border-bottom 1px solid rgb(238, 238, 238)
           font-size 16px
           color rgb(88, 79, 96)
-        .detail-wrapper
-          display flex
-          border-bottom 1px solid rgb(238, 238, 238)
-          .avatar
-            margin 6px 0 6px 15px
-            width 25%
-            .text
-              font-size 13px
-              margin-top 10px
+        .latest
+          width 100%
+          height 300px
+          overflow hidden
 
-          .completed, .day, .month
-            position relative
-            text-align center
-            width 25%
-            .text
-              padding-top 15px
-              color rgb(155, 155, 155)
-            .num, .num1, .num2
-              font-size 15px
-              padding-top 15px
-            .num
-              color rgb(45, 182, 118)
-            .num1
-              color rgb(242, 70, 115)
-            .num2
-              color rgb(255, 172, 48)
+  /*.detail-wrapper
+    display flex
+    border-bottom 1px solid rgb(238, 238, 238)
+    .avatar
+      margin 6px 0 6px 15px
+      width 25%
+      .text
+        font-size 13px
+        margin-top 10px
+
+    .completed, .day, .month
+      position relative
+      text-align center
+      width 25%
+      .text
+        padding-top 15px
+        color rgb(155, 155, 155)
+      .num, .num1, .num2
+        font-size 15px
+        padding-top 15px
+      .num
+        color rgb(45, 182, 118)
+      .num1
+        color rgb(242, 70, 115)
+      .num2
+        color rgb(255, 172, 48)*/
 </style>
