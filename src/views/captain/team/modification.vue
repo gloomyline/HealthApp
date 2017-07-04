@@ -16,24 +16,39 @@
       <cell-box is-link>精油SPA（卧）</cell-box>
       <cell-box is-link>全身理疗（卧）</cell-box>
       <cell-box is-link>全身理疗（卧）</cell-box>
-      <cell-box>添加项目</cell-box>
+      <cell-box @click="showToggle">添加项目</cell-box>
     </group>
     <div class="submit">提交</div>
     <div class="expel">开除</div>
+    <transition name="fade">
+      <div class="addItem-page-wrapper" v-show="isShow">
+        <addItem ref="addItem" @close-captain-page="showToggle"></addItem>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { Group, CellBox } from 'vux'
+  import addItem from '@/views/captain/team/addItem'
   import titleWrapper from '@/components/uiComponents/titleWrapper'
   export default{
+    data () {
+      return {
+        isShow: false
+      }
+    },
     methods: {
       closeDetail () {
         this.$emit('close-captain-page')
+      },
+      showToggle: function () {
+        this.isShow = !this.isShow
       }
     },
     components: {
       titleWrapper,
+      addItem,
       Group,
       CellBox
     }
@@ -83,5 +98,19 @@
       background rgb(233, 93, 98)
       border-radius 10px
       padding-top 11px
+
+    .addItem-page-wrapper
+      position fixed
+      left 0
+      top 0
+      bottom 0
+      width 100%
+      z-index 20
+      transform translate3d(0, 0, 0)
+      &.fade-enter-active, &.fade-leave-active
+        transition all .4s ease
+      &.fade-enter, &.fade-leave-active
+        opacity 0
+        transform translate3d(100%, 0, 0)
 </style>
 
