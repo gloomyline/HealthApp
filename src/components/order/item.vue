@@ -58,7 +58,11 @@
         return this._findItemInfo().ItemName
       },
       itemDesc () {
-        if (!this._findItemInfo()) return
+        let info = this._findItemInfo()
+        if (!info) return
+        if (info.ItemAbout && info.ItemAbout.length >= 10) {
+          return info.ItemAbout.slice(0, 10) + '...'
+        }
         return this._findItemInfo().ItemAbout
       }
     },
@@ -78,7 +82,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .order-item
-    width 361px
+    width 100%
     height 100px
     border-radius 6px
     background #fff

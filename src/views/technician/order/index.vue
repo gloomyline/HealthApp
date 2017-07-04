@@ -7,7 +7,7 @@
                 :key="index">{{item}}
       </tab-item>
     </tab>
-    <swiper v-model="selectedIndex" :show-dots="false">
+    <swiper v-model="selectedIndex" :show-dots="false" height="600px">
       <swiper-item v-for="(item, index) in orderList" :key="index">
         <div class="tab-swiper">
           <confirming v-if="selectedIndex === 0"></confirming>
@@ -56,7 +56,12 @@
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .order-page
+    position fixed
+    top 0
+    left 0
     background #f1f1f1
+    width 100%
+    height 100%
     .order-tab
       height 37px
       .vux-tab-item

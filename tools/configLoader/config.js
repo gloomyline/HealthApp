@@ -5,9 +5,8 @@
 'use strict'
 let path = require('path')
 let config = require('../../config')
-let env = process.env.NODE_ENV === 'production' ? 'build' : 'dev'
 
-let configServerUrl = 'http://' + config[env].hostname + ':' + config[env]._port + '/massage/appTechnicianData/getAllConstant.do'
+let configServerUrl = 'http://' + config.dev._hostname + ':' + config.dev._port + '/massage/appTechnicianData/getAllConstant.do'
 
 module.exports = {
   url: configServerUrl,

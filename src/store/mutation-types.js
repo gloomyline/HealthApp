@@ -21,6 +21,10 @@ export const TOGGLE_SUBSCRIBE = 'TOGGLE_SUBSCRIBE'            // 切换预约
 export const SELECT_SUBSCRIBE = 'SELECT_SUBSCRIBE'            // 选择预约技师
 export const CONFIRMED_SUBSCRIBE = 'CONFIRMED_SUBSCRIBE'      // 确认预约订单
 
+// items
+export const TOGGLE_ITEM_DETAIL = 'TOGGLE_ITEM_DETAIL'        // 切换项目详情页显示
+export const SELECT_ITEM = 'SELECT_ITEM'                      // 选择项目(套餐)
+
 // orders
 export const SEND_ORDER_REQ = 'SEND_ORDER_REQ'                // 下订单请求开始
 export const ORDER_REQ_SUCCESS = 'ORDER_REQ_SUCCESS'          // 下单成功

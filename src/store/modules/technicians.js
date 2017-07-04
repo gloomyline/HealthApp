@@ -9,6 +9,7 @@ import * as types from '../mutation-types'
 const state = {
   _isLoading: false,
   all: [],
+  finite: false, // 服务端技师列表数据是否请求完
   detailShow: false,
   selected: {},
   alertShow: false
@@ -51,6 +52,7 @@ const mutations = {
   },
   [types.RECEIVE_TECHLIST] (state, {technicians}) {
     if (technicians.length === 0) {
+      state.finite = true
       state.alertShow = true
       return
     }

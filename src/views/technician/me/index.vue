@@ -5,7 +5,7 @@
       <group>
         <cell-box is-link link="/technician/me/information">
           <div class="avatar">
-            <img src="http://139.196.106.144:8080/testImg/jishi.png" alt="" width="73" height="73">
+            <img src="http://www.wangsanchuan.cn/testImg/jishi.png" alt="" width="73" height="73">
           </div>
           <div class="content-wrapper">
             <div class="content">

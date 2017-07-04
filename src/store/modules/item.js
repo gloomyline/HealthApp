@@ -18,7 +18,9 @@ const state = {
     recover: [],
     scraping: [],
     foot: []
-  }
+  },
+  itemDetailShow: false,
+  selectedItem: {}
 }
 
 // getters
@@ -29,7 +31,11 @@ const getters = {
   moxibustion: state => state.itemsList.moxibustion,
   recover: state => state.itemsList.recover,
   scraping: state => state.itemsList.scraping,
-  foot: state => state.itemsList.foot
+  foot: state => state.itemsList.foot,
+  // 是否显示项目详情页
+  itemDetailShow: state => state.itemDetailShow,
+  // 选择的项目套餐信息
+  selectedItem: state => state.selectedItem
 }
 
 // actions
@@ -53,6 +59,12 @@ const mutations = {
   },
   [types.RECEIVE_ITEM_LIST] (state, {payload, data}) {
     state.itemsList[payload] = data
+  },
+  [types.TOGGLE_ITEM_DETAIL] (state) {
+    state.itemDetailShow = !state.itemDetailShow
+  },
+  [types.SELECT_ITEM] (state, {selectedItem}) {
+    state.selectedItem = selectedItem
   }
 }
 
