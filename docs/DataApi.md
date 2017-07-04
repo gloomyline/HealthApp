@@ -1739,7 +1739,7 @@ http://localhost:8080/massage/appTechnicianData/getTechnicianHomePage.do?&Techni
 
 
 
-返回结果：
+返回结果： 0-成功，1-验证码错误2-电话已绑定过
    ```json
    
 {
