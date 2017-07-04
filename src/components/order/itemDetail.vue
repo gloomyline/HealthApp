@@ -78,13 +78,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixin.styl"
-
   .item-detail-page
-    position fixed
-    left 0
-    top 0
-    bottom 0
-    width 100%
     height 100%
     background #f1f1f1
     .content-wrapper
@@ -196,10 +190,9 @@
       display flex
       position fixed
       left 0
-      bottom 49px
+      bottom 0
       width 100%
       height 42px
-      z-index 999
       border-top 1px solid rgb(217, 217, 217)
       .price
         flex 1

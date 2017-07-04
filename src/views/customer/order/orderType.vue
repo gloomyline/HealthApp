@@ -1,13 +1,10 @@
 <template>
   <div :class="orderClass" class="order-items-wrapper">
     <div class="container">
-      <li class="item" v-for="item in itemsList" @click="showDetail">
+      <li class="item" v-for="(item, index) in itemsList" @click="showDetail(index, $event)">
         <item :item="item"></item>
       </li>
     </div>
-    <transition name="fade" @after-enter="afterEnter" @after-leave="afterLeave">
-      <item-detail class="item-detail" v-show="detailShow" @close-item-page="hideDetail"></item-detail>
-    </transition>
   </div>
 </template>
 
@@ -15,7 +12,6 @@
   import BScroll from 'better-scroll'
   import { mapGetters } from 'vuex'
   import item from '@/components/order/item'
-  import itemDetail from '@/components/order/itemDetail'
 
   let itemsList = [
     {
@@ -79,12 +75,13 @@
   export default{
     data () {
       return {
+        itemType: '',
         itemsList,
-        loadedItemsLists: [], // 已加载数据的项目列表
-        detailShow: false
+        loadedItemsLists: [] // 已加载数据的项目列表
       }
     },
     created () {
+      this.itemType = this.$route.params.type
       this._fetchData()
       this.$nextTick(() => {
         this._initScroll()
@@ -131,6 +128,7 @@
     methods: {
       _fetchData () {
         if (!this.$route.params.type) return
+        this.itemType = this.$route.params.type
         if (this._isLoadedList()) {
           let loadedIndex = (function () {
             for (let i = 0; i < this.loadedItemsLists.length; i++) {
@@ -174,23 +172,18 @@
           this.scroll.refresh()
         }
       },
-      showDetail (event) {
+      showDetail (index, event) {
         if (!event._constructed) return
-        this.detailShow = true
+        let selectedItem = this[this.itemType][index]
+        this.$store.commit('SELECT_ITEM', {selectedItem})
+        this.$store.commit('TOGGLE_ITEM_DETAIL')
       },
       hideDetail () {
         this.detailShow = false
-      },
-      afterEnter () {
-//        this.$store.commit('HIDETAB')
-      },
-      afterLeave () {
-//        this.$store.commit('SHOWTAB')
       }
     },
     components: {
-      item,
-      itemDetail
+      item
     }
   }
 </script>
@@ -210,11 +203,4 @@
         margin-bottom 7px
         &:last-child
           margin-bottom 0
-    .item-detail
-      transform translate3d(0, 0, 0)
-      &.fade-enter-active, &.fade-leave-active
-        transition all .4s ease
-      &.fade-enter, &.fade-leave-active
-        opacity 0
-        transform translate3d(100%, 0, 0)
 </style>

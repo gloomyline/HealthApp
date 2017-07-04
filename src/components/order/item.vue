@@ -82,7 +82,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .order-item
-    width 361px
+    width 100%
     height 100px
     border-radius 6px
     background #fff
