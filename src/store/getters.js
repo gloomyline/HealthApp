@@ -2,7 +2,8 @@
  * Created by Alan on 2017/6/5.
  */
 export const isLoading = state => {
-  return state.technicians._isLoading
+  let isLoading = state.technicians._isLoading || state.item._isLoading || state.order._isLoading || state.user._isLoading
+  return isLoading
 }
 
 export const tabShow = state => {
