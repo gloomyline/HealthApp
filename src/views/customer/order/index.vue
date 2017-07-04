@@ -37,9 +37,16 @@
     methods: {
       _initHScroll () {
         if (this.orders) {
+          // 计算出 order tab 的宽度
+          let windowWidth = document.documentElement.clientWidth
           let itemWidth = 61
           let scrollWidth = itemWidth * this.orders.length
-          this.$el.querySelector('.order-tab-hook').style.width = scrollWidth + 'px'
+          let nodeOrderTab = this.$el.querySelector('.order-tab-hook')
+          if (windowWidth > scrollWidth + itemWidth) {
+            nodeOrderTab.style.width = windowWidth + 'px'
+          } else {
+            nodeOrderTab.style.width = scrollWidth + 'px'
+          }
           if (!this.hScroll) {
             this.hScroll = new BScroll(this.$el.querySelector('.order-tab-wrapper-hook'), {
               click: true,
