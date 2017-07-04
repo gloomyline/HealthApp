@@ -954,7 +954,6 @@ http://localhost:8080/massage/appTechnicianData/getAllConstant.do
    
    | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
    | :---: | :---: | :---: | :---: | :---: |:---: |
-   | Customerid | string |  |  | true | 
    | PageNow | string |  |  | true | 分页起始
    | PageSize | string |  |  | true | 每页条数
    |Massagetypeid| string |  |  | true | 项目类别，传入推拿大类id
@@ -1734,7 +1733,7 @@ http://localhost:8080/massage/appTechnicianData/getTechnicianHomePage.do?&Techni
    - url: **http://192.168.1.52:8081/massage/appuser/setCustomerPhone.do?customerId=1e668cbcc3754196b7b45fc69caa7b7a&userPhone=13506092801&authCode=1234**
    - postData
 
-* @param	customerId	客户ID
+* @param	openid	客户ID
 * @param	userPhone	用户电话
 * @param	authCode	验证码
 
@@ -1777,4 +1776,32 @@ http://localhost:8080/massage/appPay/weixinPay.do?OrderNo=0c4f7744b63e48c8ae59e5
 
    ```
    
+35 获取验证码 POST
+   
+   - url: **http://hostname:port/massage/appuser/getAuthCode.do**
+   - postData
+   
+   | KEY | TYPE | DEFAULT | VALUE | REQUIRED |DESC |
+   | :---: | :---: | :---: | :---: | :---: |:---: |
+   | userPhone | string |  |  | true |  手机号
+   
 
+
+   
+   - response
+     
+   | KEY | TYPE | DEFAULT | VALUE | DESC |
+   | :---: | :---: | :---: | :---: | :---: |
+   | Status | int |  | 0/-1/1/2 | 返回状态码 |
+   | ErrMsg | str |  | ok/desc | 请求错误描述 |
+   | Data | json(array) |  |  | 返回的数据 |
+   
+   > 请求url示例
+   
+http://localhost:8080/massage/appuser/getAuthCode.do?userPhone=18859959027
+ > 返回数据示例
+     
+   ```json
+
+   ```
+   
